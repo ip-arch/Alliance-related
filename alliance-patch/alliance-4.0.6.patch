@@ -1,0 +1,4577 @@
+diff -Naur sources/asimut/asimut/c_fsyn_sr1k_1.c ../../alliance-4.0-patchd/sources/asimut/asimut/c_fsyn_sr1k_1.c
+--- sources/asimut/asimut/c_fsyn_sr1k_1.c	2017-03-06 18:55:22.379771700 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/asimut/c_fsyn_sr1k_1.c	2017-03-06 18:52:36.061881300 +0900
+@@ -43,6 +43,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++static void       init () ;
+ 
+ void c_fsyn_sr1k_1 (pt_lkdins)
+ 
+@@ -71,7 +72,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/asimut/c_fsyn_sr1k_1.c.rej ../../alliance-4.0-patchd/sources/asimut/asimut/c_fsyn_sr1k_1.c.rej
+--- sources/asimut/asimut/c_fsyn_sr1k_1.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/asimut/c_fsyn_sr1k_1.c.rej	2017-03-06 18:52:36.124380800 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/asimut/c_fsyn_sr1k_1.c	1999-12-18 04:33:11.000000000 +0900
+++++ sources-patched/asimut/asimut/c_fsyn_sr1k_1.c	2016-06-01 22:26:39.354060352 +0900
++@@ -43,6 +43,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++static void       init () ;
++ 
++ void c_fsyn_sr1k_1 (pt_lkdins)
++ 
++@@ -71,7 +72,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/scheduler/sch_debug.c ../../alliance-4.0-patchd/sources/asimut/scheduler/sch_debug.c
+--- sources/asimut/scheduler/sch_debug.c	2017-03-06 18:55:22.602280100 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/scheduler/sch_debug.c	2017-03-06 18:52:35.811879300 +0900
+@@ -17,13 +17,6 @@
+ /* description	: display any structure					*/
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+-
+-void sch_debug (head_pnt, type)
+-
+-void *head_pnt;				/* structure's pointer		*/
+-char *type;				/* structure's type		*/
+-
+-  {
+   static int           translate  ();
+   static int           splitline  ();
+   static void          disp_immd  ();
+@@ -33,6 +26,13 @@
+   static void          pop        ();
+   static struct chain *go_forward ();
+ 
++void sch_debug (head_pnt, type)
++
++void *head_pnt;				/* structure's pointer		*/
++char *type;				/* structure's type		*/
++
++  {
++
+   char          line   [128];		/* buffer to read a cmd line	*/
+   char          buffer [128];		/* buffer to split the cmd line	*/
+ 
+diff -Naur sources/asimut/scheduler/sch_debug.c.rej ../../alliance-4.0-patchd/sources/asimut/scheduler/sch_debug.c.rej
+--- sources/asimut/scheduler/sch_debug.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/scheduler/sch_debug.c.rej	2017-03-06 18:52:35.936879300 +0900
+@@ -0,0 +1,30 @@
++--- sources/asimut/scheduler/sch_debug.c	1999-09-24 23:09:12.000000000 +0900
+++++ sources-patched/asimut/scheduler/sch_debug.c	2016-06-01 22:05:25.225013840 +0900
++@@ -17,13 +17,6 @@
++ /* description	: display any structure					*/
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++-
++-void sch_debug (head_pnt, type)
++-
++-void *head_pnt;				/* structure's pointer		*/
++-char *type;				/* structure's type		*/
++-
++-  {
++   static int           translate  ();
++   static int           splitline  ();
++   static void          disp_immd  ();
++@@ -33,6 +26,13 @@ char *type;				/* structure's type		*/
++   static void          pop        ();
++   static struct chain *go_forward ();
++ 
+++void sch_debug (head_pnt, type)
+++
+++void *head_pnt;				/* structure's pointer		*/
+++char *type;				/* structure's type		*/
+++
+++  {
+++
++   char          line   [128];		/* buffer to read a cmd line	*/
++   char          buffer [128];		/* buffer to split the cmd line	*/
++ 
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_10.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_10.c
+--- sources/asimut/simulad/c_fsyn_sr1k_10.c	2017-03-06 18:55:22.664782100 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_10.c	2017-03-06 18:52:36.343133200 +0900
+@@ -20,6 +20,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void       init () ;
+ 
+ void c_fsyn_sr1k_10 (pt_lkdins)
+ 
+@@ -48,7 +49,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_10.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_10.c.rej
+--- sources/asimut/simulad/c_fsyn_sr1k_10.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_10.c.rej	2017-03-06 18:52:36.311882700 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr1k_10.c	1999-09-24 23:09:20.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr1k_10.c	2016-06-01 22:31:33.662098690 +0900
++@@ -20,6 +20,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void       init () ;
++ 
++ void c_fsyn_sr1k_10 (pt_lkdins)
++ 
++@@ -48,7 +49,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_1.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_1.c
+--- sources/asimut/simulad/c_fsyn_sr1k_1.c	2017-03-06 18:55:22.649155900 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_1.c	2017-03-06 18:52:36.265008500 +0900
+@@ -21,6 +21,7 @@
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
+ 
++  static void       init () ;
+ void c_fsyn_sr1k_1 (pt_lkdins)
+ 
+ struct lkdins *pt_lkdins;
+@@ -48,7 +49,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_1.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_1.c.rej
+--- sources/asimut/simulad/c_fsyn_sr1k_1.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_1.c.rej	2017-03-06 18:52:36.358759900 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr1k_1.c	1999-09-24 23:09:19.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr1k_1.c	2016-06-01 22:28:01.445907841 +0900
++@@ -21,6 +21,7 @@
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
++ 
+++  static void       init () ;
++ void c_fsyn_sr1k_1 (pt_lkdins)
++ 
++ struct lkdins *pt_lkdins;
++@@ -48,7 +49,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_24.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_24.c
+--- sources/asimut/simulad/c_fsyn_sr1k_24.c	2017-03-06 18:55:22.664782100 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_24.c	2017-03-06 18:52:36.171256000 +0900
+@@ -20,6 +20,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void       init () ;
+ 
+ void c_fsyn_sr1k_24 (pt_lkdins)
+ 
+@@ -48,7 +49,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_24.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_24.c.rej
+--- sources/asimut/simulad/c_fsyn_sr1k_24.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_24.c.rej	2017-03-06 18:52:36.358759900 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr1k_24.c	1999-09-24 23:09:20.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr1k_24.c	2016-06-01 22:32:13.867513757 +0900
++@@ -20,6 +20,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void       init () ;
++ 
++ void c_fsyn_sr1k_24 (pt_lkdins)
++ 
++@@ -48,7 +49,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_4.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_4.c
+--- sources/asimut/simulad/c_fsyn_sr1k_4.c	2017-03-06 18:55:22.664782100 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_4.c	2017-03-06 18:52:36.343133200 +0900
+@@ -20,6 +20,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void       init () ;
+ 
+ void c_fsyn_sr1k_4 (pt_lkdins)
+ 
+@@ -48,7 +49,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_4.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_4.c.rej
+--- sources/asimut/simulad/c_fsyn_sr1k_4.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_4.c.rej	2017-03-06 18:52:36.374385200 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr1k_4.c	1999-09-24 23:09:21.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr1k_4.c	2016-06-01 22:31:05.928812381 +0900
++@@ -20,6 +20,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void       init () ;
++ 
++ void c_fsyn_sr1k_4 (pt_lkdins)
++ 
++@@ -48,7 +49,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_56.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_56.c
+--- sources/asimut/simulad/c_fsyn_sr1k_56.c	2017-03-06 18:55:22.680406300 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_56.c	2017-03-06 18:52:36.390008500 +0900
+@@ -20,6 +20,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void       init () ;
+ 
+ void c_fsyn_sr1k_56 (pt_lkdins)
+ 
+@@ -53,7 +54,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr1k_56.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_56.c.rej
+--- sources/asimut/simulad/c_fsyn_sr1k_56.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr1k_56.c.rej	2017-03-06 18:52:36.186881800 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr1k_56.c	1999-09-24 23:09:21.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr1k_56.c	2016-06-01 22:35:12.304355880 +0900
++@@ -20,6 +20,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void       init () ;
++ 
++ void c_fsyn_sr1k_56 (pt_lkdins)
++ 
++@@ -53,7 +54,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr4k_10.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr4k_10.c
+--- sources/asimut/simulad/c_fsyn_sr4k_10.c	2017-03-06 18:55:22.680406300 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr4k_10.c	2017-03-06 18:52:36.280632200 +0900
+@@ -20,6 +20,7 @@
+ /*		  Ram							*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void       init () ;
+ 
+ void c_fsyn_sr4k_10 (pt_lkdins)
+ 
+@@ -48,7 +49,6 @@
+     };
+ 
+   struct local_mem *local   ;
+-  static void       init () ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_fsyn_sr4k_10.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr4k_10.c.rej
+--- sources/asimut/simulad/c_fsyn_sr4k_10.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_fsyn_sr4k_10.c.rej	2017-03-06 18:52:36.296258500 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_fsyn_sr4k_10.c	1999-09-24 23:09:22.000000000 +0900
+++++ sources-patched/asimut/simulad/c_fsyn_sr4k_10.c	2016-06-01 22:31:54.343312196 +0900
++@@ -20,6 +20,7 @@
++ /*		  Ram							*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void       init () ;
++ 
++ void c_fsyn_sr4k_10 (pt_lkdins)
++ 
++@@ -48,7 +49,6 @@ struct lkdins *pt_lkdins;
++     };
++ 
++   struct local_mem *local   ;
++-  static void       init () ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   get the memory space reserved for the current instance	*/
+diff -Naur sources/asimut/simulad/c_sr1k_8a.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8a.c
+--- sources/asimut/simulad/c_sr1k_8a.c	2017-03-06 18:55:22.696031600 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8a.c	2017-03-06 18:52:36.358759900 +0900
+@@ -19,6 +19,7 @@
+ /* description	: A 1 KByte static Ram with a chip select pin		*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void    init ()   ;
+ 
+ void c_sr1k_8a (pt_lkdins)
+ 
+@@ -43,7 +44,6 @@
+ 
+   unsigned char *mem       ;
+   unsigned int   cond      = 0;
+-  static void    init ()   ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   read the current value of input signals (e_n)		*/
+diff -Naur sources/asimut/simulad/c_sr1k_8a.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8a.c.rej
+--- sources/asimut/simulad/c_sr1k_8a.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8a.c.rej	2017-03-06 18:52:36.233758500 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_sr1k_8a.c	1999-09-24 23:09:24.000000000 +0900
+++++ sources-patched/asimut/simulad/c_sr1k_8a.c	2016-06-01 22:35:48.481729363 +0900
++@@ -19,6 +19,7 @@
++ /* description	: A 1 KByte static Ram with a chip select pin		*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void    init ()   ;
++ 
++ void c_sr1k_8a (pt_lkdins)
++ 
++@@ -43,7 +44,6 @@ struct lkdins *pt_lkdins;
++ 
++   unsigned char *mem       ;
++   unsigned int   cond      = 0;
++-  static void    init ()   ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   read the current value of input signals (e_n)		*/
+diff -Naur sources/asimut/simulad/c_sr1k_8b.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8b.c
+--- sources/asimut/simulad/c_sr1k_8b.c	2017-03-06 18:55:22.696031600 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8b.c	2017-03-06 18:52:36.155631300 +0900
+@@ -42,6 +42,8 @@
+ /* description	: A 1 KByte static Ram with a chip select pin		*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void   splitname   ();
++  static void    init ()   ;
+ 
+ void c_sr1k_8b (pt_lkdins)
+ 
+@@ -66,7 +68,6 @@
+ 
+   unsigned char *mem       ;
+   unsigned int   cond      = 0;
+-  static void    init ()   ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   read the current value of input signals (e_n)		*/
+@@ -131,7 +132,6 @@
+ unsigned char *pt_mem   ;
+ 
+   {
+-  static void   splitname   ();
+   char         *name          ;
+   char          fil_name [128];
+   unsigned int  fil_addr      = 0;
+diff -Naur sources/asimut/simulad/c_sr1k_8b.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8b.c.rej
+--- sources/asimut/simulad/c_sr1k_8b.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr1k_8b.c.rej	2017-03-06 18:52:36.186881800 +0900
+@@ -0,0 +1,27 @@
++--- sources/asimut/simulad/c_sr1k_8b.c	2000-01-21 22:06:05.000000000 +0900
+++++ sources-patched/asimut/simulad/c_sr1k_8b.c	2016-06-01 22:37:18.337657006 +0900
++@@ -42,6 +42,8 @@
++ /* description	: A 1 KByte static Ram with a chip select pin		*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void   splitname   ();
+++  static void    init ()   ;
++ 
++ void c_sr1k_8b (pt_lkdins)
++ 
++@@ -66,7 +68,6 @@ struct lkdins *pt_lkdins;
++ 
++   unsigned char *mem       ;
++   unsigned int   cond      = 0;
++-  static void    init ()   ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   read the current value of input signals (e_n)		*/
++@@ -131,7 +132,6 @@ struct lkdins *pt_lkdins;
++ unsigned char *pt_mem   ;
++ 
++   {
++-  static void   splitname   ();
++   char         *name          ;
++   char          fil_name [128];
++   unsigned int  fil_addr      = 0;
+diff -Naur sources/asimut/simulad/c_sr8k_8a.c ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr8k_8a.c
+--- sources/asimut/simulad/c_sr8k_8a.c	2017-03-06 18:55:22.696031600 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr8k_8a.c	2017-03-06 18:52:36.327508000 +0900
+@@ -19,6 +19,7 @@
+ /* description	: A 8 KByte static Ram with a chip select pin		*/
+ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
+ /* ###--------------------------------------------------------------### */
++  static void    init ()   ;
+ 
+ void c_sr8k_8a (pt_lkdins)
+ 
+@@ -43,7 +44,6 @@
+ 
+   unsigned char *mem       ;
+   unsigned int   cond      = 0;
+-  static void    init ()   ;
+ 
+ 	/* ###------------------------------------------------------### */
+ 	/*   read the current value of input signals (e_n)		*/
+diff -Naur sources/asimut/simulad/c_sr8k_8a.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr8k_8a.c.rej
+--- sources/asimut/simulad/c_sr8k_8a.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/c_sr8k_8a.c.rej	2017-03-06 18:52:36.249384200 +0900
+@@ -0,0 +1,18 @@
++--- sources/asimut/simulad/c_sr8k_8a.c	1999-09-24 23:09:25.000000000 +0900
+++++ sources-patched/asimut/simulad/c_sr8k_8a.c	2016-06-01 22:37:40.671887577 +0900
++@@ -19,6 +19,7 @@
++ /* description	: A 8 KByte static Ram with a chip select pin		*/
++ /* called func.	: vhx_getvalu, vhx_readinput, vhx_writebus		*/
++ /* ###--------------------------------------------------------------### */
+++  static void    init ()   ;
++ 
++ void c_sr8k_8a (pt_lkdins)
++ 
++@@ -43,7 +44,6 @@ struct lkdins *pt_lkdins;
++ 
++   unsigned char *mem       ;
++   unsigned int   cond      = 0;
++-  static void    init ()   ;
++ 
++ 	/* ###------------------------------------------------------### */
++ 	/*   read the current value of input signals (e_n)		*/
+diff -Naur sources/asimut/simulad/vh_debug.c ../../alliance-4.0-patchd/sources/asimut/simulad/vh_debug.c
+--- sources/asimut/simulad/vh_debug.c	2017-03-06 18:55:22.711672000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/vh_debug.c	2017-03-06 18:52:36.296258500 +0900
+@@ -22,13 +22,6 @@
+ /* description	: display any structure					*/
+ /* called func.	: vhu_error, vhu_message				*/
+ /* ###--------------------------------------------------------------### */
+-
+-void dast_dbg (head_pnt, type)
+-
+-void *head_pnt;				/* structure's pointer		*/
+-char *type;				/* structure's type		*/
+-
+-  {
+   static int           translate  ();
+   static int           splitline  ();
+   static void          disp_immd  ();
+@@ -38,6 +31,13 @@
+   static void          pop        ();
+   static struct chain *go_forward ();
+ 
++void dast_dbg (head_pnt, type)
++
++void *head_pnt;				/* structure's pointer		*/
++char *type;				/* structure's type		*/
++
++  {
++
+   char          line   [128];		/* buffer to read a cmd line	*/
+   char          buffer [128];		/* buffer to split the cmd line	*/
+ 
+diff -Naur sources/asimut/simulad/vh_debug.c.rej ../../alliance-4.0-patchd/sources/asimut/simulad/vh_debug.c.rej
+--- sources/asimut/simulad/vh_debug.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/asimut/simulad/vh_debug.c.rej	2017-03-06 18:52:36.265008500 +0900
+@@ -0,0 +1,30 @@
++--- sources/asimut/simulad/vh_debug.c	1999-10-25 17:01:36.000000000 +0900
+++++ sources-patched/asimut/simulad/vh_debug.c	2016-06-01 22:38:30.861405717 +0900
++@@ -22,13 +22,6 @@
++ /* description	: display any structure					*/
++ /* called func.	: vhu_error, vhu_message				*/
++ /* ###--------------------------------------------------------------### */
++-
++-void dast_dbg (head_pnt, type)
++-
++-void *head_pnt;				/* structure's pointer		*/
++-char *type;				/* structure's type		*/
++-
++-  {
++   static int           translate  ();
++   static int           splitline  ();
++   static void          disp_immd  ();
++@@ -38,6 +31,13 @@ char *type;				/* structure's type		*/
++   static void          pop        ();
++   static struct chain *go_forward ();
++ 
+++void dast_dbg (head_pnt, type)
+++
+++void *head_pnt;				/* structure's pointer		*/
+++char *type;				/* structure's type		*/
+++
+++  {
+++
++   char          line   [128];		/* buffer to read a cmd line	*/
++   char          buffer [128];		/* buffer to split the cmd line	*/
++ 
+diff -Naur sources/beh/bhl/beh_debug.c ../../alliance-4.0-patchd/sources/beh/bhl/beh_debug.c
+--- sources/beh/bhl/beh_debug.c	2017-03-06 18:55:23.024178300 +0900
++++ ../../alliance-4.0-patchd/sources/beh/bhl/beh_debug.c	2017-03-06 18:52:40.499434500 +0900
+@@ -17,18 +17,12 @@
+ static unsigned int    buff_size   = 0;
+ static struct circuit *circuit_pnt = NULL;
+ 
++
+ /* ###--------------------------------------------------------------### */
+ /* function	: beh_debug						*/
+ /* description	: dispaly any mad structure				*/
+ /* called func.	: goforward, translate, dispaly, splitline, pop, push	*/
+ /* ###--------------------------------------------------------------### */
+-
+-void beh_debug (head_pnt, type)
+-
+-void *head_pnt;				/* structure's pointer		*/
+-char *type;				/* structure's type		*/
+-
+-  {
+   static void          disp_immd ();
+   static void          getsize   ();
+   static void          display   ();
+@@ -38,6 +32,13 @@
+   static int           splitline ();
+   static int           translate ();
+ 
++void beh_debug (head_pnt, type)
++
++void *head_pnt;				/* structure's pointer		*/
++char *type;				/* structure's type		*/
++
++  {
++
+   char          line   [128];		/* buffer to read a cmd line	*/
+   char          heap   [128];		/* buffer to split the cmd line	*/
+ 
+diff -Naur sources/beh/bhl/beh_debug.c.rej ../../alliance-4.0-patchd/sources/beh/bhl/beh_debug.c.rej
+--- sources/beh/bhl/beh_debug.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/beh/bhl/beh_debug.c.rej	2017-03-06 18:52:40.452556900 +0900
+@@ -0,0 +1,36 @@
++--- sources/beh/bhl/beh_debug.c	1999-09-21 23:40:04.000000000 +0900
+++++ sources-patched/beh/bhl/beh_debug.c	2016-06-02 21:13:37.535719474 +0900
++@@ -17,18 +17,12 @@ static char           *buffer      = NUL
++ static unsigned int    buff_size   = 0;
++ static struct circuit *circuit_pnt = NULL;
++ 
+++
++ /* ###--------------------------------------------------------------### */
++ /* function	: beh_debug						*/
++ /* description	: dispaly any mad structure				*/
++ /* called func.	: goforward, translate, dispaly, splitline, pop, push	*/
++ /* ###--------------------------------------------------------------### */
++-
++-void beh_debug (head_pnt, type)
++-
++-void *head_pnt;				/* structure's pointer		*/
++-char *type;				/* structure's type		*/
++-
++-  {
++   static void          disp_immd ();
++   static void          getsize   ();
++   static void          display   ();
++@@ -38,6 +32,13 @@ char *type;				/* structure's type		*/
++   static int           splitline ();
++   static int           translate ();
++ 
+++void beh_debug (head_pnt, type)
+++
+++void *head_pnt;				/* structure's pointer		*/
+++char *type;				/* structure's type		*/
+++
+++  {
+++
++   char          line   [128];		/* buffer to read a cmd line	*/
++   char          heap   [128];		/* buffer to split the cmd line	*/
++ 
+diff -Naur sources/behvhdl/bvl_bcomp.lex ../../alliance-4.0-patchd/sources/behvhdl/bvl_bcomp.lex
+--- sources/behvhdl/bvl_bcomp.lex	2017-03-06 18:55:23.086661700 +0900
++++ ../../alliance-4.0-patchd/sources/behvhdl/bvl_bcomp.lex	2017-03-06 18:52:40.374430100 +0900
+@@ -205,7 +205,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static int yywrap ()
++int yywrap ()
+   {
+   return (1);
+   }
+diff -Naur sources/behvhdl/bvl_bcomp.lex.rej ../../alliance-4.0-patchd/sources/behvhdl/bvl_bcomp.lex.rej
+--- sources/behvhdl/bvl_bcomp.lex.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/behvhdl/bvl_bcomp.lex.rej	2017-03-06 18:52:40.390055400 +0900
+@@ -0,0 +1,11 @@
++--- sources/behvhdl/bvl_bcomp.lex	1999-09-21 23:51:42.000000000 +0900
+++++ sources-patched/behvhdl/bvl_bcomp.lex	2016-06-01 20:28:58.493943485 +0900
++@@ -205,7 +205,7 @@ base_specifier	  	  (B|b|O|o|X|x)
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static int yywrap ()
+++int yywrap ()
++   {
++   return (1);
++   }
+diff -Naur sources/behvhdl/bvl_util.c ../../alliance-4.0-patchd/sources/behvhdl/bvl_util.c
+--- sources/behvhdl/bvl_util.c	2017-03-06 18:55:23.117927900 +0900
++++ ../../alliance-4.0-patchd/sources/behvhdl/bvl_util.c	2017-03-06 18:52:40.296303900 +0900
+@@ -571,6 +571,7 @@
+ /* called func.	:							*/
+ /* ###--------------------------------------------------------------### */
+ 
++extern char  *operToChar (short);
+ char *bvl_abl2str (expr, chaine, size_pnt)
+ 
+ struct chain *expr;			/* expression			*/
+@@ -581,7 +582,6 @@
+   int           operator;
+   char         *oper    ;
+   struct chain *operand ;
+-  extern char  *operToChar ();
+   static char  *str_z = NULL;
+   static char  *str_o = NULL;
+   static char  *str_d = NULL;
+diff -Naur sources/behvhdl/bvl_util.c.rej ../../alliance-4.0-patchd/sources/behvhdl/bvl_util.c.rej
+--- sources/behvhdl/bvl_util.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/behvhdl/bvl_util.c.rej	2017-03-06 18:52:40.311930600 +0900
+@@ -0,0 +1,18 @@
++--- sources/behvhdl/bvl_util.c	1999-09-21 23:51:44.000000000 +0900
+++++ sources-patched/behvhdl/bvl_util.c	2016-06-01 20:16:14.392988973 +0900
++@@ -571,6 +571,7 @@ char *chaine;
++ /* called func.	:							*/
++ /* ###--------------------------------------------------------------### */
++ 
+++extern char  *operToChar (short);
++ char *bvl_abl2str (expr, chaine, size_pnt)
++ 
++ struct chain *expr;			/* expression			*/
++@@ -581,7 +582,6 @@ int          *size_pnt;			/* size of ava
++   int           operator;
++   char         *oper    ;
++   struct chain *operand ;
++-  extern char  *operToChar ();
++   static char  *str_z = NULL;
++   static char  *str_o = NULL;
++   static char  *str_d = NULL;
+diff -Naur sources/dpr/strecher_phcma.c ../../alliance-4.0-patchd/sources/dpr/strecher_phcma.c
+--- sources/dpr/strecher_phcma.c	2017-03-06 18:55:23.555433200 +0900
++++ ../../alliance-4.0-patchd/sources/dpr/strecher_phcma.c	2017-03-06 18:52:39.921299500 +0900
+@@ -571,7 +571,7 @@
+                           pseg->X1, pseg->Y1,
+                           pseg->X2, pseg->Y2))
+             {
+-                access_ls_cma = addphcma(access_ls_cma);
++                ptuser->DATA = addphcma(access_ls_cma);
+                 joinreftocma(access_ls_cma, pref);
+ 
+                 extract_cma(access_ls_cma, pseg);
+@@ -790,7 +790,7 @@
+             else
+             {
+                 /* Exctraction de l'equipotentielle associe au segment ( il n'existe pas deja ). */
+-                access_ls_cma = addphcma(access_ls_cma);
++                ptuser->DATA = addphcma(access_ls_cma);
+                 extract_cma(access_ls_cma, pseg);
+ 
+                 return (access_ls_cma);
+@@ -922,7 +922,7 @@
+             continue;
+ 
+         /* La reference n'appartient a aucun CMA existant, on cree un nouveau CMA et on lui associe cette reference. */
+-        access_ls_cma = addphcma(access_ls_cma);
++        ptuser->DATA = addphcma(access_ls_cma);
+         joinreftocma(access_ls_cma, pref);
+ 
+         pseudo_seg.X1 = pref->XREF;
+diff -Naur sources/dpr/strecher_phcma.c.rej ../../alliance-4.0-patchd/sources/dpr/strecher_phcma.c.rej
+--- sources/dpr/strecher_phcma.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/dpr/strecher_phcma.c.rej	2017-03-06 18:52:39.546298500 +0900
+@@ -0,0 +1,29 @@
++--- sources/dpr/strecher_phcma.c	1998-10-03 00:26:35.000000000 +0900
+++++ sources-patched/dpr/strecher_phcma.c	2016-06-01 22:44:14.501964075 +0900
++@@ -571,7 +571,7 @@ supply_list    *a_ptfig_supply;
++                           pseg->X1, pseg->Y1,
++                           pseg->X2, pseg->Y2))
++             {
++-                access_ls_cma = addphcma(access_ls_cma);
+++                ptuser->DATA = addphcma(access_ls_cma);
++                 joinreftocma(access_ls_cma, pref);
++ 
++                 extract_cma(access_ls_cma, pseg);
++@@ -790,7 +790,7 @@ long            yref;
++             else
++             {
++                 /* Exctraction de l'equipotentielle associe au segment ( il n'existe pas deja ). */
++-                access_ls_cma = addphcma(access_ls_cma);
+++                ptuser->DATA = addphcma(access_ls_cma);
++                 extract_cma(access_ls_cma, pseg);
++ 
++                 return (access_ls_cma);
++@@ -922,7 +922,7 @@ supply_list    *a_ptfig_supply;
++             continue;
++ 
++         /* La reference n'appartient a aucun CMA existant, on cree un nouveau CMA et on lui associe cette reference. */
++-        access_ls_cma = addphcma(access_ls_cma);
+++        ptuser->DATA = addphcma(access_ls_cma);
++         joinreftocma(access_ls_cma, pref);
++ 
++         pseudo_seg.X1 = pref->XREF;
+diff -Naur sources/dreal/GRD.h ../../alliance-4.0-patchd/sources/dreal/GRD.h
+--- sources/dreal/GRD.h	2017-03-06 18:55:23.992924900 +0900
++++ ../../alliance-4.0-patchd/sources/dreal/GRD.h	2017-03-06 18:52:38.311908600 +0900
+@@ -42,6 +42,10 @@
+                                                               \
+     (((drealrec *)((char *)(R)+sizeof(rdsrec_list)))->WINDOW  )
+ 
++# define lDREAL_PREVIOUS( R )                                  \
++                                                              \
++    (((R)->USER))
++
+ /*------------------------------------------------------------\
+ |                                                             |
+ |                            Macros                           |
+diff -Naur sources/dreal/GRD.h.rej ../../alliance-4.0-patchd/sources/dreal/GRD.h.rej
+--- sources/dreal/GRD.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/dreal/GRD.h.rej	2017-03-06 18:52:37.890026100 +0900
+@@ -0,0 +1,13 @@
++--- sources/dreal/GRD.h	1998-10-03 00:25:37.000000000 +0900
+++++ sources-patched/dreal/GRD.h	2016-06-02 18:08:23.889624241 +0900
++@@ -42,6 +42,10 @@
++                                                               \
++     (((drealrec *)((char *)(R)+sizeof(rdsrec_list)))->WINDOW  )
++ 
+++# define lDREAL_PREVIOUS( R )                                  \
+++                                                              \
+++    (((R)->USER))
+++
++ /*------------------------------------------------------------\
++ |                                                             |
++ |                            Macros                           |
+diff -Naur sources/dreal/GRD_rds.c ../../alliance-4.0-patchd/sources/dreal/GRD_rds.c
+--- sources/dreal/GRD_rds.c	2017-03-06 18:55:24.008563800 +0900
++++ ../../alliance-4.0-patchd/sources/dreal/GRD_rds.c	2017-03-06 18:52:37.655666900 +0900
+@@ -187,7 +187,7 @@
+             Rectangle != (rdsrec_list *)NULL;
+             Rectangle  = Rectangle->NEXT )
+       {
+-        DREAL_PREVIOUS( Rectangle ) = Previous;
++        lDREAL_PREVIOUS( Rectangle ) = Previous;
+         Previous = &Rectangle->NEXT;
+ 
+         DrealInsertRectangle( Rectangle );
+@@ -204,7 +204,7 @@
+               Rectangle != (rdsrec_list *)NULL;
+               Rectangle  = Rectangle->NEXT )
+         {
+-          DREAL_PREVIOUS( Rectangle ) = (rdsrec_list **)Instance;
++          lDREAL_PREVIOUS( Rectangle ) = (rdsrec_list **)Instance;
+ 
+           DrealInsertRectangle( Rectangle );
+         }
+@@ -240,10 +240,10 @@
+ 
+   if ( ScanRec->NEXT != (rdsrec_list *)0 )
+   {
+-    DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++    lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+   }
+ 
+-  DREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ Layer ];
++  lDREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ Layer ];
+ 
+   rdsend();
+   return( ScanRec );
+@@ -279,10 +279,10 @@
+ 
+   if ( ScanRec->NEXT != (rdsrec_list *)0 )
+   {
+-    DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++    lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+   }
+ 
+-  DREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ RDS_ABOX ];
++  lDREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ RDS_ABOX ];
+ 
+   rdsend();
+   return( ScanRec );
+@@ -380,7 +380,7 @@
+ 
+   if ( DelRec->NEXT != (rdsrec_list *)0 )
+   {
+-    DREAL_PREVIOUS( DelRec->NEXT ) = DREAL_PREVIOUS( DelRec );
++    lDREAL_PREVIOUS( DelRec->NEXT ) = DREAL_PREVIOUS( DelRec );
+   }
+ 
+   DrealEraseRectangle( DelRec );
+@@ -445,7 +445,7 @@
+ 
+     while ( ScanRec != (rdsrec_list *)NULL )
+     {
+-      DREAL_PREVIOUS( ScanRec ) = Previous;
++      lDREAL_PREVIOUS( ScanRec ) = Previous;
+       Previous = &ScanRec->NEXT;
+ 
+       DrealInsertRectangle( ScanRec );
+@@ -458,7 +458,7 @@
+ 
+         if ( ScanRec->NEXT != (rdsrec_list *)NULL )
+         {
+-          DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++          lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+         }
+ 
+         break;
+diff -Naur sources/dreal/GRD_rds.c.rej ../../alliance-4.0-patchd/sources/dreal/GRD_rds.c.rej
+--- sources/dreal/GRD_rds.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/dreal/GRD_rds.c.rej	2017-03-06 18:52:37.655666900 +0900
+@@ -0,0 +1,73 @@
++--- sources/dreal/GRD_rds.c	1998-10-03 00:25:37.000000000 +0900
+++++ sources-patched/dreal/GRD_rds.c	2016-06-02 18:09:09.511103971 +0900
++@@ -187,7 +187,7 @@ void DrealAddFigure( Name )
++             Rectangle != (rdsrec_list *)NULL;
++             Rectangle  = Rectangle->NEXT )
++       {
++-        DREAL_PREVIOUS( Rectangle ) = Previous;
+++        lDREAL_PREVIOUS( Rectangle ) = Previous;
++         Previous = &Rectangle->NEXT;
++ 
++         DrealInsertRectangle( Rectangle );
++@@ -204,7 +204,7 @@ void DrealAddFigure( Name )
++               Rectangle != (rdsrec_list *)NULL;
++               Rectangle  = Rectangle->NEXT )
++         {
++-          DREAL_PREVIOUS( Rectangle ) = (rdsrec_list **)Instance;
+++          lDREAL_PREVIOUS( Rectangle ) = (rdsrec_list **)Instance;
++ 
++           DrealInsertRectangle( Rectangle );
++         }
++@@ -240,10 +240,10 @@ rdsrec_list *DrealAddRectangle( Name, La
++ 
++   if ( ScanRec->NEXT != (rdsrec_list *)0 )
++   {
++-    DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+++    lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++   }
++ 
++-  DREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ Layer ];
+++  lDREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ Layer ];
++ 
++   rdsend();
++   return( ScanRec );
++@@ -279,10 +279,10 @@ rdsrec_list *DrealAddAbox( X, Y, Dx, Dy
++ 
++   if ( ScanRec->NEXT != (rdsrec_list *)0 )
++   {
++-    DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+++    lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++   }
++ 
++-  DREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ RDS_ABOX ];
+++  lDREAL_PREVIOUS( ScanRec ) = &DrealFigureRds->LAYERTAB[ RDS_ABOX ];
++ 
++   rdsend();
++   return( ScanRec );
++@@ -380,7 +380,7 @@ void DrealDelRectangle( DelRec )
++ 
++   if ( DelRec->NEXT != (rdsrec_list *)0 )
++   {
++-    DREAL_PREVIOUS( DelRec->NEXT ) = DREAL_PREVIOUS( DelRec );
+++    lDREAL_PREVIOUS( DelRec->NEXT ) = DREAL_PREVIOUS( DelRec );
++   }
++ 
++   DrealEraseRectangle( DelRec );
++@@ -445,7 +445,7 @@ void DrealFlattenFigure()
++ 
++     while ( ScanRec != (rdsrec_list *)NULL )
++     {
++-      DREAL_PREVIOUS( ScanRec ) = Previous;
+++      lDREAL_PREVIOUS( ScanRec ) = Previous;
++       Previous = &ScanRec->NEXT;
++ 
++       DrealInsertRectangle( ScanRec );
++@@ -458,7 +458,7 @@ void DrealFlattenFigure()
++ 
++         if ( ScanRec->NEXT != (rdsrec_list *)NULL )
++         {
++-          DREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
+++          lDREAL_PREVIOUS( ScanRec->NEXT ) = &ScanRec->NEXT;
++         }
++ 
++         break;
+diff -Naur sources/druc/Makefile ../../alliance-4.0-patchd/sources/druc/Makefile
+--- sources/druc/Makefile	2017-03-06 18:55:24.133560400 +0900
++++ ../../alliance-4.0-patchd/sources/druc/Makefile	2017-03-06 18:52:33.689275200 +0900
+@@ -160,7 +160,8 @@
+ 
+ drucyac.o : drucompi.yac 
+ 	$(YACC) -d drucompi.yac
+-	$(MV) drucompi.yac.tab.c drucyac.c
++	$(MV) drucompi.tab.cac drucyac.c
++	$(MV) drucompi.tab.hac drucompi.yac.tab.h
+ 	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c drucyac.c
+ 
+ clean:
+diff -Naur sources/druc/Makefile.rej ../../alliance-4.0-patchd/sources/druc/Makefile.rej
+--- sources/druc/Makefile.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/druc/Makefile.rej	2017-03-06 18:52:33.767404800 +0900
+@@ -0,0 +1,12 @@
++--- sources/druc/Makefile	1999-10-22 19:11:36.000000000 +0900
+++++ sources-patched/druc/Makefile	2016-06-02 14:49:11.068064935 +0900
++@@ -160,7 +160,8 @@ drucompi.yac.tab.h : drucyac.o
++ 
++ drucyac.o : drucompi.yac 
++ 	$(YACC) -d drucompi.yac
++-	$(MV) drucompi.yac.tab.c drucyac.c
+++	$(MV) drucompi.tab.cac drucyac.c
+++	$(MV) drucompi.tab.hac drucompi.yac.tab.h
++ 	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c drucyac.c
++ 
++ clean:
+diff -Naur sources/elp/elp105.h ../../alliance-4.0-patchd/sources/elp/elp105.h
+--- sources/elp/elp105.h	2017-03-06 18:55:24.367925400 +0900
++++ ../../alliance-4.0-patchd/sources/elp/elp105.h	2017-03-06 18:52:34.827492300 +0900
+@@ -15,7 +15,7 @@
+ 
+ /* les inclusions */
+ #include <stdio.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ #include MUT_H
+ #include MLO_H
+ #include RCN_H
+@@ -117,4 +117,4 @@
+ extern int elpLofigCapaDiff() ;
+ extern int elpLofigCapaGrid() ;
+ extern int elpLofigShrink() ;
+-extern short elpError() ;
++extern elperrorFCT short elpError(short, ...) ;
+diff -Naur sources/elp/elp105.h.rej ../../alliance-4.0-patchd/sources/elp/elp105.h.rej
+--- sources/elp/elp105.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/elp/elp105.h.rej	2017-03-06 18:52:34.780614200 +0900
+@@ -0,0 +1,17 @@
++--- sources/elp/elp105.h	1999-02-04 19:21:06.000000000 +0900
+++++ sources-patched/elp/elp105.h	2016-06-01 20:41:48.749964098 +0900
++@@ -15,7 +15,7 @@
++ 
++ /* les inclusions */
++ #include <stdio.h>
++-#include <varargs.h>
+++#include <stdarg.h>
++ #include MUT_H
++ #include MLO_H
++ #include RCN_H
++@@ -117,4 +117,4 @@ extern float elpLotrsCapaGrid() ;
++ extern int elpLofigCapaDiff() ;
++ extern int elpLofigCapaGrid() ;
++ extern int elpLofigShrink() ;
++-extern short elpError() ;
+++extern elperrorFCT short elpError(short, ...) ;
+diff -Naur sources/elp/elperror.c ../../alliance-4.0-patchd/sources/elp/elperror.c
+--- sources/elp/elperror.c	2017-03-06 18:55:24.367925400 +0900
++++ ../../alliance-4.0-patchd/sources/elp/elperror.c	2017-03-06 18:52:34.796239400 +0900
+@@ -15,7 +15,7 @@
+ /* traitement des erreur elp                                                */
+ /****************************************************************************/
+ 
+-#include <varargs.h>
++#include <stdarg.h>
+ #include ELP_H
+ 
+ 
+@@ -36,9 +36,7 @@
+ /* -------------------                                                       */
+ /*    La fonction renvoie le numero de l'erreur.                             */
+ /*****************************************************************************/
+-elperrorFCT short elpError(errnum,va_alist)
+-short errnum ;
+-va_dcl
++elperrorFCT short elpError(short errnum, ...)
+ 
+ {
+ va_list arg ;
+@@ -48,7 +46,7 @@
+ else
+ fprintf(stderr,"\n!!! erreur elp : %d !!!\n",errnum) ;
+ 
+-va_start(arg) ;
++va_start(arg, errnum) ;
+ 
+ switch(errnum)
+     {
+diff -Naur sources/elp/elperror.c.rej ../../alliance-4.0-patchd/sources/elp/elperror.c.rej
+--- sources/elp/elperror.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/elp/elperror.c.rej	2017-03-06 18:52:34.811865100 +0900
+@@ -0,0 +1,31 @@
++--- sources/elp/elperror.c	1998-10-03 00:26:22.000000000 +0900
+++++ sources-patched/elp/elperror.c	2016-06-01 20:39:51.571742214 +0900
++@@ -15,7 +15,7 @@
++ /* traitement des erreur elp                                                */
++ /****************************************************************************/
++ 
++-#include <varargs.h>
+++#include <stdarg.h>
++ #include ELP_H
++ 
++ 
++@@ -36,9 +36,7 @@
++ /* -------------------                                                       */
++ /*    La fonction renvoie le numero de l'erreur.                             */
++ /*****************************************************************************/
++-elperrorFCT short elpError(errnum,va_alist)
++-short errnum ;
++-va_dcl
+++elperrorFCT short elpError(short errnum, ...)
++ 
++ {
++ va_list arg ;
++@@ -48,7 +46,7 @@ fprintf(stderr,"\n!!! elp error: %d !!!\
++ else
++ fprintf(stderr,"\n!!! erreur elp : %d !!!\n",errnum) ;
++ 
++-va_start(arg) ;
+++va_start(arg, errnum) ;
++ 
++ switch(errnum)
++     {
+diff -Naur sources/flop/check.c ../../alliance-4.0-patchd/sources/flop/check.c
+--- sources/flop/check.c	2017-03-06 18:55:24.617931300 +0900
++++ ../../alliance-4.0-patchd/sources/flop/check.c	2017-03-06 18:52:36.593137600 +0900
+@@ -29,7 +29,7 @@
+ #undef pc
+ #endif
+ #include <stdio.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ #include <limits.h>
+ #include MUT_H
+ #include MLO_H
+@@ -48,11 +48,10 @@
+ 		MINWIDTH, YFAL, XBIG, XFAL, YBIG, LOPHYS, BADHSUP, BADVSUP, NOEQUIV,
+ 		BADLAYER, BADVIA, NOTRACK, BADFACE};
+ static void
+-	error(va_alist)
+-va_dcl
++	error(int level, ...)
+ {
+ va_list args;
+-int level, i;
++int i;
+ FILE *f;
+ char *s;
+ static int putn;
+@@ -81,8 +80,7 @@
+ 	"bad connector face choice, %c, for the channel direction, %c"
+ };
+ 
+-	va_start(args);
+-	level = va_arg(args, int);
++	va_start(args, level);
+ 	if ((i = va_arg(args, int)) == ROUTE)
+ 		if (level == WARNING)
+ 			level = ERROR + 1;
+@@ -603,8 +601,8 @@
+ 		   	or because it's a user mistake.
+ 			   This case may be detected since a routed connector must be on
+ 			   a net with another instance connector. */
+-				for ((loins_list *)pt = net->LOINS; (loins_list *)pt != NULL;
+-						(loins_list *)pt = ((loins_list *)pt)->NEXT) {
++				for (pt = net->LOINS; (loins_list *)pt != NULL;
++						pt = ((loins_list *)pt)->NEXT) {
+ 					for (gp = (void *)((loins_list *)pt)->LOCON;
+ 							gp != (void *)NULL;
+ 							gp = (void *)((locon_list *)gp)->NEXT) {
+diff -Naur sources/flop/check.c.rej ../../alliance-4.0-patchd/sources/flop/check.c.rej
+--- sources/flop/check.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/flop/check.c.rej	2017-03-06 18:52:36.546260400 +0900
+@@ -0,0 +1,46 @@
++--- sources/flop/check.c	1998-10-03 00:26:43.000000000 +0900
+++++ sources-patched/flop/check.c	2016-06-02 18:18:00.550676986 +0900
++@@ -29,7 +29,7 @@
++ #undef pc
++ #endif
++ #include <stdio.h>
++-#include <varargs.h>
+++#include <stdarg.h>
++ #include <limits.h>
++ #include MUT_H
++ #include MLO_H
++@@ -48,11 +48,10 @@ enum {NOPHYS, ONEPHYS, TOOPHYS, UNKNOWNL
++ 		MINWIDTH, YFAL, XBIG, XFAL, YBIG, LOPHYS, BADHSUP, BADVSUP, NOEQUIV,
++ 		BADLAYER, BADVIA, NOTRACK, BADFACE};
++ static void
++-	error(va_alist)
++-va_dcl
+++	error(int level, ...)
++ {
++ va_list args;
++-int level, i;
+++int i;
++ FILE *f;
++ char *s;
++ static int putn;
++@@ -81,8 +80,7 @@ static char *msg[] = {
++ 	"bad connector face choice, %c, for the channel direction, %c"
++ };
++ 
++-	va_start(args);
++-	level = va_arg(args, int);
+++	va_start(args, level);
++ 	if ((i = va_arg(args, int)) == ROUTE)
++ 		if (level == WARNING)
++ 			level = ERROR + 1;
++@@ -603,8 +601,8 @@ ptype_list *errorlist = NULL;
++ 		   	or because it's a user mistake.
++ 			   This case may be detected since a routed connector must be on
++ 			   a net with another instance connector. */
++-				for ((loins_list *)pt = net->LOINS; (loins_list *)pt != NULL;
++-						(loins_list *)pt = ((loins_list *)pt)->NEXT) {
+++				for (pt = net->LOINS; (loins_list *)pt != NULL;
+++						pt = ((loins_list *)pt)->NEXT) {
++ 					for (gp = (void *)((loins_list *)pt)->LOCON;
++ 							gp != (void *)NULL;
++ 							gp = (void *)((locon_list *)gp)->NEXT) {
+diff -Naur sources/fpmap/bfl/bfl106.h ../../alliance-4.0-patchd/sources/fpmap/bfl/bfl106.h
+--- sources/fpmap/bfl/bfl106.h	2017-03-06 18:55:24.680445900 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/bfl/bfl106.h	2017-03-06 18:52:38.765040200 +0900
+@@ -172,9 +172,7 @@
+ /*                               Bfl Swap                               */
+ /*----------------------------------------------------------------------*/
+ 
+-#define bflswap(a, b)			(int)(a) ^= (int)(b); \
+-					(int)(b) ^= (int)(a); \
+-					(int)(a) ^= (int)(b)
++#define bflswap(a, b)	do { typeof(a) tmp=a; a=b; b=tmp; } while(0)
+ 
+ /*----------------------------------------------------------------------*/
+ /*                          Type declarations                           */
+diff -Naur sources/fpmap/bfl/bfl106.h.rej ../../alliance-4.0-patchd/sources/fpmap/bfl/bfl106.h.rej
+--- sources/fpmap/bfl/bfl106.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/bfl/bfl106.h.rej	2017-03-06 18:52:38.843163500 +0900
+@@ -0,0 +1,13 @@
++--- sources/fpmap/bfl/bfl106.h	1999-10-21 21:51:49.000000000 +0900
+++++ sources-patched/fpmap/bfl/bfl106.h	2016-06-02 20:41:39.294101386 +0900
++@@ -172,9 +172,7 @@
++ /*                               Bfl Swap                               */
++ /*----------------------------------------------------------------------*/
++ 
++-#define bflswap(a, b)			(int)(a) ^= (int)(b); \
++-					(int)(b) ^= (int)(a); \
++-					(int)(a) ^= (int)(b)
+++#define bflswap(a, b)	do { typeof(a) tmp=a; a=b; b=tmp; } while(0)
++ 
++ /*----------------------------------------------------------------------*/
++ /*                          Type declarations                           */
+diff -Naur sources/fpmap/lax/laxscan.l ../../alliance-4.0-patchd/sources/fpmap/lax/laxscan.l
+--- sources/fpmap/lax/laxscan.l	2017-03-06 18:55:25.039808500 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/lax/laxscan.l	2017-03-06 18:52:38.624412100 +0900
+@@ -8,7 +8,7 @@
+ #define YY_NO_UNPUT	/* Avoids warning */
+ #define	yywrap()	1
+ 
+-int	yylineno = 1;
++//int	yylineno = 1;
+ 
+ %}
+ 
+diff -Naur sources/fpmap/lax/laxscan.l.rej ../../alliance-4.0-patchd/sources/fpmap/lax/laxscan.l.rej
+--- sources/fpmap/lax/laxscan.l.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/lax/laxscan.l.rej	2017-03-06 18:52:38.608784400 +0900
+@@ -0,0 +1,11 @@
++--- sources/fpmap/lax/laxscan.l	1998-10-22 01:32:42.000000000 +0900
+++++ sources-patched/fpmap/lax/laxscan.l	2016-06-02 20:51:07.570321593 +0900
++@@ -8,7 +8,7 @@
++ #define YY_NO_UNPUT	/* Avoids warning */
++ #define	yywrap()	1
++ 
++-int	yylineno = 1;
+++//int	yylineno = 1;
++ 
++ %}
++ 
+diff -Naur sources/fpmap/lax/Makefile ../../alliance-4.0-patchd/sources/fpmap/lax/Makefile
+--- sources/fpmap/lax/Makefile	2017-03-06 18:55:25.024183700 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/lax/Makefile	2017-03-06 18:52:38.608784400 +0900
+@@ -11,7 +11,7 @@
+ LAX_LIBDIR	= -L$(TARGET_LIB) -L$(ALLIANCE_LIB)    
+ 
+ LAX_DEFINES	= -DMUT_H='<$(MUT_H)>' -DBFL_H='<$(BFL_H)>' \
+-	  	  -DLAX_H='"lax100.h"'
++	  	  -DLAX_H='"lax100.h"' -DLAX__SKIP_LAX_WRAP
+ LAX_LIBRARIES	= -lLax100 $(BFL_L) $(MUT_L)
+ 
+ .c.o	:
+diff -Naur sources/fpmap/lax/Makefile.rej ../../alliance-4.0-patchd/sources/fpmap/lax/Makefile.rej
+--- sources/fpmap/lax/Makefile.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/fpmap/lax/Makefile.rej	2017-03-06 18:52:38.640034900 +0900
+@@ -0,0 +1,11 @@
++--- sources/fpmap/lax/Makefile	1999-10-21 21:52:12.000000000 +0900
+++++ sources-patched/fpmap/lax/Makefile	2016-06-02 21:03:54.231284764 +0900
++@@ -11,7 +11,7 @@ LAX_INCDIR	= -I$(TARGET_INCLUDE) -I$(ALL
++ LAX_LIBDIR	= -L$(TARGET_LIB) -L$(ALLIANCE_LIB)    
++ 
++ LAX_DEFINES	= -DMUT_H='<$(MUT_H)>' -DBFL_H='<$(BFL_H)>' \
++-	  	  -DLAX_H='"lax100.h"'
+++	  	  -DLAX_H='"lax100.h"' -DLAX__SKIP_LAX_WRAP
++ LAX_LIBRARIES	= -lLax100 $(BFL_L) $(MUT_L)
++ 
++ .c.o	:
+diff -Naur sources/genlib/genlib.c ../../alliance-4.0-patchd/sources/genlib/genlib.c
+--- sources/genlib/genlib.c	2017-03-06 18:55:25.102310400 +0900
++++ ../../alliance-4.0-patchd/sources/genlib/genlib.c	2017-03-06 18:52:35.718126900 +0900
+@@ -2526,7 +2526,7 @@
+ /*******************************************************************************
+ * logical user functions                                                       *
+ *******************************************************************************/
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ long  num_index = 0;
+ 
+@@ -2624,8 +2624,7 @@
+ /*******************************************************************************
+ * function LOINS                                                               *
+ *******************************************************************************/
+-void genLOINS(va_alist)
+-va_dcl
++void genLOINS(char *fn, ...)
+ {
+ losig_list *ptsig;
+ chain_list *ptchain = NULL, *ptchain1, *ptchain2 = NULL , *ptchain3;
+@@ -2633,8 +2632,8 @@
+ char *figname, *insname, *signame;
+ lofig_list *ptfig;
+ 
+-   va_start(arg);
+-   figname = namealloc(va_arg(arg, char *));
++   va_start(arg, fn);
++   figname = namealloc(fn);
+    insname = va_arg(arg, char *);
+    if (WORK_LOFIG == NULL) {
+       (void)fflush(stdout);
+@@ -2724,8 +2723,7 @@
+ /*******************************************************************************
+ * function LOINSE                                                              *
+ *******************************************************************************/
+-void genLOINSE(va_alist)
+-va_dcl
++void genLOINSE(char *fn, ...)
+ {
+ va_list arg;
+ char *figname, *insname, *signame;
+@@ -2747,8 +2745,8 @@
+       EXIT(1);
+    }
+ 
+-   va_start(arg);
+-   figname = namealloc(va_arg(arg, char *));
++   va_start(arg, fn);
++   figname = namealloc(fn);
+    ptfig = getlofig(figname, 'P');
+    insname = va_arg(arg, char *);
+    if (hassep(insname)) {
+@@ -3294,11 +3292,10 @@
+ /*******************************************************************************
+ * function UNFLATTEN_LOFIG                                                     *
+ *******************************************************************************/
+-void genUNFLATTEN_LOFIG(va_alist)
+-va_dcl
++void genUNFLATTEN_LOFIG(char* modelname, ...)
+ {
+ va_list instancelist;
+-char *modelname, *instancename, *iname;
++char *instancename, *iname;
+ chain_list *ilist = NULL;
+ 
+    if (WORK_LOFIG == NULL) {
+@@ -3307,8 +3304,8 @@
+       (void)fputs("Illegal UNFLATTEN_LOFIG : missing DEF_LOFIG\n", stderr);
+       EXIT(1);
+    }
+-   va_start(instancelist);
+-   if ((modelname = va_arg(instancelist, char *)) == NULL) {
++   va_start(instancelist, modelname);
++   if ((modelname ) == NULL) {
+       (void)fflush(stdout);
+       (void)fputs("*** genlib error ***\n", stderr);
+       (void)fputs("Illegal UNFLATTEN_LOFIG : missing arguments\n", stderr);
+@@ -3668,17 +3665,15 @@
+ /*******************************************************************************
+ * function NAME                                                                *
+ *******************************************************************************/
+-char *genNAME(va_alist)
+-va_dcl
++char *genNAME(char *p, ...)
+ {
+ va_list stack;
+-char  *ret, *res, *p;
++char  *ret, *res;
+ long  strsize = 0;
+ char  piece[BUFSIZ], *s;
+ int   d;
+ 
+-   va_start(stack);
+-   p = va_arg(stack, char *);
++   va_start(stack, p);
+    ret = res = (char *)mbkalloc(BUFSIZ);
+    while (*p != '\0') {
+       if (*p != '%') {
+diff -Naur sources/genlib/genlib.c.rej ../../alliance-4.0-patchd/sources/genlib/genlib.c.rej
+--- sources/genlib/genlib.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/genlib/genlib.c.rej	2017-03-06 18:52:35.702505500 +0900
+@@ -0,0 +1,99 @@
++--- sources/genlib/genlib.c	2000-01-12 19:05:55.000000000 +0900
+++++ sources-patched/genlib/genlib.c	2016-06-01 21:20:19.859719077 +0900
++@@ -2526,7 +2526,7 @@ void **now, *next;
++ /*******************************************************************************
++ * logical user functions                                                       *
++ *******************************************************************************/
++-#include <varargs.h>
+++#include <stdarg.h>
++ 
++ long  num_index = 0;
++ 
++@@ -2624,8 +2624,7 @@ int external; /* more that one external
++ /*******************************************************************************
++ * function LOINS                                                               *
++ *******************************************************************************/
++-void genLOINS(va_alist)
++-va_dcl
+++void genLOINS(char *fn, ...)
++ {
++ losig_list *ptsig;
++ chain_list *ptchain = NULL, *ptchain1, *ptchain2 = NULL , *ptchain3;
++@@ -2633,8 +2632,8 @@ va_list arg;
++ char *figname, *insname, *signame;
++ lofig_list *ptfig;
++ 
++-   va_start(arg);
++-   figname = namealloc(va_arg(arg, char *));
+++   va_start(arg, fn);
+++   figname = namealloc(fn);
++    insname = va_arg(arg, char *);
++    if (WORK_LOFIG == NULL) {
++       (void)fflush(stdout);
++@@ -2724,8 +2723,7 @@ lofig_list *ptfig;
++ /*******************************************************************************
++ * function LOINSE                                                              *
++ *******************************************************************************/
++-void genLOINSE(va_alist)
++-va_dcl
+++void genLOINSE(char *fn, ...)
++ {
++ va_list arg;
++ char *figname, *insname, *signame;
++@@ -2747,8 +2745,8 @@ chain_list *ptchain = NULL;
++       EXIT(1);
++    }
++ 
++-   va_start(arg);
++-   figname = namealloc(va_arg(arg, char *));
+++   va_start(arg, fn);
+++   figname = namealloc(fn);
++    ptfig = getlofig(figname, 'P');
++    insname = va_arg(arg, char *);
++    if (hassep(insname)) {
++@@ -3294,11 +3292,10 @@ losig_list *s;
++ /*******************************************************************************
++ * function UNFLATTEN_LOFIG                                                     *
++ *******************************************************************************/
++-void genUNFLATTEN_LOFIG(va_alist)
++-va_dcl
+++void genUNFLATTEN_LOFIG(char* modelname, ...)
++ {
++ va_list instancelist;
++-char *modelname, *instancename, *iname;
+++char *instancename, *iname;
++ chain_list *ilist = NULL;
++ 
++    if (WORK_LOFIG == NULL) {
++@@ -3307,8 +3304,8 @@ chain_list *ilist = NULL;
++       (void)fputs("Illegal UNFLATTEN_LOFIG : missing DEF_LOFIG\n", stderr);
++       EXIT(1);
++    }
++-   va_start(instancelist);
++-   if ((modelname = va_arg(instancelist, char *)) == NULL) {
+++   va_start(instancelist, modelname);
+++   if ((modelname ) == NULL) {
++       (void)fflush(stdout);
++       (void)fputs("*** genlib error ***\n", stderr);
++       (void)fputs("Illegal UNFLATTEN_LOFIG : missing arguments\n", stderr);
++@@ -3668,17 +3665,15 @@ chain_list *c, *loname = NULL, *phname =
++ /*******************************************************************************
++ * function NAME                                                                *
++ *******************************************************************************/
++-char *genNAME(va_alist)
++-va_dcl
+++char *genNAME(char *p, ...)
++ {
++ va_list stack;
++-char  *ret, *res, *p;
+++char  *ret, *res;
++ long  strsize = 0;
++ char  piece[BUFSIZ], *s;
++ int   d;
++ 
++-   va_start(stack);
++-   p = va_arg(stack, char *);
+++   va_start(stack, p);
++    ret = res = (char *)mbkalloc(BUFSIZ);
++    while (*p != '\0') {
++       if (*p != '%') {
+diff -Naur sources/genlib/mgn328.h ../../alliance-4.0-patchd/sources/genlib/mgn328.h
+--- sources/genlib/mgn328.h	2017-03-06 18:55:25.117935200 +0900
++++ ../../alliance-4.0-patchd/sources/genlib/mgn328.h	2017-03-06 18:52:35.686875400 +0900
+@@ -87,8 +87,8 @@
+ extern void genDEF_LOFIG();
+ extern void genLOAD_LOFIG();
+ extern void genSAVE_LOFIG();
+-extern void genLOINS();
+-extern void genLOINSE();
++extern void genLOINS(char*, ...);
++extern void genLOINSE(char*, ...);
+ extern void genLOTRS();
+ extern void genLOCON();
+ extern void genLOSIGMERGE();
+@@ -108,7 +108,7 @@
+ *******************************************************************************/
+ extern char *genBUS();
+ extern char *genELM();
+-extern char *genNAME();
++extern char *genNAME(char*, ...);
+ 
+ /*******************************************************************************
+ * macro definitions for allowed stdlib functions                               *
+diff -Naur sources/genlib/mgn328.h.rej ../../alliance-4.0-patchd/sources/genlib/mgn328.h.rej
+--- sources/genlib/mgn328.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/genlib/mgn328.h.rej	2017-03-06 18:52:35.702505500 +0900
+@@ -0,0 +1,22 @@
++--- sources/genlib/mgn328.h	1999-06-02 20:20:10.000000000 +0900
+++++ sources-patched/genlib/mgn328.h	2016-06-01 21:21:05.458197725 +0900
++@@ -87,8 +87,8 @@ extern void genOUTLINE();
++ extern void genDEF_LOFIG();
++ extern void genLOAD_LOFIG();
++ extern void genSAVE_LOFIG();
++-extern void genLOINS();
++-extern void genLOINSE();
+++extern void genLOINS(char*, ...);
+++extern void genLOINSE(char*, ...);
++ extern void genLOTRS();
++ extern void genLOCON();
++ extern void genLOSIGMERGE();
++@@ -108,7 +108,7 @@ extern void genSC_CON_CHANNEL();
++ *******************************************************************************/
++ extern char *genBUS();
++ extern char *genELM();
++-extern char *genNAME();
+++extern char *genNAME(char*, ...);
++ 
++ /*******************************************************************************
++ * macro definitions for allowed stdlib functions                               *
+diff -Naur sources/genpat/ARRAY.c ../../alliance-4.0-patchd/sources/genpat/ARRAY.c
+--- sources/genpat/ARRAY.c	2017-03-06 18:55:25.133560400 +0900
++++ ../../alliance-4.0-patchd/sources/genpat/ARRAY.c	2017-03-06 18:52:39.999425700 +0900
+@@ -33,7 +33,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ #include MUT_H
+ #include PAT_H
+@@ -49,11 +49,9 @@
+ /* ###--------------------------------------------------------------### */
+ 
+ 
+-void d_ARRAY (va_alist)
+-va_dcl
++void d_ARRAY (char* param, ...)
+ {
+ va_list pa;
+-char    *param;
+ char     buffer [80];
+ char     buffer_anx [64];
+ char     name [64];
+@@ -77,9 +75,8 @@
+     if (GNP_TAB_PAIOL_CREE == GNP_ACTIF)
+       Erreur ("ARRAY already in descriptive part\n");
+ 
+-    va_start(pa);
++    va_start(pa, param);
+ 
+-    param = va_arg(pa, char *);
+     if (param == NULL) 
+        Erreur ("ARRAY needs any parameters\n");
+     strcpy (buffer,param);
+diff -Naur sources/genpat/ARRAY.c.rej ../../alliance-4.0-patchd/sources/genpat/ARRAY.c.rej
+--- sources/genpat/ARRAY.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/genpat/ARRAY.c.rej	2017-03-06 18:52:40.061928200 +0900
+@@ -0,0 +1,35 @@
++--- sources/genpat/ARRAY.c	1999-10-25 16:59:06.000000000 +0900
+++++ sources-patched/genpat/ARRAY.c	2016-06-02 18:24:48.195941235 +0900
++@@ -33,7 +33,7 @@
++ #include <stdio.h>
++ #include <string.h>
++ #include <ctype.h>
++-#include <varargs.h>
+++#include <stdarg.h>
++ 
++ #include MUT_H
++ #include PAT_H
++@@ -49,11 +49,9 @@
++ /* ###--------------------------------------------------------------### */
++ 
++ 
++-void d_ARRAY (va_alist)
++-va_dcl
+++void d_ARRAY (char* param, ...)
++ {
++ va_list pa;
++-char    *param;
++ char     buffer [80];
++ char     buffer_anx [64];
++ char     name [64];
++@@ -77,9 +75,8 @@ struct   alpha_num decomp;
++     if (GNP_TAB_PAIOL_CREE == GNP_ACTIF)
++       Erreur ("ARRAY already in descriptive part\n");
++ 
++-    va_start(pa);
+++    va_start(pa, param);
++ 
++-    param = va_arg(pa, char *);
++     if (param == NULL) 
++        Erreur ("ARRAY needs any parameters\n");
++     strcpy (buffer,param);
+diff -Naur sources/genview/gcc-1.42/gcc.c ../../alliance-4.0-patchd/sources/genview/gcc-1.42/gcc.c
+--- sources/genview/gcc-1.42/gcc.c	2017-03-06 18:55:26.227324600 +0900
++++ ../../alliance-4.0-patchd/sources/genview/gcc-1.42/gcc.c	2017-03-06 18:52:25.245565100 +0900
+@@ -151,9 +151,7 @@
+ #include <sys/file.h>
+ #include <sys/stat.h>
+ 
+-#ifdef Cygwin
+ #include <errno.h>
+-#endif
+ 
+ #ifdef Linux_elf
+ extern char *sys_errlist[];
+diff -Naur sources/genview/gcc-1.42/gcc.c.rej ../../alliance-4.0-patchd/sources/genview/gcc-1.42/gcc.c.rej
+--- sources/genview/gcc-1.42/gcc.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/genview/gcc-1.42/gcc.c.rej	2017-03-06 18:52:24.573683500 +0900
+@@ -0,0 +1,12 @@
++--- sources/genview/gcc-1.42/gcc.c	1999-11-22 23:45:17.000000000 +0900
+++++ sources-patched/genview/gcc-1.42/gcc.c	2016-06-02 18:15:06.584857183 +0900
++@@ -151,9 +151,7 @@ position among the other output files.
++ #include <sys/file.h>
++ #include <sys/stat.h>
++ 
++-#ifdef Cygwin
++ #include <errno.h>
++-#endif
++ 
++ #ifdef Linux_elf
++ extern char *sys_errlist[];
+diff -Naur sources/genview/gcc-1.42/obstack.h ../../alliance-4.0-patchd/sources/genview/gcc-1.42/obstack.h
+--- sources/genview/gcc-1.42/obstack.h	2017-03-06 18:55:26.602345600 +0900
++++ ../../alliance-4.0-patchd/sources/genview/gcc-1.42/obstack.h	2017-03-06 18:52:24.229928600 +0900
+@@ -144,6 +144,8 @@
+ #define __INT_TO_PTR(P) ((P) + (char *)0)
+ #endif
+ 
++#include <errno.h>
++
+ struct _obstack_chunk		/* Lives at front of each chunk. */
+ {
+   char  *limit;			/* 1 past end of this chunk */
+diff -Naur sources/genview/gcc-1.42/obstack.h.rej ../../alliance-4.0-patchd/sources/genview/gcc-1.42/obstack.h.rej
+--- sources/genview/gcc-1.42/obstack.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/genview/gcc-1.42/obstack.h.rej	2017-03-06 18:52:24.151803900 +0900
+@@ -0,0 +1,11 @@
++--- sources/genview/gcc-1.42/obstack.h	1998-10-03 00:27:04.000000000 +0900
+++++ sources-patched/genview/gcc-1.42/obstack.h	2016-06-02 18:14:35.371530541 +0900
++@@ -144,6 +144,8 @@ Summary:
++ #define __INT_TO_PTR(P) ((P) + (char *)0)
++ #endif
++ 
+++#include <errno.h>
+++
++ struct _obstack_chunk		/* Lives at front of each chunk. */
++ {
++   char  *limit;			/* 1 past end of this chunk */
+diff -Naur sources/lynx/netlist.c ../../alliance-4.0-patchd/sources/lynx/netlist.c
+--- sources/lynx/netlist.c	2017-03-06 18:55:28.196095600 +0900
++++ ../../alliance-4.0-patchd/sources/lynx/netlist.c	2017-03-06 18:52:39.343169400 +0900
+@@ -433,7 +433,7 @@
+              Signal = LogicalConnector->SIG;
+ 
+              PtypeRec = getptype( LogicalConnector->USER, RDSLOCON1 );
+-             (chain_list*)( PtypeRec->DATA) = append( (chain_list*)(PtypeRec->DATA), RecConnector );
++             ( PtypeRec->DATA) = append( (chain_list*)(PtypeRec->DATA), RecConnector );
+              RecConnector = NULL;
+ 
+              if( Rcnet == 'c' || Rcnet == 'r' )
+@@ -442,7 +442,7 @@
+              }
+ 
+              PrevFEQUI = getptype( Signal->USER, RCN_FEQUI );
+-             ((chain_list*)(PrevFEQUI->DATA)) = addchain( ((chain_list*)(PrevFEQUI->DATA)), FirstEqui );
++             ((PrevFEQUI->DATA)) = addchain( ((chain_list*)(PrevFEQUI->DATA)), FirstEqui );
+              
+            }
+            else
+diff -Naur sources/lynx/netlist.c.rej ../../alliance-4.0-patchd/sources/lynx/netlist.c.rej
+--- sources/lynx/netlist.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/lynx/netlist.c.rej	2017-03-06 18:52:39.405668900 +0900
+@@ -0,0 +1,20 @@
++--- sources/lynx/netlist.c	1999-11-30 01:00:41.000000000 +0900
+++++ sources-patched/lynx/netlist.c	2016-06-02 18:23:09.645910334 +0900
++@@ -433,7 +433,7 @@ Cette liste contient la liste des rectan
++              Signal = LogicalConnector->SIG;
++ 
++              PtypeRec = getptype( LogicalConnector->USER, RDSLOCON1 );
++-             (chain_list*)( PtypeRec->DATA) = append( (chain_list*)(PtypeRec->DATA), RecConnector );
+++             ( PtypeRec->DATA) = append( (chain_list*)(PtypeRec->DATA), RecConnector );
++              RecConnector = NULL;
++ 
++              if( Rcnet == 'c' || Rcnet == 'r' )
++@@ -442,7 +442,7 @@ Cette liste contient la liste des rectan
++              }
++ 
++              PrevFEQUI = getptype( Signal->USER, RCN_FEQUI );
++-             ((chain_list*)(PrevFEQUI->DATA)) = addchain( ((chain_list*)(PrevFEQUI->DATA)), FirstEqui );
+++             ((PrevFEQUI->DATA)) = addchain( ((chain_list*)(PrevFEQUI->DATA)), FirstEqui );
++              
++            }
++            else
+diff -Naur sources/mbk/mbk_lo.c ../../alliance-4.0-patchd/sources/mbk/mbk_lo.c
+--- sources/mbk/mbk_lo.c	2017-03-06 18:55:28.227349000 +0900
++++ ../../alliance-4.0-patchd/sources/mbk/mbk_lo.c	2017-03-06 18:52:35.311870500 +0900
+@@ -1163,6 +1163,7 @@
+                         }
+                         break;
+                 default:
++                        break;
+                 }
+         }
+ 	{
+diff -Naur sources/mbk/mbk_lo.c.rej ../../alliance-4.0-patchd/sources/mbk/mbk_lo.c.rej
+--- sources/mbk/mbk_lo.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbk/mbk_lo.c.rej	2017-03-06 18:52:35.405623400 +0900
+@@ -0,0 +1,10 @@
++--- sources/mbk/mbk_lo.c	1999-12-09 22:08:33.000000000 +0900
+++++ sources-patched/mbk/mbk_lo.c	2016-06-01 18:37:29.365209210 +0900
++@@ -1163,6 +1163,7 @@ ptype_list  *ptptype;
++                         }
++                         break;
++                 default:
+++                        break;
++                 }
++         }
++ 	{
+diff -Naur sources/mbk/rcn_lo.c ../../alliance-4.0-patchd/sources/mbk/rcn_lo.c
+--- sources/mbk/rcn_lo.c	2017-03-06 18:55:28.477349500 +0900
++++ ../../alliance-4.0-patchd/sources/mbk/rcn_lo.c	2017-03-06 18:52:35.358747700 +0900
+@@ -1484,11 +1484,11 @@
+     ptctc=HEAD_CTC_FREE;
+     for(i=1;i<RCNBUFSIZE;i++)
+     {
+-      (loctc_list*)(ptctc->SIG1) = ptctc+1;
++      ((loctc_list*)ptctc)->SIG1 = ptctc+1;
+       ptctc->NODE1 = -1000;
+       ptctc++;
+     }
+-    (loctc_list*)(ptctc->SIG1) = NULL;
++    ((loctc_list*)ptctc)->SIG1 = NULL;
+     ptctc->NODE1 = -1000;
+   }
+ 
+@@ -1797,7 +1797,7 @@
+       if( RCN_GETFLAG( ptnode->FLAG, RCN_FLAG_LOCON ) )
+       {
+         ptlocon = getptype(ptnode->USER, RCN_LOCON );
+-        (chain_list*)(ptlocon->DATA)=
++        ((chain_list*)ptlocon)->DATA=
+                                  addchain((chain_list*)(ptlocon->DATA),ptcon);
+       }
+       else
+diff -Naur sources/mbk/rcn_lo.c.rej ../../alliance-4.0-patchd/sources/mbk/rcn_lo.c.rej
+--- sources/mbk/rcn_lo.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbk/rcn_lo.c.rej	2017-03-06 18:52:35.280623000 +0900
+@@ -0,0 +1,25 @@
++--- sources/mbk/rcn_lo.c	1999-06-28 01:32:02.000000000 +0900
+++++ sources-patched/mbk/rcn_lo.c	2016-06-01 18:45:15.048208359 +0900
++@@ -1484,11 +1484,11 @@ loctc_list* heaploctc()
++     ptctc=HEAD_CTC_FREE;
++     for(i=1;i<RCNBUFSIZE;i++)
++     {
++-      (loctc_list*)(ptctc->SIG1) = ptctc+1;
+++      ((loctc_list*)ptctc)->SIG1 = ptctc+1;
++       ptctc->NODE1 = -1000;
++       ptctc++;
++     }
++-    (loctc_list*)(ptctc->SIG1) = NULL;
+++    ((loctc_list*)ptctc)->SIG1 = NULL;
++     ptctc->NODE1 = -1000;
++   }
++ 
++@@ -1797,7 +1797,7 @@ losig_list	*ptsig;
++       if( RCN_GETFLAG( ptnode->FLAG, RCN_FLAG_LOCON ) )
++       {
++         ptlocon = getptype(ptnode->USER, RCN_LOCON );
++-        (chain_list*)(ptlocon->DATA)=
+++        ((chain_list*)ptlocon)->DATA=
++                                  addchain((chain_list*)(ptlocon->DATA),ptcon);
++       }
++       else
+diff -Naur sources/mbkal/alc_pars_l6.c ../../alliance-4.0-patchd/sources/mbkal/alc_pars_l6.c
+--- sources/mbkal/alc_pars_l6.c	2017-03-06 18:55:28.508614700 +0900
++++ ../../alliance-4.0-patchd/sources/mbkal/alc_pars_l6.c	2017-03-06 18:52:37.218143000 +0900
+@@ -35,7 +35,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ #include <math.h>
+ 
+ #include MUT_H
+@@ -100,7 +100,7 @@
+ int		type_line     __P(( chain_list*, char*, int ));
+ chain_list*	read_line     __P(( FILE*, char*, int ));
+ void		free_line     __P(( chain_list* ));
+-void		mal_error     __P(());
++void		mal_error     __P(( char*, int, ...));
+ void		chk_header    __P(( chain_list*, char*, int ));
+ unsigned char	decode_layer  __P(( char*, char*, int ));
+ data_loins*	decode_ins    __P(( chain_list*, char*, int ));
+@@ -884,17 +884,12 @@
+ 
+ /******************************************************************************/
+ 
+-void		mal_error( va_alist )
+-va_dcl
++void		mal_error( char *fname, int line, ... )
+ {
+   va_list	 index;
+   char		*fmt;
+-  char		*fname;
+-  int		 line;
+   
+-  va_start( index );
+-  fname = va_arg( index, char* );
+-  line  = va_arg( index, int   );
++  va_start( index, line);
+   fmt   = va_arg( index, char* );
+   
+   fflush( stdout );
+diff -Naur sources/mbkal/alc_pars_l6.c.rej ../../alliance-4.0-patchd/sources/mbkal/alc_pars_l6.c.rej
+--- sources/mbkal/alc_pars_l6.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbkal/alc_pars_l6.c.rej	2017-03-06 18:52:37.249394500 +0900
+@@ -0,0 +1,40 @@
++--- sources/mbkal/alc_pars_l6.c	1999-10-24 00:22:20.000000000 +0900
+++++ sources-patched/mbkal/alc_pars_l6.c	2016-06-01 19:39:09.606145731 +0900
++@@ -35,7 +35,7 @@
++ #include <stdio.h>
++ #include <string.h>
++ #include <unistd.h>
++-#include <varargs.h>
+++#include <stdarg.h>
++ #include <math.h>
++ 
++ #include MUT_H
++@@ -100,7 +100,7 @@ float		decode_capa   __P(( losig_list*,
++ int		type_line     __P(( chain_list*, char*, int ));
++ chain_list*	read_line     __P(( FILE*, char*, int ));
++ void		free_line     __P(( chain_list* ));
++-void		mal_error     __P(());
+++void		mal_error     __P(( char*, int, ...));
++ void		chk_header    __P(( chain_list*, char*, int ));
++ unsigned char	decode_layer  __P(( char*, char*, int ));
++ data_loins*	decode_ins    __P(( chain_list*, char*, int ));
++@@ -884,17 +884,12 @@ chain_list	*head;
++ 
++ /******************************************************************************/
++ 
++-void		mal_error( va_alist )
++-va_dcl
+++void		mal_error( char *fname, int line, ... )
++ {
++   va_list	 index;
++   char		*fmt;
++-  char		*fname;
++-  int		 line;
++   
++-  va_start( index );
++-  fname = va_arg( index, char* );
++-  line  = va_arg( index, int   );
+++  va_start( index, line);
++   fmt   = va_arg( index, char* );
++   
++   fflush( stdout );
+diff -Naur sources/mbkspice/spi_drive.c ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.c
+--- sources/mbkspice/spi_drive.c	2017-03-06 18:55:28.852354400 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.c	2017-03-06 18:52:35.483747700 +0900
+@@ -38,9 +38,10 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ #include <time.h>
+ #include <ctype.h>
++#include <string.h>
+ #include MUT_H
+ #include MLO_H
+ #include RCN_H
+@@ -853,16 +854,13 @@
+   }
+ }
+ 
+-void            tooutput( va_alist )
+-va_dcl
++void            tooutput( FILE *fd, ... )
+ {
+   va_list       index;
+-  FILE          *fd;
+   char          *fmt;
+ 
+-  va_start( index );
++  va_start( index, fd );
+   
+-  fd  = va_arg( index, FILE* );
+   fmt = va_arg( index, char* );
+ 
+   if( vfprintf( fd, fmt, index ) < 0 )
+diff -Naur sources/mbkspice/spi_drive.c.rej ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.c.rej
+--- sources/mbkspice/spi_drive.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.c.rej	2017-03-06 18:52:35.452496700 +0900
+@@ -0,0 +1,33 @@
++--- sources/mbkspice/spi_drive.c	1999-10-01 02:32:41.000000000 +0900
+++++ sources-patched/mbkspice/spi_drive.c	2016-06-01 19:43:52.309088824 +0900
++@@ -38,9 +38,10 @@
++ #include <sys/types.h>
++ #include <sys/stat.h>
++ #include <fcntl.h>
++-#include <varargs.h>
+++#include <stdarg.h>
++ #include <time.h>
++ #include <ctype.h>
+++#include <string.h>
++ #include MUT_H
++ #include MLO_H
++ #include RCN_H
++@@ -853,16 +854,13 @@ lofig_list	*ptfig;
++   }
++ }
++ 
++-void            tooutput( va_alist )
++-va_dcl
+++void            tooutput( FILE *fd, ... )
++ {
++   va_list       index;
++-  FILE          *fd;
++   char          *fmt;
++ 
++-  va_start( index );
+++  va_start( index, fd );
++   
++-  fd  = va_arg( index, FILE* );
++   fmt = va_arg( index, char* );
++ 
++   if( vfprintf( fd, fmt, index ) < 0 )
+diff -Naur sources/mbkspice/spi_drive.h ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.h
+--- sources/mbkspice/spi_drive.h	2017-03-06 18:55:28.852354400 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.h	2017-03-06 18:52:35.483747700 +0900
+@@ -66,7 +66,7 @@
+                                   int vdd
+                                ));
+ void   sortcircuit          __P(( lofig_list *ptfig, FILE *df ));
+-void   tooutput             __P(()); /* va_list. */
++void   tooutput             __P((FILE *, ...)); /* va_list. */
+ int    sortconnecteur_ordre __P(( FILE *df, chain_list*, locon_list*, int ));
+ 
+ #endif
+diff -Naur sources/mbkspice/spi_drive.h.rej ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.h.rej
+--- sources/mbkspice/spi_drive.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_drive.h.rej	2017-03-06 18:52:35.436872000 +0900
+@@ -0,0 +1,11 @@
++--- sources/mbkspice/spi_drive.h	1998-10-29 01:21:58.000000000 +0900
+++++ sources-patched/mbkspice/spi_drive.h	2016-06-01 19:44:47.665665117 +0900
++@@ -66,7 +66,7 @@ void   sorttransistormos    __P(( lofig_
++                                   int vdd
++                                ));
++ void   sortcircuit          __P(( lofig_list *ptfig, FILE *df ));
++-void   tooutput             __P(()); /* va_list. */
+++void   tooutput             __P((FILE *, ...)); /* va_list. */
++ int    sortconnecteur_ordre __P(( FILE *df, chain_list*, locon_list*, int ));
++ 
++ #endif
+diff -Naur sources/mbkspice/spi_parse.c ../../alliance-4.0-patchd/sources/mbkspice/spi_parse.c
+--- sources/mbkspice/spi_parse.c	2017-03-06 18:55:28.883619600 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_parse.c	2017-03-06 18:52:35.421247200 +0900
+@@ -1829,11 +1829,11 @@
+       ptnodename = getptype( scanlocon->USER, PNODENAME );
+      
+       if( ptnoeud->NOM )
+-        ((chain_list*)(ptnodename->DATA)) =
+-       addchain( ((chain_list*)(ptnodename->DATA)), namealloc( ptnoeud->NOM ) );
++        ((chain_list*)ptnodename)->DATA =
++       addchain( ((chain_list*)ptnodename)->DATA, namealloc( ptnoeud->NOM ) );
+       else
+-        ((chain_list*)(ptnodename->DATA)) =
+-                            addchain( ((chain_list*)(ptnodename->DATA)), NULL );
++        ((chain_list*)ptnodename)->DATA =
++                            addchain( ((chain_list*)ptnodename)->DATA, NULL );
+     }
+   }
+ 
+@@ -1846,14 +1846,14 @@
+ 
+   for( scanlocon = ptfig->LOCON ; scanlocon ; scanlocon = scanlocon->NEXT )
+   {
+-    (chain_list*)scanlocon->PNODE = reverse( (chain_list*)scanlocon->PNODE );
++    scanlocon->PNODE = reverse( (chain_list*)scanlocon->PNODE );
+   
+     ptnodename = getptype( scanlocon->USER, PNODENAME );
+     for( sc1 = (chain_list*)( ptnodename->DATA ) ; sc1 ; sc1 = sc1->NEXT )
+       if( sc1->DATA )
+         break;
+     if( sc1 )
+-      ((chain_list*)(ptnodename->DATA)) =
++      ptnodename->DATA =
+                                    reverse( ((chain_list*)(ptnodename->DATA)) );
+     else
+     {
+@@ -1862,7 +1862,7 @@
+     }
+   }
+ 
+-  (chain_list*)ptfig->LOCON = reverse( (chain_list*)ptfig->LOCON );
++  ptfig->LOCON = reverse( (chain_list*)ptfig->LOCON );
+ 
+   /* On cree les transistors */
+ 
+@@ -2053,7 +2053,7 @@
+ 
+         sc3 = (chain_list*)sc2->DATA; 
+         for( ; sc3 ; sc3 = sc3->NEXT )
+-          ((chain_list*)(ptnodename->DATA)) = addchain(
++          ptnodename->DATA = addchain(
+                                               ((chain_list*)(ptnodename->DATA)),
+                                                         sc3->DATA
+                                                       );
+diff -Naur sources/mbkspice/spi_parse.c.rej ../../alliance-4.0-patchd/sources/mbkspice/spi_parse.c.rej
+--- sources/mbkspice/spi_parse.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbkspice/spi_parse.c.rej	2017-03-06 18:52:35.468123000 +0900
+@@ -0,0 +1,53 @@
++--- sources/mbkspice/spi_parse.c	1999-07-21 00:10:14.000000000 +0900
+++++ sources-patched/mbkspice/spi_parse.c	2016-06-01 19:59:02.225290761 +0900
++@@ -1829,11 +1829,11 @@ char		mode;
++       ptnodename = getptype( scanlocon->USER, PNODENAME );
++      
++       if( ptnoeud->NOM )
++-        ((chain_list*)(ptnodename->DATA)) =
++-       addchain( ((chain_list*)(ptnodename->DATA)), namealloc( ptnoeud->NOM ) );
+++        ((chain_list*)ptnodename)->DATA =
+++       addchain( ((chain_list*)ptnodename)->DATA, namealloc( ptnoeud->NOM ) );
++       else
++-        ((chain_list*)(ptnodename->DATA)) =
++-                            addchain( ((chain_list*)(ptnodename->DATA)), NULL );
+++        ((chain_list*)ptnodename)->DATA =
+++                            addchain( ((chain_list*)ptnodename)->DATA, NULL );
++     }
++   }
++ 
++@@ -1846,14 +1846,14 @@ char		mode;
++ 
++   for( scanlocon = ptfig->LOCON ; scanlocon ; scanlocon = scanlocon->NEXT )
++   {
++-    (chain_list*)scanlocon->PNODE = reverse( (chain_list*)scanlocon->PNODE );
+++    scanlocon->PNODE = reverse( (chain_list*)scanlocon->PNODE );
++   
++     ptnodename = getptype( scanlocon->USER, PNODENAME );
++     for( sc1 = (chain_list*)( ptnodename->DATA ) ; sc1 ; sc1 = sc1->NEXT )
++       if( sc1->DATA )
++         break;
++     if( sc1 )
++-      ((chain_list*)(ptnodename->DATA)) =
+++      ptnodename->DATA =
++                                    reverse( ((chain_list*)(ptnodename->DATA)) );
++     else
++     {
++@@ -1862,7 +1862,7 @@ char		mode;
++     }
++   }
++ 
++-  (chain_list*)ptfig->LOCON = reverse( (chain_list*)ptfig->LOCON );
+++  ptfig->LOCON = reverse( (chain_list*)ptfig->LOCON );
++ 
++   /* On cree les transistors */
++ 
++@@ -2053,7 +2053,7 @@ char		mode;
++ 
++         sc3 = (chain_list*)sc2->DATA; 
++         for( ; sc3 ; sc3 = sc3->NEXT )
++-          ((chain_list*)(ptnodename->DATA)) = addchain(
+++          ptnodename->DATA = addchain(
++                                               ((chain_list*)(ptnodename->DATA)),
++                                                         sc3->DATA
++                                                       );
+diff -Naur sources/mbkvti/parse_vti_l.c ../../alliance-4.0-patchd/sources/mbkvti/parse_vti_l.c
+--- sources/mbkvti/parse_vti_l.c	2017-03-06 18:55:29.102356900 +0900
++++ ../../alliance-4.0-patchd/sources/mbkvti/parse_vti_l.c	2017-03-06 18:52:23.276794600 +0900
+@@ -957,7 +957,7 @@
+ 										break;
+ 								}
+ 								if( !scan_sigalias ) {
+-									(chain_list*)(scan_head_sigalias->DATA) = addchain( (chain_list*)(scan_head_sigalias->DATA), sig2);
++									(scan_head_sigalias->DATA) = addchain( (chain_list*)(scan_head_sigalias->DATA), sig2);
+ 								}
+ 							}
+ 						}
+@@ -1226,7 +1226,7 @@
+ 		scanx->NEXT = headx;
+ 		scanx->rcn  = 0;
+ 		headx       = scanx;
+-		(struct hns_X*)(ptl->DATA) = headx;
++		(ptl->DATA) = headx;
+ 	}
+ 
+ 	return(scanx);
+@@ -1259,7 +1259,7 @@
+ 		scani->ins  = ptins;
+ 		scani->rcn  = 0;
+ 		headi       = scani;
+-		(struct hns_I*)(ptl->DATA) = headi;
++		(ptl->DATA) = headi;
+ 	}
+ 
+ 	return(scani);
+diff -Naur sources/mbkvti/parse_vti_l.c.rej ../../alliance-4.0-patchd/sources/mbkvti/parse_vti_l.c.rej
+--- sources/mbkvti/parse_vti_l.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/mbkvti/parse_vti_l.c.rej	2017-03-06 18:52:23.292418900 +0900
+@@ -0,0 +1,29 @@
++--- sources/mbkvti/parse_vti_l.c	1998-12-28 22:56:56.000000000 +0900
+++++ sources-patched/mbkvti/parse_vti_l.c	2016-06-01 19:59:50.780773480 +0900
++@@ -957,7 +957,7 @@ losig_list      *sigct1,*sigct2;
++ 										break;
++ 								}
++ 								if( !scan_sigalias ) {
++-									(chain_list*)(scan_head_sigalias->DATA) = addchain( (chain_list*)(scan_head_sigalias->DATA), sig2);
+++									(scan_head_sigalias->DATA) = addchain( (chain_list*)(scan_head_sigalias->DATA), sig2);
++ 								}
++ 							}
++ 						}
++@@ -1226,7 +1226,7 @@ int	index;
++ 		scanx->NEXT = headx;
++ 		scanx->rcn  = 0;
++ 		headx       = scanx;
++-		(struct hns_X*)(ptl->DATA) = headx;
+++		(ptl->DATA) = headx;
++ 	}
++ 
++ 	return(scanx);
++@@ -1259,7 +1259,7 @@ loins_list		*ptins;
++ 		scani->ins  = ptins;
++ 		scani->rcn  = 0;
++ 		headi       = scani;
++-		(struct hns_I*)(ptl->DATA) = headi;
+++		(ptl->DATA) = headi;
++ 	}
++ 
++ 	return(scani);
+diff -Naur sources/pat/phl/pat_debug.c ../../alliance-4.0-patchd/sources/pat/phl/pat_debug.c
+--- sources/pat/phl/pat_debug.c	2017-03-06 18:55:29.227359800 +0900
++++ ../../alliance-4.0-patchd/sources/pat/phl/pat_debug.c	2017-03-06 18:52:23.245541700 +0900
+@@ -20,12 +20,6 @@
+ /*		  read_field, get_size					*/
+ /* ###--------------------------------------------------------------### */
+ 
+-void pat_debug (head_pnt, type)
+-
+-void *head_pnt;				/* structure's pointer		*/
+-char *type;				/* structure's type		*/
+-
+-  {
+   static void          disp_immd  ();
+   static void          get_size   ();
+   static void          read_field ();
+@@ -34,6 +28,12 @@
+   static struct chain *go_forward ();
+   static int           translate  ();
+   static int           splitline  ();
++void pat_debug (head_pnt, type)
++
++void *head_pnt;				/* structure's pointer		*/
++char *type;				/* structure's type		*/
++
++  {
+ 
+   char          line   [128];		/* buffer to read a cmd line	*/
+   char          buffer [128];		/* buffer to split the cmd line	*/
+@@ -353,7 +353,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static void read_field (curpnt, pnt, typ, str)
++void read_field (curpnt, pnt, typ, str)
+ 
+ struct stack   curpnt;			/* current struct. to be read	*/
+ union value   *pnt   ;			/* child structures or data	*/
+@@ -748,7 +748,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static int splitline (words, line)
++int splitline (words, line)
+ 
+ char **words;
+ char  *line ;
+@@ -796,7 +796,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static void push (stk, stkpnt, data, type)
++void push (stk, stkpnt, data, type)
+ 
+ struct stack *stk;
+ int          *stkpnt;
+@@ -829,7 +829,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static void pop (stkpnt, count)
++void pop (stkpnt, count)
+ 
+ int          *stkpnt;
+ int           count;
+@@ -874,7 +874,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static int translate (words, wrdcnt, strgs, nmbrs, flags, indxs)
++int translate (words, wrdcnt, strgs, nmbrs, flags, indxs)
+ 
+ char **words ;				/* list of words		*/
+ int    wrdcnt;				/* number of words		*/
+@@ -918,7 +918,7 @@
+   return (indxs [0]);
+   }
+ 
+-static void get_size (siz)
++void get_size (siz)
+ 
+ unsigned int siz [];
+ 
+@@ -955,7 +955,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static void disp_immd (str, pnt , type)
++void disp_immd (str, pnt , type)
+ 
+ char        **str;
+ union value pnt  ;
+diff -Naur sources/pat/phl/pat_debug.c.rej ../../alliance-4.0-patchd/sources/pat/phl/pat_debug.c.rej
+--- sources/pat/phl/pat_debug.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/pat/phl/pat_debug.c.rej	2017-03-06 18:52:23.229916900 +0900
+@@ -0,0 +1,91 @@
++--- sources/pat/phl/pat_debug.c	1999-09-21 23:28:17.000000000 +0900
+++++ sources-patched/pat/phl/pat_debug.c	2016-06-01 20:32:55.855414487 +0900
++@@ -20,12 +20,6 @@
++ /*		  read_field, get_size					*/
++ /* ###--------------------------------------------------------------### */
++ 
++-void pat_debug (head_pnt, type)
++-
++-void *head_pnt;				/* structure's pointer		*/
++-char *type;				/* structure's type		*/
++-
++-  {
++   static void          disp_immd  ();
++   static void          get_size   ();
++   static void          read_field ();
++@@ -34,6 +28,12 @@ char *type;				/* structure's type		*/
++   static struct chain *go_forward ();
++   static int           translate  ();
++   static int           splitline  ();
+++void pat_debug (head_pnt, type)
+++
+++void *head_pnt;				/* structure's pointer		*/
+++char *type;				/* structure's type		*/
+++
+++  {
++ 
++   char          line   [128];		/* buffer to read a cmd line	*/
++   char          buffer [128];		/* buffer to split the cmd line	*/
++@@ -353,7 +353,7 @@ char *type;				/* structure's type		*/
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static void read_field (curpnt, pnt, typ, str)
+++void read_field (curpnt, pnt, typ, str)
++ 
++ struct stack   curpnt;			/* current struct. to be read	*/
++ union value   *pnt   ;			/* child structures or data	*/
++@@ -748,7 +748,7 @@ char         **str   ;			/* recognized s
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static int splitline (words, line)
+++int splitline (words, line)
++ 
++ char **words;
++ char  *line ;
++@@ -796,7 +796,7 @@ char  *line ;
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static void push (stk, stkpnt, data, type)
+++void push (stk, stkpnt, data, type)
++ 
++ struct stack *stk;
++ int          *stkpnt;
++@@ -829,7 +829,7 @@ short         type;
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static void pop (stkpnt, count)
+++void pop (stkpnt, count)
++ 
++ int          *stkpnt;
++ int           count;
++@@ -874,7 +874,7 @@ int           count;
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static int translate (words, wrdcnt, strgs, nmbrs, flags, indxs)
+++int translate (words, wrdcnt, strgs, nmbrs, flags, indxs)
++ 
++ char **words ;				/* list of words		*/
++ int    wrdcnt;				/* number of words		*/
++@@ -918,7 +918,7 @@ int   *indxs ;				/* words' index in str
++   return (indxs [0]);
++   }
++ 
++-static void get_size (siz)
+++void get_size (siz)
++ 
++ unsigned int siz [];
++ 
++@@ -955,7 +955,7 @@ unsigned int siz [];
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static void disp_immd (str, pnt , type)
+++void disp_immd (str, pnt , type)
++ 
++ char        **str;
++ union value pnt  ;
+diff -Naur sources/pat/ppt/pat_pars.lex ../../alliance-4.0-patchd/sources/pat/ppt/pat_pars.lex
+--- sources/pat/ppt/pat_pars.lex	2017-03-06 18:55:29.274236000 +0900
++++ ../../alliance-4.0-patchd/sources/pat/ppt/pat_pars.lex	2017-03-06 18:52:23.214292200 +0900
+@@ -21,6 +21,7 @@
+ #define yylval  (*lval_pnt)
+ 
+ static char buff [1024];
++static int  lcl_search ();
+ %}
+ 
+ %s INS_PAT
+@@ -145,7 +146,6 @@
+ 								}
+ <INITIAL,OUT_PAT,DTC_FRM>{letter}(_?({letter}|[0-9]))*		{
+ 		int         code         ;
+-		static int  lcl_search ();
+ 
+ 		yylval.text = namealloc (yytext);
+ 		if ((code = lcl_search (yylval.text)) == -1)
+@@ -182,7 +182,7 @@
+ /* called func.	: none							*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static int yywrap ()
++int yywrap ()
+   {
+   return (1);
+   }
+@@ -193,7 +193,7 @@
+ /* called func.	: addht, addhtitem, gethtitem, namealloc		*/
+ /* ###--------------------------------------------------------------### */
+ 
+-static int lcl_search (key)
++int lcl_search (key)
+ 
+ char  *key;
+ 
+diff -Naur sources/pat/ppt/pat_pars.lex.rej ../../alliance-4.0-patchd/sources/pat/ppt/pat_pars.lex.rej
+--- sources/pat/ppt/pat_pars.lex.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/pat/ppt/pat_pars.lex.rej	2017-03-06 18:52:23.214292200 +0900
+@@ -0,0 +1,36 @@
++--- sources/pat/ppt/pat_pars.lex	1999-10-25 16:56:35.000000000 +0900
+++++ sources-patched/pat/ppt/pat_pars.lex	2016-06-01 20:34:44.310543536 +0900
++@@ -21,6 +21,7 @@
++ #define yylval  (*lval_pnt)
++ 
++ static char buff [1024];
+++static int  lcl_search ();
++ %}
++ 
++ %s INS_PAT
++@@ -145,7 +146,6 @@ letter		[a-zA-Z]
++ 								}
++ <INITIAL,OUT_PAT,DTC_FRM>{letter}(_?({letter}|[0-9]))*		{
++ 		int         code         ;
++-		static int  lcl_search ();
++ 
++ 		yylval.text = namealloc (yytext);
++ 		if ((code = lcl_search (yylval.text)) == -1)
++@@ -182,7 +182,7 @@ letter		[a-zA-Z]
++ /* called func.	: none							*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static int yywrap ()
+++int yywrap ()
++   {
++   return (1);
++   }
++@@ -193,7 +193,7 @@ static int yywrap ()
++ /* called func.	: addht, addhtitem, gethtitem, namealloc		*/
++ /* ###--------------------------------------------------------------### */
++ 
++-static int lcl_search (key)
+++int lcl_search (key)
++ 
++ char  *key;
++ 
+diff -Naur sources/patch2.patch ../../alliance-4.0-patchd/sources/patch2.patch
+--- sources/patch2.patch	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/patch2.patch	2017-03-06 18:52:25.604945300 +0900
+@@ -0,0 +1,5 @@
++diff -r ../sources-old/scr/SCR_Type.h scr/SCR_Type.h
++68c68
++< # define MIDDLESUPPLY    ((long ) 2 * SCALE_X)
++---
++> # define MIDDLESUPPLY    ((long ) 3 * SCALE_X)
+diff -Naur sources/ring/interp.lex ../../alliance-4.0-patchd/sources/ring/interp.lex
+--- sources/ring/interp.lex	2017-03-06 18:55:29.930492900 +0900
++++ ../../alliance-4.0-patchd/sources/ring/interp.lex	2017-03-06 18:52:34.753481900 +0900
+@@ -1,5 +1,5 @@
+ %{
+-#include "interp.yac.tab.h"
++#include "interp.tab.h"
+ #include "includes.h"
+ #include "struct.h"
+ #undef yywrap
+diff -Naur sources/ring/interp.lex.rej ../../alliance-4.0-patchd/sources/ring/interp.lex.rej
+--- sources/ring/interp.lex.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/ring/interp.lex.rej	2017-03-06 18:52:34.704914100 +0900
+@@ -0,0 +1,9 @@
++--- sources/ring/interp.lex	1998-10-03 00:25:17.000000000 +0900
+++++ sources-patched/ring/interp.lex	2016-06-02 18:21:15.398715230 +0900
++@@ -1,5 +1,5 @@
++ %{
++-#include "interp.yac.tab.h"
+++#include "interp.tab.h"
++ #include "includes.h"
++ #include "struct.h"
++ #undef yywrap
+diff -Naur sources/ring/interp.y ../../alliance-4.0-patchd/sources/ring/interp.y
+--- sources/ring/interp.y	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/ring/interp.y	2017-03-06 18:52:34.704914100 +0900
+@@ -0,0 +1,48 @@
++
++%{
++#include "includes.h"
++#include "struct.h"
++%}
++%token M_NORTH, M_SOUTH, M_WEST, M_EAST, M_WIDTH
++%token NOMBRE
++%token IDENT 
++%union {
++	long i;
++	char *s;
++	}
++%type <i> NOMBRE
++%type <s> IDENT
++%start programme
++%%
++programme: ldirective {if (mode_debug) printf("yacc: programme \n");}
++	;
++ldirective: ldirective directive {if (mode_debug) printf("yacc: ldirective \n");}
++	| directive
++	;
++directive: M_NORTH '(' lnom_n ')' {if (mode_debug) printf("yacc: north \n");}
++  | M_NORTH '(' ')'               {if (mode_debug) printf("yacc: north \n");}
++	| M_SOUTH '(' lnom_s ')' {if (mode_debug) printf("yacc: south \n");}
++	| M_SOUTH '(' ')'        {if (mode_debug) printf("yacc: south \n");}
++	| M_WEST  '(' lnom_w ')' {if (mode_debug) printf("yacc: west  \n");}
++	| M_WEST  '('  ')'       {if (mode_debug) printf("yacc: west  \n");}
++	| M_EAST  '(' lnom_e ')' {if (mode_debug) printf("yacc: east  \n");}
++	| M_EAST  '('  ')'       {if (mode_debug) printf("yacc: east  \n");}
++  | M_WIDTH '(' lnomchiffre ')'  {if (mode_debug) printf("yacc: width \n");}
++	| M_WIDTH '('  ')'             {if (mode_debug) printf("yacc: width \n");}
++  ;
++lnom_n: lnom_n  IDENT { declaration_plot_n($2);if (mode_debug) printf("yacc: ident \n"); }
++	| IDENT { declaration_plot_n($1);if (mode_debug) printf("yacc: ident \n");}
++	;
++lnom_s: lnom_s IDENT { declaration_plot_s($2); if (mode_debug) printf("yacc: ident \n");}
++	| IDENT { declaration_plot_s($1);if (mode_debug) printf("yacc: ident \n");}
++	;
++lnom_w: lnom_w IDENT { declaration_plot_w($2);if (mode_debug) printf("yacc: ident \n");}
++	| IDENT { declaration_plot_w($1);if (mode_debug) printf("yacc: ident \n");}
++	;
++lnom_e: lnom_e IDENT { declaration_plot_e($2);if (mode_debug) printf("yacc: ident \n");}
++	| IDENT { declaration_plot_e($1);if (mode_debug) printf("yacc: ident \n");}
++	;
++lnomchiffre: lnomchiffre IDENT NOMBRE { declaration_width($2,$3);if (mode_debug) printf("yacc lnomchiffre \n");}
++	| IDENT NOMBRE { declaration_width($1,$2);if (mode_debug) printf("yacc lnomchiffre \n");}
++	;
++
+diff -Naur sources/ring/interp.yac ../../alliance-4.0-patchd/sources/ring/interp.yac
+--- sources/ring/interp.yac	2017-03-06 18:55:29.930492900 +0900
++++ ../../alliance-4.0-patchd/sources/ring/interp.yac	1970-01-01 09:00:00.000000000 +0900
+@@ -1,48 +0,0 @@
+-
+-%{
+-#include "includes.h"
+-#include "struct.h"
+-%}
+-%token M_NORTH, M_SOUTH, M_WEST, M_EAST, M_WIDTH
+-%token NOMBRE
+-%token IDENT 
+-%union {
+-	long i;
+-	char *s;
+-	}
+-%type <i> NOMBRE
+-%type <s> IDENT
+-%start programme
+-%%
+-programme: ldirective {if (mode_debug) printf("yacc: programme \n");}
+-	;
+-ldirective: ldirective directive {if (mode_debug) printf("yacc: ldirective \n");}
+-	| directive
+-	;
+-directive: M_NORTH '(' lnom_n ')' {if (mode_debug) printf("yacc: north \n");}
+-  | M_NORTH '(' ')'               {if (mode_debug) printf("yacc: north \n");}
+-	| M_SOUTH '(' lnom_s ')' {if (mode_debug) printf("yacc: south \n");}
+-	| M_SOUTH '(' ')'        {if (mode_debug) printf("yacc: south \n");}
+-	| M_WEST  '(' lnom_w ')' {if (mode_debug) printf("yacc: west  \n");}
+-	| M_WEST  '('  ')'       {if (mode_debug) printf("yacc: west  \n");}
+-	| M_EAST  '(' lnom_e ')' {if (mode_debug) printf("yacc: east  \n");}
+-	| M_EAST  '('  ')'       {if (mode_debug) printf("yacc: east  \n");}
+-  | M_WIDTH '(' lnomchiffre ')'  {if (mode_debug) printf("yacc: width \n");}
+-	| M_WIDTH '('  ')'             {if (mode_debug) printf("yacc: width \n");}
+-  ;
+-lnom_n: lnom_n  IDENT { declaration_plot_n($2);if (mode_debug) printf("yacc: ident \n"); }
+-	| IDENT { declaration_plot_n($1);if (mode_debug) printf("yacc: ident \n");}
+-	;
+-lnom_s: lnom_s IDENT { declaration_plot_s($2); if (mode_debug) printf("yacc: ident \n");}
+-	| IDENT { declaration_plot_s($1);if (mode_debug) printf("yacc: ident \n");}
+-	;
+-lnom_w: lnom_w IDENT { declaration_plot_w($2);if (mode_debug) printf("yacc: ident \n");}
+-	| IDENT { declaration_plot_w($1);if (mode_debug) printf("yacc: ident \n");}
+-	;
+-lnom_e: lnom_e IDENT { declaration_plot_e($2);if (mode_debug) printf("yacc: ident \n");}
+-	| IDENT { declaration_plot_e($1);if (mode_debug) printf("yacc: ident \n");}
+-	;
+-lnomchiffre: lnomchiffre IDENT NOMBRE { declaration_width($2,$3);if (mode_debug) printf("yacc lnomchiffre \n");}
+-	| IDENT NOMBRE { declaration_width($1,$2);if (mode_debug) printf("yacc lnomchiffre \n");}
+-	;
+-
+diff -Naur sources/ring/Makefile ../../alliance-4.0-patchd/sources/ring/Makefile
+--- sources/ring/Makefile	2017-03-06 18:55:29.868007000 +0900
++++ ../../alliance-4.0-patchd/sources/ring/Makefile	2017-03-06 18:52:34.689287900 +0900
+@@ -59,7 +59,7 @@
+           compress.o\
+           distance.o\
+           stat.o\
+-          interp.yac.tab.o \
++          interp.tab.o \
+           lex.yy.o 
+ 
+ include $(ALLIANCE_TOP)/etc/$(ALLIANCE_OS).mk
+@@ -109,12 +109,12 @@
+ lex.yy.o : interp.lex $(HEADERS)
+ 	$(LEX) interp.lex
+ 	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c lex.yy.c
+-interp.yac.tab.o : interp.yac $(HEADERS)
+-	$(YACC) -d -v interp.yac
+-	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c interp.yac.tab.c
++interp.tab.o : interp.y $(HEADERS)
++	$(YACC) -d -v interp.y
++	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c interp.tab.c
+ 
+ clean:
+-	$(RM) -f $(OBJ) lex.yy.c interp.yac.tab.c interp.yac.tab.h interp.yac.output
++	$(RM) -f $(OBJ) lex.yy.c interp.tab.c interp.tab.h interp.output
+ 
+ realclean: clean
+ 	$(RM) -f $(TARGET_BIN)/ring
+diff -Naur sources/ring/Makefile.rej ../../alliance-4.0-patchd/sources/ring/Makefile.rej
+--- sources/ring/Makefile.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/ring/Makefile.rej	2017-03-06 18:52:34.720536900 +0900
+@@ -0,0 +1,28 @@
++--- sources/ring/Makefile	1999-11-06 01:44:00.000000000 +0900
+++++ sources-patched/ring/Makefile	2016-06-02 18:20:44.073387546 +0900
++@@ -59,7 +59,7 @@ OBJ     = ring2.o\
++           compress.o\
++           distance.o\
++           stat.o\
++-          interp.yac.tab.o \
+++          interp.tab.o \
++           lex.yy.o 
++ 
++ include $(ALLIANCE_TOP)/etc/$(ALLIANCE_OS).mk
++@@ -109,12 +109,12 @@ $(TARGET_BIN)/ring : $(OBJ)
++ lex.yy.o : interp.lex $(HEADERS)
++ 	$(LEX) interp.lex
++ 	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c lex.yy.c
++-interp.yac.tab.o : interp.yac $(HEADERS)
++-	$(YACC) -d -v interp.yac
++-	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c interp.yac.tab.c
+++interp.tab.o : interp.y $(HEADERS)
+++	$(YACC) -d -v interp.y
+++	$(CC) $(CFLAGS) $(EXTRAFLAGS) -c interp.tab.c
++ 
++ clean:
++-	$(RM) -f $(OBJ) lex.yy.c interp.yac.tab.c interp.yac.tab.h interp.yac.output
+++	$(RM) -f $(OBJ) lex.yy.c interp.tab.c interp.tab.h interp.output
++ 
++ realclean: clean
++ 	$(RM) -f $(TARGET_BIN)/ring
+diff -Naur sources/s2r/postrat.c ../../alliance-4.0-patchd/sources/s2r/postrat.c
+--- sources/s2r/postrat.c	2017-03-06 18:55:30.149246300 +0900
++++ ../../alliance-4.0-patchd/sources/s2r/postrat.c	2017-03-06 18:52:39.155665500 +0900
+@@ -69,10 +69,10 @@
+   for ( rectp         = model ->LAYERTAB[layer_num];
+         rectp;  
+         rectp         = rectp ->NEXT) {
+-    (long) rectp ->X  -= qty ;
+-    (long) rectp ->Y  -= qty ;
+-    (long) rectp ->DX += 2 * qty ;
+-    (long) rectp ->DY += 2 * qty ;
++     rectp ->X  -= qty ;
++     rectp ->Y  -= qty ;
++     rectp ->DX += 2 * qty ;
++     rectp ->DY += 2 * qty ;
+   }
+ }
+ 
+@@ -93,10 +93,10 @@
+   for ( rectp = model ->LAYERTAB[layer_num];  
+         rectp ;  
+         rectp = rectp ->NEXT) {
+-    (long) rectp ->X  += qty ;
+-    (long) rectp ->Y  += qty ;
+-    (long) rectp ->DX -= 2 * qty ;
+-    (long) rectp ->DY -= 2 * qty ;
++     rectp ->X  += qty ;
++     rectp ->Y  += qty ;
++     rectp ->DX -= 2 * qty ;
++     rectp ->DY -= 2 * qty ;
+   }
+ }
+ 
+diff -Naur sources/s2r/postrat.c.rej ../../alliance-4.0-patchd/sources/s2r/postrat.c.rej
+--- sources/s2r/postrat.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/s2r/postrat.c.rej	2017-03-06 18:52:39.093165500 +0900
+@@ -0,0 +1,32 @@
++--- sources/s2r/postrat.c	1998-10-03 00:25:19.000000000 +0900
+++++ sources-patched/s2r/postrat.c	2016-06-02 18:22:12.335310826 +0900
++@@ -69,10 +69,10 @@ long            qty;  /* given in rds_un
++   for ( rectp         = model ->LAYERTAB[layer_num];
++         rectp;  
++         rectp         = rectp ->NEXT) {
++-    (long) rectp ->X  -= qty ;
++-    (long) rectp ->Y  -= qty ;
++-    (long) rectp ->DX += 2 * qty ;
++-    (long) rectp ->DY += 2 * qty ;
+++     rectp ->X  -= qty ;
+++     rectp ->Y  -= qty ;
+++     rectp ->DX += 2 * qty ;
+++     rectp ->DY += 2 * qty ;
++   }
++ }
++ 
++@@ -93,10 +93,10 @@ long            qty;  /* given in rds_un
++   for ( rectp = model ->LAYERTAB[layer_num];  
++         rectp ;  
++         rectp = rectp ->NEXT) {
++-    (long) rectp ->X  += qty ;
++-    (long) rectp ->Y  += qty ;
++-    (long) rectp ->DX -= 2 * qty ;
++-    (long) rectp ->DY -= 2 * qty ;
+++     rectp ->X  += qty ;
+++     rectp ->Y  += qty ;
+++     rectp ->DX -= 2 * qty ;
+++     rectp ->DY -= 2 * qty ;
++   }
++ }
++ 
+diff -Naur sources/scr/main.c ../../alliance-4.0-patchd/sources/scr/main.c
+--- sources/scr/main.c	2017-03-06 18:55:30.274247300 +0900
++++ ../../alliance-4.0-patchd/sources/scr/main.c	2017-03-06 18:52:37.108768700 +0900
+@@ -494,7 +494,7 @@
+  for (CurrentLine = ptFig->LINE; CurrentLine; CurrentLine = CurrentLine->NEXT) {
+   if (CurrentLine->TYPE == CELL) {
+    CurrentInst = CurrentLine->INS;
+-   if (Xab1Figure != CurrentInst->X) {
++   if (Xab1Figure + NewInstWidth <= CurrentInst->X) {
+     CurrentInst =  CreateInstance(ScrNameIndex("row",(*Counter)++),
+                                   NewphIns->NAME,Xab1Figure,CurrentLine->Y,
+                                   NewInstWidth,NewInstHeight,NOSYM);
+@@ -505,7 +505,7 @@
+     CurrentLine->ALLOW = addchain(CurrentLine->ALLOW,(char *)ptNewAllow);
+    }
+    while (CurrentInst->NEXT) {
+-    if ((CurrentInst->X + CurrentInst->WIDTH) != 
++    if ((CurrentInst->X + CurrentInst->WIDTH) + NewInstWidth <=
+         (NextInst = CurrentInst->NEXT)->X) {
+      PrevInst = CurrentInst;
+      CurrentInst = CreateInstance(ScrNameIndex("row",(*Counter)++),
+@@ -521,7 +521,7 @@
+     }
+     else  CurrentInst = CurrentInst->NEXT;
+    }
+-   while ((CurrentInst->X + CurrentInst->WIDTH) != Xab2Figure) {
++   while ((CurrentInst->X + CurrentInst->WIDTH) + NewInstWidth <= Xab2Figure) {
+     CurrentInst->NEXT =  CreateInstance(ScrNameIndex("row",(*Counter)++),
+                                         NewphIns->NAME,
+                                         CurrentInst->X + CurrentInst->WIDTH,
+@@ -768,6 +768,7 @@
+  char           Buffer[10];
+  long           IndexSignal = 0;
+  long           ChannelNumber = 0;
++ static long    Counter = 0;
+ 
+  for (ptScrLine = ptfig->LINE; ptScrLine; ptScrLine = ptScrLine->NEXT)
+  {
+@@ -850,11 +851,11 @@
+    for (CurrentSeg = ptScrChannel->V_SEGMENT; CurrentSeg;
+         CurrentSeg = CurrentSeg->NextSeg) {
+     if ((Y1Symbolic = CurrentSeg->Y1Seg) == 0)
+-     Y1Segment = Yab1 - ((SXMODE && !L3MODE) ? CELLAB/2:0);
++     Y1Segment = Yab1 - ((SXMODE && !L3MODE) ? CELLAB*40/50:0);
+     else
+      Y1Segment = ((Y1Symbolic - 1) * PITCH_Y) + SOUTHOFFSET + YLine;
+     if ((Y2Symbolic = CurrentSeg->Y2Seg) == ChannelHeight + 1)
+-     Y2Segment = Yab2 + ((SXMODE && !L3MODE)? CELLAB/2:0);
++     Y2Segment = Yab2 + ((SXMODE && !L3MODE)? CELLAB*40/50:0);
+     else
+      Y2Segment = ((Y2Symbolic - 1) * PITCH_Y) + SOUTHOFFSET + YLine;
+     X1Segment = X2Segment = ((CurrentSeg->X1Seg - 1) * PITCH_X) + WESTOFFSET + Xab1;
+@@ -1131,6 +1132,7 @@
+                                 ALU1,VSSWIDTH);
+  /* BARRES D'ALIMENTATIONS HORIZONTALES */
+     for (ptXBreak = ptXInsert; ptXBreak; ptXBreak = ptXBreak->NEXT) {
++     long xins;
+      X1 = ptXBreak->X;
+      X2 = X1 + VerticalChannelWidth;
+      X3 = X1 + RIGHTSUPPLY + (VddWidth / 2);
+@@ -1141,6 +1143,16 @@
+      ptMbkRoot->PHSEG = addphseg(ptMbkRoot,ALU1,VDDWIDTH,X1,Y2,X2,Y2,NameVdd);
+      bigvia(ptMbkRoot, CONT_VIA,X3, Y2, VddWidth, VDDWIDTH);
+      bigvia(ptMbkRoot, CONT_VIA,X4, Y1, VssWidth, VSSWIDTH);
++     for(xins=X1; xins+10*SCALE_X <= X2; xins += 10*SCALE_X) {
++        addphins(ptMbkRoot,"tie_x0",ScrNameIndex("tiefeed",Counter++),
++                               NOSYM,
++                               xins,ptScrLine->Y);
++     }
++     for(; xins+5*SCALE_X <= X2; xins += 5*SCALE_X) {
++        addphins(ptMbkRoot,"rowend_x0",ScrNameIndex("tiefeed",Counter++),
++                               NOSYM,
++                               xins,ptScrLine->Y);
++     }
+      /*
+      if (L3MODE)
+      {
+@@ -1600,6 +1612,16 @@
+   fprintf(stderr,"Get the transparencies model ...\n");
+ # endif
+ 
++  NewphIns = getphfig((SXMODE ? "tie_x0":"tie_y"),'A');
++  sx2sc (NewphIns);
++
++
++# ifdef SCR_DEBUG
++  fprintf(stderr,"Complete rows ...\n");
++# endif
++
++  CompleteLine(ptfig,NewphIns,&CounterInst);
++
+   NewphIns = getphfig((SXMODE ? "rowend_x0":"tie_y"),'A');
+   sx2sc (NewphIns);
+ 
+@@ -1610,6 +1632,8 @@
+ 
+   CompleteLine(ptfig,NewphIns,&CounterInst);
+ 
++  NewphIns = getphfig((SXMODE ? "tie_x0":"tie_y"),'A');
++  sx2sc (NewphIns);
+ # ifdef SCR_DEBUG   
+   fprintf(stderr,"In ViewDataBase \n");
+   ViewScrFigure(ptfig);
+@@ -1619,6 +1643,15 @@
+ 
+   if (ptOption->SupplyRecall != 0)
+    ptXInsertList = PreparVerticalChannel(ptfig, NewphIns, ptOption->SupplyRecall, &CounterInst);
++  else
++   if (LeadPlaceConList && (LeadPlaceConList->VER_FEED != 0)) 
++    ptXInsertList = PreparVerticalChannel(ptfig, NewphIns, 1, &CounterInst);
++
++  NewphIns = getphfig((SXMODE ? "rowend_x0":"tie_y"),'A');
++  sx2sc (NewphIns);
++
++  if (ptOption->SupplyRecall != 0)
++   ptXInsertList = PreparVerticalChannel(ptfig, NewphIns, ptOption->SupplyRecall, &CounterInst);
+   else
+    if (LeadPlaceConList && (LeadPlaceConList->VER_FEED != 0)) 
+     ptXInsertList = PreparVerticalChannel(ptfig, NewphIns, 1, &CounterInst);
+diff -Naur sources/scr/Makefile ../../alliance-4.0-patchd/sources/scr/Makefile
+--- sources/scr/Makefile	2017-03-06 18:55:30.227372000 +0900
++++ ../../alliance-4.0-patchd/sources/scr/Makefile	2017-03-06 18:52:37.124392000 +0900
+@@ -83,7 +83,7 @@
+ #******************************************************************************#
+ LOCAL_TRGBIN = $(TARGET_BIN)
+ 
+-LOCAL_FLAGS = $(CFLAGS)
++LOCAL_FLAGS = $(CFLAGS) -g
+ 
+ #******************************************************************************#
+ #*			SOURCES FILES FOR SCR				      *#
+diff -Naur sources/scr/ScrSesame.c ../../alliance-4.0-patchd/sources/scr/ScrSesame.c
+--- sources/scr/ScrSesame.c	2017-03-06 18:55:30.258623000 +0900
++++ ../../alliance-4.0-patchd/sources/scr/ScrSesame.c	2017-03-06 18:52:37.171269700 +0900
+@@ -117,6 +117,7 @@
+  for (CurrentphIns = ptphIns; CurrentphIns; CurrentphIns = CurrentphIns->NEXT) {
+   /*if (!(incatalogfeed(CurrentphIns->FIGNAME))) {*/
+   if (strcmp(CurrentphIns->FIGNAME,(SXMODE ? "rowend_x0":"tie_y"))) {
++//  if (strcmp(CurrentphIns->FIGNAME,(SXMODE ? "tie_x0":"tie_y"))) {
+    for (CurrentloIns = ptloIns; CurrentloIns; CurrentloIns = CurrentloIns->NEXT)
+     if (CurrentloIns->INSNAME == CurrentphIns->INSNAME) break;
+    if (CurrentloIns == NULL) {
+diff -Naur sources/scr/SCR_Type.h ../../alliance-4.0-patchd/sources/scr/SCR_Type.h
+--- sources/scr/SCR_Type.h	2017-03-06 18:55:30.227372000 +0900
++++ ../../alliance-4.0-patchd/sources/scr/SCR_Type.h	2017-03-06 18:52:37.108768700 +0900
+@@ -65,7 +65,7 @@
+ # define VSSWIDTH	((long ) (SXMODE ? 6:8) * SCALE_X)
+ # define RIGHTSUPPLY	(PITCH_X / (SXMODE ? 1:2))
+ # define LEFTSUPPLY	(PITCH_X / (SXMODE ? 1:2))
+-# define MIDDLESUPPLY	((long ) 2 * SCALE_X)
++# define MIDDLESUPPLY	((long ) 3 * SCALE_X)
+ # define CELLAB	        ((long ) 50 * SCALE_X)
+ 
+ typedef struct SCR_Figure 
+diff -Naur sources/sl/but_error.c ../../alliance-4.0-patchd/sources/sl/but_error.c
+--- sources/sl/but_error.c	2017-03-06 18:55:30.321137200 +0900
++++ ../../alliance-4.0-patchd/sources/sl/but_error.c	2017-03-06 18:52:34.189280500 +0900
+@@ -46,7 +46,7 @@
+ 
+ #include <string.h>
+ 
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ #include MUT_H
+ #include LOG_H
+@@ -209,18 +209,15 @@
+  */
+ 
+ void
+-FptDisplayDebug (va_alist)
+-     va_dcl
++FptDisplayDebug (char *fmt, ...)
+ 
+ {
+   va_list args;
+-  char *fmt;
+ 
+   if (FPT_Debug_Flag)
+     {
+ 
+-      va_start (args);
+-      fmt = va_arg (args, char *);
++      va_start (args, fmt);
+       fprintf (stdout, "DEBUG INFO ==> ");
+       vfprintf (stdout, fmt, args);
+       va_end (args);
+@@ -237,18 +234,15 @@
+  */
+ 
+ void
+-FptDisplayVerbose (va_alist)
+-     va_dcl
++FptDisplayVerbose (char *fmt, ...)
+ 
+ {
+   va_list args;
+-  char *fmt;
+ 
+   if (FPT_Verbose_Flag)
+     {
+ 
+-      va_start (args);
+-      fmt = va_arg (args, char *);
++      va_start (args, fmt);
+       /* fprintf (stdout, "==> "); */
+       vfprintf (stdout, fmt, args);
+       va_end (args);
+@@ -262,16 +256,13 @@
+  */
+ 
+ void
+-FptDisplayWarning (va_alist)
+-     va_dcl
++FptDisplayWarning (char *fmt, ...)
+ 
+ {
+   va_list args;
+-  char *fmt;
+ 
+   FPT_Number_of_Warnings++;
+-  va_start (args);
+-  fmt = va_arg (args, char *);
++  va_start (args, fmt);
+   fprintf (stderr, "## WARNING ## ");
+   vfprintf (stderr, fmt, args);
+   va_end (args);
+@@ -285,15 +276,12 @@
+  */
+ 
+ void
+-FptDisplayError (va_alist)
+-     va_dcl
++FptDisplayError (char *fmt, ...)
+ 
+ {
+   va_list args;
+-  char *fmt;
+ 
+-  va_start (args);
+-  fmt = va_arg (args, char *);
++  va_start (args, fmt);
+   fprintf (stderr, "##  ERROR  ## ");
+   vfprintf (stderr, fmt, args);
+   va_end (args);
+@@ -308,19 +296,16 @@
+  */
+ 
+ char *
+-FptSprintf (va_alist)
+-     va_dcl
++FptSprintf (char *fmt, ...)
+ 
+ {
+   va_list args;
+-  char *fmt;
+   char *result;
+   int len;
+ 
+   strcpy (BIG_STATIC_BUFFER, "");
+ 
+-  va_start (args);
+-  fmt = va_arg (args, char *);
++  va_start (args, fmt);
+   vsprintf (BIG_STATIC_BUFFER, fmt, args);
+   va_end (args);
+ 
+diff -Naur sources/sl/but_error.c.rej ../../alliance-4.0-patchd/sources/sl/but_error.c.rej
+--- sources/sl/but_error.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/sl/but_error.c.rej	2017-03-06 18:52:34.033029600 +0900
+@@ -0,0 +1,112 @@
++--- sources/sl/but_error.c	1998-10-03 00:25:06.000000000 +0900
+++++ sources-patched/sl/but_error.c	2016-06-02 20:23:29.006781427 +0900
++@@ -46,7 +46,7 @@
++ 
++ #include <string.h>
++ 
++-#include <varargs.h>
+++#include <stdarg.h>
++ 
++ #include MUT_H
++ #include LOG_H
++@@ -209,18 +209,15 @@ FptDisplayDebugSource (File, Line)
++  */
++ 
++ void
++-FptDisplayDebug (va_alist)
++-     va_dcl
+++FptDisplayDebug (char *fmt, ...)
++ 
++ {
++   va_list args;
++-  char *fmt;
++ 
++   if (FPT_Debug_Flag)
++     {
++ 
++-      va_start (args);
++-      fmt = va_arg (args, char *);
+++      va_start (args, fmt);
++       fprintf (stdout, "DEBUG INFO ==> ");
++       vfprintf (stdout, fmt, args);
++       va_end (args);
++@@ -237,18 +234,15 @@ FptDisplayDebug (va_alist)
++  */
++ 
++ void
++-FptDisplayVerbose (va_alist)
++-     va_dcl
+++FptDisplayVerbose (char *fmt, ...)
++ 
++ {
++   va_list args;
++-  char *fmt;
++ 
++   if (FPT_Verbose_Flag)
++     {
++ 
++-      va_start (args);
++-      fmt = va_arg (args, char *);
+++      va_start (args, fmt);
++       /* fprintf (stdout, "==> "); */
++       vfprintf (stdout, fmt, args);
++       va_end (args);
++@@ -262,16 +256,13 @@ FptDisplayVerbose (va_alist)
++  */
++ 
++ void
++-FptDisplayWarning (va_alist)
++-     va_dcl
+++FptDisplayWarning (char *fmt, ...)
++ 
++ {
++   va_list args;
++-  char *fmt;
++ 
++   FPT_Number_of_Warnings++;
++-  va_start (args);
++-  fmt = va_arg (args, char *);
+++  va_start (args, fmt);
++   fprintf (stderr, "## WARNING ## ");
++   vfprintf (stderr, fmt, args);
++   va_end (args);
++@@ -285,15 +276,12 @@ FptDisplayWarning (va_alist)
++  */
++ 
++ void
++-FptDisplayError (va_alist)
++-     va_dcl
+++FptDisplayError (char *fmt, ...)
++ 
++ {
++   va_list args;
++-  char *fmt;
++ 
++-  va_start (args);
++-  fmt = va_arg (args, char *);
+++  va_start (args, fmt);
++   fprintf (stderr, "##  ERROR  ## ");
++   vfprintf (stderr, fmt, args);
++   va_end (args);
++@@ -308,19 +296,16 @@ FptDisplayError (va_alist)
++  */
++ 
++ char *
++-FptSprintf (va_alist)
++-     va_dcl
+++FptSprintf (char *fmt, ...)
++ 
++ {
++   va_list args;
++-  char *fmt;
++   char *result;
++   int len;
++ 
++   strcpy (BIG_STATIC_BUFFER, "");
++ 
++-  va_start (args);
++-  fmt = va_arg (args, char *);
+++  va_start (args, fmt);
++   vsprintf (BIG_STATIC_BUFFER, fmt, args);
++   va_end (args);
++ 
+diff -Naur sources/sl/but_error.h ../../alliance-4.0-patchd/sources/sl/but_error.h
+--- sources/sl/but_error.h	2017-03-06 18:55:30.321137200 +0900
++++ ../../alliance-4.0-patchd/sources/sl/but_error.h	2017-03-06 18:52:34.486159700 +0900
+@@ -132,10 +132,10 @@
+ extern int getfptdebugflag __PROT ((void));
+ extern int getfptwarnings __PROT ((void));
+ extern void FptDisplayDebugSource __PROT ((char *File, int Line));
+-extern void FptDisplayDebug __PROT (());
+-extern void FptDisplayVerbose __PROT (());
+-extern void FptDisplayWarning __PROT (());
+-extern void FptDisplayError __PROT (());
+-extern char *FptSprintf __PROT (());
++extern void FptDisplayDebug __PROT ((char *, ...));
++extern void FptDisplayVerbose __PROT ((char *, ...));
++extern void FptDisplayWarning __PROT ((char *, ...));
++extern void FptDisplayError __PROT ((char *, ...));
++extern char *FptSprintf __PROT ((char *, ...));
+ 
+ #endif
+diff -Naur sources/sl/but_error.h.rej ../../alliance-4.0-patchd/sources/sl/but_error.h.rej
+--- sources/sl/but_error.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/sl/but_error.h.rej	2017-03-06 18:52:34.001781000 +0900
+@@ -0,0 +1,18 @@
++--- sources/sl/but_error.h	1998-10-03 00:25:06.000000000 +0900
+++++ sources-patched/sl/but_error.h	2016-06-02 20:22:58.953507706 +0900
++@@ -132,10 +132,10 @@ extern int getfptverboseflag __PROT ((vo
++ extern int getfptdebugflag __PROT ((void));
++ extern int getfptwarnings __PROT ((void));
++ extern void FptDisplayDebugSource __PROT ((char *File, int Line));
++-extern void FptDisplayDebug __PROT (());
++-extern void FptDisplayVerbose __PROT (());
++-extern void FptDisplayWarning __PROT (());
++-extern void FptDisplayError __PROT (());
++-extern char *FptSprintf __PROT (());
+++extern void FptDisplayDebug __PROT ((char *, ...));
+++extern void FptDisplayVerbose __PROT ((char *, ...));
+++extern void FptDisplayWarning __PROT ((char *, ...));
+++extern void FptDisplayError __PROT ((char *, ...));
+++extern char *FptSprintf __PROT ((char *, ...));
++ 
++ #endif
+diff -Naur sources/syf/abl/abl103.h ../../alliance-4.0-patchd/sources/syf/abl/abl103.h
+--- sources/syf/abl/abl103.h	2017-03-06 18:55:31.118005100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abl103.h	2017-03-06 18:52:29.870619900 +0900
+@@ -104,6 +104,13 @@
+ # define ABL_ATOM_VALUE( E ) ( (char *)( ( E )->DATA ) )
+ # define ABL_OPER( E )       ( (long)( ( ABL_CAR( ( E ) ) )->DATA ) )
+ 
++# define lABL_CDR( E )        ( ( E )->NEXT )
++# define lABL_CAR( E )        ( ( E )->DATA )
++# define lABL_CADR( E )       ( lABL_CAR( ABL_CDR( ( E ) ) ) )
++# define lABL_CDDR( E )       ( lABL_CDR( ABL_CDR( ( E ) ) ) )
++# define lABL_ATOM_VALUE( E ) ( ( ( E )->DATA ) )
++# define lABL_OPER( E )       ( ( ( ABL_CAR( ( E ) ) )->DATA ) )
++
+ /*------------------------------------------------------\
+ |                                                       |
+ |                     Get Macros                        |
+diff -Naur sources/syf/abl/abl103.h.rej ../../alliance-4.0-patchd/sources/syf/abl/abl103.h.rej
+--- sources/syf/abl/abl103.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abl103.h.rej	2017-03-06 18:52:29.776871800 +0900
+@@ -0,0 +1,16 @@
++--- sources/syf/abl/abl103.h	1998-10-03 00:25:56.000000000 +0900
+++++ sources-patched/syf/abl/abl103.h	2016-06-02 17:04:58.233157271 +0900
++@@ -104,6 +104,13 @@
++ # define ABL_ATOM_VALUE( E ) ( (char *)( ( E )->DATA ) )
++ # define ABL_OPER( E )       ( (long)( ( ABL_CAR( ( E ) ) )->DATA ) )
++ 
+++# define lABL_CDR( E )        ( ( E )->NEXT )
+++# define lABL_CAR( E )        ( ( E )->DATA )
+++# define lABL_CADR( E )       ( lABL_CAR( ABL_CDR( ( E ) ) ) )
+++# define lABL_CDDR( E )       ( lABL_CDR( ABL_CDR( ( E ) ) ) )
+++# define lABL_ATOM_VALUE( E ) ( ( ( E )->DATA ) )
+++# define lABL_OPER( E )       ( ( ( ABL_CAR( ( E ) ) )->DATA ) )
+++
++ /*------------------------------------------------------\
++ |                                                       |
++ |                     Get Macros                        |
+diff -Naur sources/syf/abl/ablcreate.c ../../alliance-4.0-patchd/sources/syf/abl/ablcreate.c
+--- sources/syf/abl/ablcreate.c	2017-03-06 18:55:31.133634200 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablcreate.c	2017-03-06 18:52:29.839368900 +0900
+@@ -172,14 +172,14 @@
+ 
+     if ( AtomValue == ABL_ATOM_NAME_ONE )
+     {
+-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
++      ( Expr->DATA ) = (void *)ABL_ATOM_NAME_ZERO;
+ 
+       return( Expr );
+     }
+     else
+     if ( AtomValue == ABL_ATOM_NAME_ZERO )
+     {
+-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
++      ( Expr->DATA ) = (void *)ABL_ATOM_NAME_ONE;
+ 
+       return( Expr );
+     }
+diff -Naur sources/syf/abl/ablcreate.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablcreate.c.rej
+--- sources/syf/abl/ablcreate.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablcreate.c.rej	2017-03-06 18:52:30.058123800 +0900
+@@ -0,0 +1,19 @@
++--- sources/syf/abl/ablcreate.c	1998-10-03 00:25:56.000000000 +0900
+++++ sources-patched/syf/abl/ablcreate.c	2016-06-02 14:53:22.582342613 +0900
++@@ -172,14 +172,14 @@ ablexpr *createablnotexpr( Expr )
++ 
++     if ( AtomValue == ABL_ATOM_NAME_ONE )
++     {
++-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
+++      ( Expr->DATA ) = (void *)ABL_ATOM_NAME_ZERO;
++ 
++       return( Expr );
++     }
++     else
++     if ( AtomValue == ABL_ATOM_NAME_ZERO )
++     {
++-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
+++      ( Expr->DATA ) = (void *)ABL_ATOM_NAME_ONE;
++ 
++       return( Expr );
++     }
+diff -Naur sources/syf/abl/ablctlnorm.c ../../alliance-4.0-patchd/sources/syf/abl/ablctlnorm.c
+--- sources/syf/abl/ablctlnorm.c	2017-03-06 18:55:31.149256100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablctlnorm.c	2017-03-06 18:52:30.073747100 +0900
+@@ -83,9 +83,9 @@
+   {
+     NormExpr = local_normablctl( ABL_CADR( Expr ) );
+     if ( NormExpr != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = NormExpr;
+-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+-    ABL_OPER( Expr ) = ABL_EX;
++      lABL_CADR( Expr ) = NormExpr;
++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++    lABL_OPER( Expr ) = ABL_EX;
+     NormExpr = createablnotexpr( Expr );
+     return( NormExpr );
+   }
+@@ -97,7 +97,7 @@
+   {
+     NormExpr = local_normablctl( ABL_CADR( Expr ) );
+     if ( NormExpr != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = NormExpr;
++      lABL_CADR( Expr ) = NormExpr;
+     ExprTemp = createablatom( ABL_ATOM_NAME_ONE );
+     NormExpr = createablbinexpr( ABL_EU,
+                          ExprTemp,
+@@ -115,9 +115,9 @@
+   {
+     NormExpr = local_normablctl( ABL_CADR( Expr ) );
+     if ( NormExpr != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = NormExpr;
+-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+-    ABL_OPER( Expr ) = ABL_EG;
++      lABL_CADR( Expr ) = NormExpr;
++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++    lABL_OPER( Expr ) = ABL_EG;
+     NormExpr = createablnotexpr( Expr );
+     return( NormExpr );
+   }
+@@ -129,9 +129,9 @@
+   {
+     NormExpr = local_normablctl( ABL_CADR( Expr ) );
+     if ( NormExpr != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = NormExpr;
+-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+-    ABL_OPER( Expr ) = ABL_EF;
++      lABL_CADR( Expr ) = NormExpr;
++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++    lABL_OPER( Expr ) = ABL_EF;
+     NormExpr = createablnotexpr( Expr );
+     NormExpr = local_normablctl( NormExpr );
+     return( NormExpr );
+@@ -144,13 +144,13 @@
+   {
+     NormExpr = local_normablctl( ABL_CADR( Expr ) );
+     if ( NormExpr != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = NormExpr;
++      lABL_CADR( Expr ) = NormExpr;
+     NormExpr = local_normablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
+     if ( NormExpr != ABL_CAR( ABL_CDDR( Expr ) ) )
+-      ABL_CAR( ABL_CDDR( Expr ) ) = NormExpr;
++      lABL_CAR( ABL_CDDR( Expr ) ) = NormExpr;
+ 
+-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+-    ABL_CAR( ABL_CDDR( Expr ) ) = createablnotexpr( ABL_CAR( ABL_CDDR( Expr ) ) );
++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++    lABL_CAR( ABL_CDDR( Expr ) ) = createablnotexpr( ABL_CAR( ABL_CDDR( Expr ) ) );
+     ExprG1 = dupablexpr( ABL_CAR( ABL_CDDR( Expr ) ) );  
+     ExprG2 = dupablexpr( ABL_CAR( ABL_CDDR( Expr ) ) );  
+     ExprTemp = createablbinexpr( ABL_AND,
+@@ -183,7 +183,7 @@
+   {
+     NormExpr = local_normablctl( ABL_CAR( ScanExpr ) );
+     if ( NormExpr != ABL_CAR( ScanExpr ) )
+-      ABL_CAR( ScanExpr ) = NormExpr;
++      lABL_CAR( ScanExpr ) = NormExpr;
+     NormExpr = Expr;
+   }
+ 
+diff -Naur sources/syf/abl/ablctlnorm.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablctlnorm.c.rej
+--- sources/syf/abl/ablctlnorm.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablctlnorm.c.rej	2017-03-06 18:52:29.964373300 +0900
+@@ -0,0 +1,77 @@
++--- sources/syf/abl/ablctlnorm.c	1998-10-03 00:25:56.000000000 +0900
+++++ sources-patched/syf/abl/ablctlnorm.c	2016-06-02 17:07:19.242664724 +0900
++@@ -83,9 +83,9 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CADR( Expr ) );
++     if ( NormExpr != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = NormExpr;
++-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++-    ABL_OPER( Expr ) = ABL_EX;
+++      lABL_CADR( Expr ) = NormExpr;
+++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+++    lABL_OPER( Expr ) = ABL_EX;
++     NormExpr = createablnotexpr( Expr );
++     return( NormExpr );
++   }
++@@ -97,7 +97,7 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CADR( Expr ) );
++     if ( NormExpr != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = NormExpr;
+++      lABL_CADR( Expr ) = NormExpr;
++     ExprTemp = createablatom( ABL_ATOM_NAME_ONE );
++     NormExpr = createablbinexpr( ABL_EU,
++                          ExprTemp,
++@@ -115,9 +115,9 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CADR( Expr ) );
++     if ( NormExpr != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = NormExpr;
++-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++-    ABL_OPER( Expr ) = ABL_EG;
+++      lABL_CADR( Expr ) = NormExpr;
+++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+++    lABL_OPER( Expr ) = ABL_EG;
++     NormExpr = createablnotexpr( Expr );
++     return( NormExpr );
++   }
++@@ -129,9 +129,9 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CADR( Expr ) );
++     if ( NormExpr != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = NormExpr;
++-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++-    ABL_OPER( Expr ) = ABL_EF;
+++      lABL_CADR( Expr ) = NormExpr;
+++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+++    lABL_OPER( Expr ) = ABL_EF;
++     NormExpr = createablnotexpr( Expr );
++     NormExpr = local_normablctl( NormExpr );
++     return( NormExpr );
++@@ -144,13 +144,13 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CADR( Expr ) );
++     if ( NormExpr != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = NormExpr;
+++      lABL_CADR( Expr ) = NormExpr;
++     NormExpr = local_normablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
++     if ( NormExpr != ABL_CAR( ABL_CDDR( Expr ) ) )
++-      ABL_CAR( ABL_CDDR( Expr ) ) = NormExpr;
+++      lABL_CAR( ABL_CDDR( Expr ) ) = NormExpr;
++ 
++-    ABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
++-    ABL_CAR( ABL_CDDR( Expr ) ) = createablnotexpr( ABL_CAR( ABL_CDDR( Expr ) ) );
+++    lABL_CADR( Expr ) = createablnotexpr( ABL_CADR( Expr ) );
+++    lABL_CAR( ABL_CDDR( Expr ) ) = createablnotexpr( ABL_CAR( ABL_CDDR( Expr ) ) );
++     ExprG1 = dupablexpr( ABL_CAR( ABL_CDDR( Expr ) ) );  
++     ExprG2 = dupablexpr( ABL_CAR( ABL_CDDR( Expr ) ) );  
++     ExprTemp = createablbinexpr( ABL_AND,
++@@ -183,7 +183,7 @@ static ablexpr *local_normablctl( Expr )
++   {
++     NormExpr = local_normablctl( ABL_CAR( ScanExpr ) );
++     if ( NormExpr != ABL_CAR( ScanExpr ) )
++-      ABL_CAR( ScanExpr ) = NormExpr;
+++      lABL_CAR( ScanExpr ) = NormExpr;
++     NormExpr = Expr;
++   }
++ 
+diff -Naur sources/syf/abl/ablctlsimp.c ../../alliance-4.0-patchd/sources/syf/abl/ablctlsimp.c
+--- sources/syf/abl/ablctlsimp.c	2017-03-06 18:55:31.149256100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablctlsimp.c	2017-03-06 18:52:29.886248500 +0900
+@@ -139,7 +139,7 @@
+     ExprTemp = ABL_CADR( ABL_CADR( Expr ) );
+     freechain( ABL_CAR( ABL_CADR( Expr ) ) );
+     freechain( ABL_CADR( Expr ) );
+-    ABL_CADR( Expr ) = ExprTemp;
++    lABL_CADR( Expr ) = ExprTemp;
+     SimpExpr = Expr;
+ 
+     ExprTemp = loc_simpablctl( SimpExpr );
+@@ -158,10 +158,10 @@
+   {
+     ExprTemp = loc_simpablctl( ABL_CADR( Expr ) );
+     if ( ExprTemp != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = ExprTemp;
++      lABL_CADR( Expr ) = ExprTemp;
+     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
+     if ( ExprTemp != ABL_CAR( ABL_CDDR( Expr ) ) )
+-      ABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
++      lABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
+ 
+     if ( ABL_OPER( ABL_CAR( ABL_CDDR( Expr ) ) ) == Oper && 
+      ABL_CADR( Expr ) != (ablexpr *)0 &&
+@@ -188,10 +188,10 @@
+   {
+     ExprTemp = loc_simpablctl( ABL_CADR( Expr ) );
+     if ( ExprTemp != ABL_CADR( Expr ) )
+-      ABL_CADR( Expr ) = ExprTemp;
++      lABL_CADR( Expr ) = ExprTemp;
+     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
+     if ( ExprTemp != ABL_CAR( ABL_CDDR( Expr ) ) )
+-      ABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
++      lABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
+ 
+     if ( ( Oper == ABL_AND  &&
+            ABL_OPER( ABL_CADR( Expr ) ) == ABL_AG &&
+@@ -239,16 +239,16 @@
+       SimpExpr = createablbinexpr( ABL_OR,
+                    ABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ),
+                    ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) );
+-      ABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
+-      ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) = (ablexpr *)0;
++      lABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
++      lABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) = (ablexpr *)0;
+       freeablexpr( Expr );
+ 
+       ExprTemp = loc_simpablctl( ABL_CADR( SimpExpr ) );
+       if ( ExprTemp != ABL_CADR( SimpExpr ) )
+-        ABL_CADR( SimpExpr ) = ExprTemp;
++        lABL_CADR( SimpExpr ) = ExprTemp;
+       ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( SimpExpr ) ) );
+       if ( ExprTemp != ABL_CAR( ABL_CDDR( SimpExpr ) ) )
+-        ABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
++        lABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
+       
+       return( SimpExpr );
+    } 
+@@ -276,16 +276,16 @@
+       SimpExpr = createablbinexpr( ABL_AND,
+                    ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ),
+                    ABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) );
+-      ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
+-      ABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
++      lABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
++      lABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
+       freeablexpr( Expr );
+ 
+       ExprTemp = loc_simpablctl( ABL_CADR( SimpExpr ) );
+       if ( ExprTemp != ABL_CADR( SimpExpr ) )
+-        ABL_CADR( SimpExpr ) = ExprTemp;
++        lABL_CADR( SimpExpr ) = ExprTemp;
+       ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( SimpExpr ) ) );
+       if ( ExprTemp != ABL_CAR( ABL_CDDR( SimpExpr ) ) )
+-        ABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
++        lABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
+       
+       return( SimpExpr );
+    } 
+@@ -323,13 +323,13 @@
+     ExprTemp = createablbinexpr( ABL_AU,
+                  ABL_CADR( ABL_CADR( Expr ) ),
+                  ABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) );
+-    ABL_CADR( ABL_CADR( Expr ) ) = (ablexpr *)0;
+-    ABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) = (ablexpr *)0;
++    lABL_CADR( ABL_CADR( Expr ) ) = (ablexpr *)0;
++    lABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) = (ablexpr *)0;
+     SimpExpr = createablbinexpr( ABL_EU,
+                  ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ),
+                  ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) );
+-    ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
+-    ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) = (ablexpr *)0;
++    lABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
++    lABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) = (ablexpr *)0;
+     SimpExpr = createablbinexpr( ABL_AND,
+                  ExprTemp,
+                  SimpExpr );
+@@ -337,16 +337,16 @@
+ 
+     ExprTemp = loc_simpablctl( ABL_CADR( ABL_CADR( SimpExpr ) ) );
+     if ( ExprTemp != ABL_CADR( ABL_CADR( SimpExpr ) ) )
+-      ABL_CADR( ABL_CADR( SimpExpr ) ) = ExprTemp;
++      lABL_CADR( ABL_CADR( SimpExpr ) ) = ExprTemp;
+     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) );
+     if ( ExprTemp != ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) )
+-      ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) = ExprTemp;
++      lABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) = ExprTemp;
+     ExprTemp = loc_simpablctl( ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) );
+     if ( ExprTemp != ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) )
+-      ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) = ExprTemp;
++      lABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) = ExprTemp;
+     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) );
+     if ( ExprTemp != ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) )
+-      ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) = ExprTemp;
++      lABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) = ExprTemp;
+ 
+     return( SimpExpr );
+   }
+@@ -359,7 +359,7 @@
+   {
+     SimpExpr = loc_simpablctl( ABL_CAR( ScanExpr ) );
+     if ( SimpExpr != ABL_CAR( ScanExpr ) )
+-      ABL_CAR( ScanExpr ) = SimpExpr;
++      lABL_CAR( ScanExpr ) = SimpExpr;
+     SimpExpr = Expr;
+   }
+ 
+diff -Naur sources/syf/abl/ablctlsimp.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablctlsimp.c.rej
+--- sources/syf/abl/ablctlsimp.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablctlsimp.c.rej	2017-03-06 18:52:29.995621300 +0900
+@@ -0,0 +1,127 @@
++--- sources/syf/abl/ablctlsimp.c	1998-10-03 00:25:56.000000000 +0900
+++++ sources-patched/syf/abl/ablctlsimp.c	2016-06-02 17:06:06.887893847 +0900
++@@ -139,7 +139,7 @@ static ablexpr *loc_simpablctl( Expr )
++     ExprTemp = ABL_CADR( ABL_CADR( Expr ) );
++     freechain( ABL_CAR( ABL_CADR( Expr ) ) );
++     freechain( ABL_CADR( Expr ) );
++-    ABL_CADR( Expr ) = ExprTemp;
+++    lABL_CADR( Expr ) = ExprTemp;
++     SimpExpr = Expr;
++ 
++     ExprTemp = loc_simpablctl( SimpExpr );
++@@ -158,10 +158,10 @@ static ablexpr *loc_simpablctl( Expr )
++   {
++     ExprTemp = loc_simpablctl( ABL_CADR( Expr ) );
++     if ( ExprTemp != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = ExprTemp;
+++      lABL_CADR( Expr ) = ExprTemp;
++     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
++     if ( ExprTemp != ABL_CAR( ABL_CDDR( Expr ) ) )
++-      ABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
+++      lABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
++ 
++     if ( ABL_OPER( ABL_CAR( ABL_CDDR( Expr ) ) ) == Oper && 
++      ABL_CADR( Expr ) != (ablexpr *)0 &&
++@@ -188,10 +188,10 @@ static ablexpr *loc_simpablctl( Expr )
++   {
++     ExprTemp = loc_simpablctl( ABL_CADR( Expr ) );
++     if ( ExprTemp != ABL_CADR( Expr ) )
++-      ABL_CADR( Expr ) = ExprTemp;
+++      lABL_CADR( Expr ) = ExprTemp;
++     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( Expr ) ) );
++     if ( ExprTemp != ABL_CAR( ABL_CDDR( Expr ) ) )
++-      ABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
+++      lABL_CAR( ABL_CDDR( Expr ) ) = ExprTemp;
++ 
++     if ( ( Oper == ABL_AND  &&
++            ABL_OPER( ABL_CADR( Expr ) ) == ABL_AG &&
++@@ -239,16 +239,16 @@ static ablexpr *loc_simpablctl( Expr )
++       SimpExpr = createablbinexpr( ABL_OR,
++                    ABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ),
++                    ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) );
++-      ABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
++-      ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) = (ablexpr *)0;
+++      lABL_CADR( ABL_CADR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
+++      lABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) ) = (ablexpr *)0;
++       freeablexpr( Expr );
++ 
++       ExprTemp = loc_simpablctl( ABL_CADR( SimpExpr ) );
++       if ( ExprTemp != ABL_CADR( SimpExpr ) )
++-        ABL_CADR( SimpExpr ) = ExprTemp;
+++        lABL_CADR( SimpExpr ) = ExprTemp;
++       ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( SimpExpr ) ) );
++       if ( ExprTemp != ABL_CAR( ABL_CDDR( SimpExpr ) ) )
++-        ABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
+++        lABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
++       
++       return( SimpExpr );
++    } 
++@@ -276,16 +276,16 @@ static ablexpr *loc_simpablctl( Expr )
++       SimpExpr = createablbinexpr( ABL_AND,
++                    ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ),
++                    ABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) );
++-      ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
++-      ABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
+++      lABL_CADR( ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
+++      lABL_CAR( ABL_CDDR( ABL_CADR( ABL_CADR( Expr ) ) ) ) = (ablexpr *)0;
++       freeablexpr( Expr );
++ 
++       ExprTemp = loc_simpablctl( ABL_CADR( SimpExpr ) );
++       if ( ExprTemp != ABL_CADR( SimpExpr ) )
++-        ABL_CADR( SimpExpr ) = ExprTemp;
+++        lABL_CADR( SimpExpr ) = ExprTemp;
++       ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( SimpExpr ) ) );
++       if ( ExprTemp != ABL_CAR( ABL_CDDR( SimpExpr ) ) )
++-        ABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
+++        lABL_CAR( ABL_CDDR( SimpExpr ) ) = ExprTemp;
++       
++       return( SimpExpr );
++    } 
++@@ -323,13 +323,13 @@ static ablexpr *loc_simpablctl( Expr )
++     ExprTemp = createablbinexpr( ABL_AU,
++                  ABL_CADR( ABL_CADR( Expr ) ),
++                  ABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) );
++-    ABL_CADR( ABL_CADR( Expr ) ) = (ablexpr *)0;
++-    ABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) = (ablexpr *)0;
+++    lABL_CADR( ABL_CADR( Expr ) ) = (ablexpr *)0;
+++    lABL_CADR( ABL_CADR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) = (ablexpr *)0;
++     SimpExpr = createablbinexpr( ABL_EU,
++                  ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ),
++                  ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) );
++-    ABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
++-    ABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) = (ablexpr *)0;
+++    lABL_CAR( ABL_CDDR( ABL_CADR( Expr ) ) ) = (ablexpr *)0;
+++    lABL_CADR( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( Expr ) ) ) ) ) = (ablexpr *)0;
++     SimpExpr = createablbinexpr( ABL_AND,
++                  ExprTemp,
++                  SimpExpr );
++@@ -337,16 +337,16 @@ static ablexpr *loc_simpablctl( Expr )
++ 
++     ExprTemp = loc_simpablctl( ABL_CADR( ABL_CADR( SimpExpr ) ) );
++     if ( ExprTemp != ABL_CADR( ABL_CADR( SimpExpr ) ) )
++-      ABL_CADR( ABL_CADR( SimpExpr ) ) = ExprTemp;
+++      lABL_CADR( ABL_CADR( SimpExpr ) ) = ExprTemp;
++     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) );
++     if ( ExprTemp != ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) )
++-      ABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) = ExprTemp;
+++      lABL_CAR( ABL_CDDR( ABL_CADR( SimpExpr ) ) ) = ExprTemp;
++     ExprTemp = loc_simpablctl( ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) );
++     if ( ExprTemp != ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) )
++-      ABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) = ExprTemp;
+++      lABL_CADR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) = ExprTemp;
++     ExprTemp = loc_simpablctl( ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) );
++     if ( ExprTemp != ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) )
++-      ABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) = ExprTemp;
+++      lABL_CAR( ABL_CDDR( ABL_CAR( ABL_CDDR( SimpExpr ) ) ) ) = ExprTemp;
++ 
++     return( SimpExpr );
++   }
++@@ -359,7 +359,7 @@ static ablexpr *loc_simpablctl( Expr )
++   {
++     SimpExpr = loc_simpablctl( ABL_CAR( ScanExpr ) );
++     if ( SimpExpr != ABL_CAR( ScanExpr ) )
++-      ABL_CAR( ScanExpr ) = SimpExpr;
+++      lABL_CAR( ScanExpr ) = SimpExpr;
++     SimpExpr = Expr;
++   }
++ 
+diff -Naur sources/syf/abl/abldev.c ../../alliance-4.0-patchd/sources/syf/abl/abldev.c
+--- sources/syf/abl/abldev.c	2017-03-06 18:55:31.164881300 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abldev.c	2017-03-06 18:52:29.917495100 +0900
+@@ -142,7 +142,7 @@
+ 
+     while ( ( Expr = ABL_CDR( Expr ) ) != (ablexpr *)0 )
+     {
+-      ABL_CAR( Expr ) = (void *)devablxorexpr( ABL_CAR( Expr ) );
++      ( Expr->DATA ) = (void *)devablxorexpr( ABL_CAR( Expr ) );
+     }
+   }
+ 
+diff -Naur sources/syf/abl/abldev.c.rej ../../alliance-4.0-patchd/sources/syf/abl/abldev.c.rej
+--- sources/syf/abl/abldev.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abldev.c.rej	2017-03-06 18:52:30.011248000 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/abl/abldev.c	1998-10-03 00:25:57.000000000 +0900
+++++ sources-patched/syf/abl/abldev.c	2016-06-02 15:31:06.251802742 +0900
++@@ -142,7 +142,7 @@ ablexpr *devablxorexpr( Expr )
++ 
++     while ( ( Expr = ABL_CDR( Expr ) ) != (ablexpr *)0 )
++     {
++-      ABL_CAR( Expr ) = (void *)devablxorexpr( ABL_CAR( Expr ) );
+++      ( Expr->DATA ) = (void *)devablxorexpr( ABL_CAR( Expr ) );
++     }
++   }
++ 
+diff -Naur sources/syf/abl/abloptim.c ../../alliance-4.0-patchd/sources/syf/abl/abloptim.c
+--- sources/syf/abl/abloptim.c	2017-03-06 18:55:31.258633300 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abloptim.c	2017-03-06 18:52:29.808118400 +0900
+@@ -134,14 +134,14 @@
+ 
+     if ( AtomValue == ABL_ATOM_NAME_ONE )
+     {
+-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
++      lABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
+ 
+       return( Expr );
+     }
+     else
+     if ( AtomValue == ABL_ATOM_NAME_ZERO )
+     {
+-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
++      lABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
+ 
+       return( Expr );
+     }
+@@ -162,7 +162,7 @@
+     else
+     if ( NotOper != -1 )
+     {
+-      ABL_OPER( Expr ) = NotOper;
++      lABL_OPER( Expr ) = NotOper;
+       return( Expr );
+     }
+   }
+diff -Naur sources/syf/abl/abloptim.c.rej ../../alliance-4.0-patchd/sources/syf/abl/abloptim.c.rej
+--- sources/syf/abl/abloptim.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/abloptim.c.rej	2017-03-06 18:52:30.026875200 +0900
+@@ -0,0 +1,28 @@
++--- sources/syf/abl/abloptim.c	1998-10-03 00:25:57.000000000 +0900
+++++ sources-patched/syf/abl/abloptim.c	2016-06-02 17:07:55.776053956 +0900
++@@ -134,14 +134,14 @@ ablexpr *optimablnotexpr( Expr )
++ 
++     if ( AtomValue == ABL_ATOM_NAME_ONE )
++     {
++-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
+++      lABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ZERO;
++ 
++       return( Expr );
++     }
++     else
++     if ( AtomValue == ABL_ATOM_NAME_ZERO )
++     {
++-      ABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
+++      lABL_ATOM_VALUE( Expr ) = (void *)ABL_ATOM_NAME_ONE;
++ 
++       return( Expr );
++     }
++@@ -162,7 +162,7 @@ ablexpr *optimablnotexpr( Expr )
++     else
++     if ( NotOper != -1 )
++     {
++-      ABL_OPER( Expr ) = NotOper;
+++      lABL_OPER( Expr ) = NotOper;
++       return( Expr );
++     }
++   }
+diff -Naur sources/syf/abl/ablpolar.c ../../alliance-4.0-patchd/sources/syf/abl/ablpolar.c
+--- sources/syf/abl/ablpolar.c	2017-03-06 18:55:31.258633300 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablpolar.c	2017-03-06 18:52:29.917495100 +0900
+@@ -195,7 +195,7 @@
+     }
+     else
+     {
+-      ABL_CADR( Expr ) = polarablexpr( ABL_CADR( Expr ), ABL_POLAR_POSITIVE );
++      ( Expr->NEXT )->DATA = polarablexpr( ABL_CADR( Expr ), ABL_POLAR_POSITIVE );
+ 
+       if ( Polar == ABL_POLAR_NEGATIVE )
+       {
+@@ -213,12 +213,12 @@
+     if ( AblPolarOperTable[ Oper ][ 2 ] ==  1 ) Polar = ! Polar;
+     if ( AblPolarOperTable[ Oper ][ 2 ] == -1 ) Polar = ABL_POLAR_POSITIVE;
+ 
+-    ABL_OPER( Expr ) = NewOper;
++    ((ablexpr *)( Expr->DATA ))->DATA = NewOper;
+     ScanExpr         = Expr;
+ 
+     while ( ( ScanExpr = ABL_CDR( ScanExpr ) ) != (ablexpr *)0 )
+     {
+-      ABL_CAR( ScanExpr ) = polarablexpr( ABL_CAR( ScanExpr ), Polar );
++      ( ScanExpr->DATA ) = polarablexpr( ABL_CAR( ScanExpr ), Polar );
+     }
+   }
+ 
+diff -Naur sources/syf/abl/ablpolar.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablpolar.c.rej
+--- sources/syf/abl/ablpolar.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablpolar.c.rej	2017-03-06 18:52:30.026875200 +0900
+@@ -0,0 +1,26 @@
++--- sources/syf/abl/ablpolar.c	1998-10-03 00:25:57.000000000 +0900
+++++ sources-patched/syf/abl/ablpolar.c	2016-06-02 15:30:32.762490224 +0900
++@@ -195,7 +195,7 @@ ablexpr *polarablexpr( Expr, Polar )
++     }
++     else
++     {
++-      ABL_CADR( Expr ) = polarablexpr( ABL_CADR( Expr ), ABL_POLAR_POSITIVE );
+++      ( Expr->NEXT )->DATA = polarablexpr( ABL_CADR( Expr ), ABL_POLAR_POSITIVE );
++ 
++       if ( Polar == ABL_POLAR_NEGATIVE )
++       {
++@@ -213,12 +213,12 @@ ablexpr *polarablexpr( Expr, Polar )
++     if ( AblPolarOperTable[ Oper ][ 2 ] ==  1 ) Polar = ! Polar;
++     if ( AblPolarOperTable[ Oper ][ 2 ] == -1 ) Polar = ABL_POLAR_POSITIVE;
++ 
++-    ABL_OPER( Expr ) = NewOper;
+++    ((ablexpr *)( Expr->DATA ))->DATA = NewOper;
++     ScanExpr         = Expr;
++ 
++     while ( ( ScanExpr = ABL_CDR( ScanExpr ) ) != (ablexpr *)0 )
++     {
++-      ABL_CAR( ScanExpr ) = polarablexpr( ABL_CAR( ScanExpr ), Polar );
+++      ( ScanExpr->DATA ) = polarablexpr( ABL_CAR( ScanExpr ), Polar );
++     }
++   }
++ 
+diff -Naur sources/syf/abl/ablsimp.c ../../alliance-4.0-patchd/sources/syf/abl/ablsimp.c
+--- sources/syf/abl/ablsimp.c	2017-03-06 18:55:31.274256500 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablsimp.c	2017-03-06 18:52:29.761243600 +0900
+@@ -175,7 +175,7 @@
+         if ( AblSimplifyTable[ Oper ][ 1 ] != -1 )
+         {
+           freeablexpr( Expr );
+-          ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
++          ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
+ 
+           return( ExprSimp );
+         }
+@@ -204,14 +204,14 @@
+   if ( ExprQueue == Expr )
+   {
+     ExprSimp = ABL_CAR( Expr );
+-    ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
++    ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
+     freechain( Expr );
+   }
+   else
+   if ( ExprQueue == ABL_CDR( Expr ) )
+   {
+     ExprSimp = ABL_CADR( Expr );
+-    ABL_CADR( Expr ) = (void *)0;
++    ( Expr->NEXT )->DATA = (void *)0;
+     freeablexpr( Expr );
+   }
+   else
+@@ -278,7 +278,7 @@
+ 
+   if ( isablunaryoper( Oper ) )
+   {
+-    ABL_CADR( Expr ) = loc_simpablexpr( ABL_CADR( Expr ) );
++    ( Expr->NEXT )->DATA = loc_simpablexpr( ABL_CADR( Expr ) );
+ 
+     return( Expr );
+   }
+@@ -286,7 +286,7 @@
+   if ( getabloperpolar( Oper ) == ABL_POLAR_NEGATIVE )
+   {
+     Oper = getablopernot( Oper );
+-    ABL_OPER( Expr ) = Oper;
++    ((ablexpr *)( Expr->DATA ))->DATA = Oper;
+     Negative = 1;
+   }
+   else
+@@ -309,9 +309,9 @@
+       {
+         if ( AblSimplifyTable[ Oper ][ 1 ] != -1 )
+         {
+-          ABL_CAR( ScanExpr ) = (ablexpr *)0;
++          ( ScanExpr->DATA ) = (ablexpr *)0;
+           freeablexpr( Expr );
+-          ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
++          ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
+ 
+           return( ExprSimp );
+         }
+@@ -338,12 +338,12 @@
+       }
+       else
+       {
+-        ABL_CAR( ScanExpr ) = ExprSimp;
++        ( ScanExpr->DATA ) = ExprSimp;
+       }
+     }
+     else
+     {
+-      ABL_CAR( ScanExpr ) = ExprSimp;
++      ( ScanExpr->DATA ) = ExprSimp;
+     }
+ 
+     PrevExpr = ScanExpr;
+@@ -351,14 +351,14 @@
+ 
+   if ( PrevExpr == Expr )
+   {
+-    ABL_ATOM_VALUE( Expr ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
++    ( Expr->DATA ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
+     ExprSimp = Expr;
+   }
+   else
+   if ( PrevExpr == ABL_CDR( Expr ) )
+   {
+     ExprSimp = ABL_CADR( Expr );
+-    ABL_CADR( Expr ) = (void *)0;
++    ( Expr->NEXT )->DATA = (void *)0;
+     freeablexpr( Expr );
+   }
+   else
+diff -Naur sources/syf/abl/ablsimp.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablsimp.c.rej
+--- sources/syf/abl/ablsimp.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablsimp.c.rej	2017-03-06 18:52:29.979998500 +0900
+@@ -0,0 +1,90 @@
++--- sources/syf/abl/ablsimp.c	1998-10-03 00:25:58.000000000 +0900
+++++ sources-patched/syf/abl/ablsimp.c	2016-06-02 15:28:27.461320926 +0900
++@@ -175,7 +175,7 @@ ablexpr *simpdupexpr( Expr )
++         if ( AblSimplifyTable[ Oper ][ 1 ] != -1 )
++         {
++           freeablexpr( Expr );
++-          ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
+++          ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
++ 
++           return( ExprSimp );
++         }
++@@ -204,14 +204,14 @@ ablexpr *simpdupexpr( Expr )
++   if ( ExprQueue == Expr )
++   {
++     ExprSimp = ABL_CAR( Expr );
++-    ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
+++    ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
++     freechain( Expr );
++   }
++   else
++   if ( ExprQueue == ABL_CDR( Expr ) )
++   {
++     ExprSimp = ABL_CADR( Expr );
++-    ABL_CADR( Expr ) = (void *)0;
+++    ( Expr->NEXT )->DATA = (void *)0;
++     freeablexpr( Expr );
++   }
++   else
++@@ -278,7 +278,7 @@ ablexpr *loc_simpablexpr( Expr )
++ 
++   if ( isablunaryoper( Oper ) )
++   {
++-    ABL_CADR( Expr ) = loc_simpablexpr( ABL_CADR( Expr ) );
+++    ( Expr->NEXT )->DATA = loc_simpablexpr( ABL_CADR( Expr ) );
++ 
++     return( Expr );
++   }
++@@ -286,7 +286,7 @@ ablexpr *loc_simpablexpr( Expr )
++   if ( getabloperpolar( Oper ) == ABL_POLAR_NEGATIVE )
++   {
++     Oper = getablopernot( Oper );
++-    ABL_OPER( Expr ) = Oper;
+++    ((ablexpr *)( Expr->DATA ))->DATA = Oper;
++     Negative = 1;
++   }
++   else
++@@ -309,9 +309,9 @@ ablexpr *loc_simpablexpr( Expr )
++       {
++         if ( AblSimplifyTable[ Oper ][ 1 ] != -1 )
++         {
++-          ABL_CAR( ScanExpr ) = (ablexpr *)0;
+++          ( ScanExpr->DATA ) = (ablexpr *)0;
++           freeablexpr( Expr );
++-          ABL_ATOM_VALUE( ExprSimp ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
+++          ( ExprSimp->DATA ) = (char *)AblSimplifyTable[ Oper ][ 1 ];
++ 
++           return( ExprSimp );
++         }
++@@ -338,12 +338,12 @@ ablexpr *loc_simpablexpr( Expr )
++       }
++       else
++       {
++-        ABL_CAR( ScanExpr ) = ExprSimp;
+++        ( ScanExpr->DATA ) = ExprSimp;
++       }
++     }
++     else
++     {
++-      ABL_CAR( ScanExpr ) = ExprSimp;
+++      ( ScanExpr->DATA ) = ExprSimp;
++     }
++ 
++     PrevExpr = ScanExpr;
++@@ -351,14 +351,14 @@ ablexpr *loc_simpablexpr( Expr )
++ 
++   if ( PrevExpr == Expr )
++   {
++-    ABL_ATOM_VALUE( Expr ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
+++    ( Expr->DATA ) = (char *)AblSimplifyTable[ Oper ][ 3 ];
++     ExprSimp = Expr;
++   }
++   else
++   if ( PrevExpr == ABL_CDR( Expr ) )
++   {
++     ExprSimp = ABL_CADR( Expr );
++-    ABL_CADR( Expr ) = (void *)0;
+++    ( Expr->NEXT )->DATA = (void *)0;
++     freeablexpr( Expr );
++   }
++   else
+diff -Naur sources/syf/abl/ablsubst.c ../../alliance-4.0-patchd/sources/syf/abl/ablsubst.c
+--- sources/syf/abl/ablsubst.c	2017-03-06 18:55:31.305553000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablsubst.c	2017-03-06 18:52:29.808118400 +0900
+@@ -79,7 +79,7 @@
+ 
+   while ( ( Expr = ABL_CDR( Expr ) ) )
+   {
+-    ABL_CAR( Expr ) = loc_substablexpr( ABL_CAR( Expr ) );
++    ( Expr->DATA ) = loc_substablexpr( ABL_CAR( Expr ) );
+   }
+ 
+   return( ExprSubst );
+diff -Naur sources/syf/abl/ablsubst.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablsubst.c.rej
+--- sources/syf/abl/ablsubst.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablsubst.c.rej	2017-03-06 18:52:30.011248000 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/abl/ablsubst.c	1998-10-03 00:25:58.000000000 +0900
+++++ sources-patched/syf/abl/ablsubst.c	2016-06-02 14:54:15.587033358 +0900
++@@ -79,7 +79,7 @@ static ablexpr *loc_substablexpr( Expr )
++ 
++   while ( ( Expr = ABL_CDR( Expr ) ) )
++   {
++-    ABL_CAR( Expr ) = loc_substablexpr( ABL_CAR( Expr ) );
+++    ( Expr->DATA ) = loc_substablexpr( ABL_CAR( Expr ) );
++   }
++ 
++   return( ExprSubst );
+diff -Naur sources/syf/abl/ablunflat.c ../../alliance-4.0-patchd/sources/syf/abl/ablunflat.c
+--- sources/syf/abl/ablunflat.c	2017-03-06 18:55:31.321148400 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablunflat.c	2017-03-06 18:52:29.933119900 +0900
+@@ -73,7 +73,7 @@
+         if ( Polar != ABL_POLAR_POSITIVE )
+         {
+           Oper = getablopernot( Oper );
+-          ABL_OPER( Expr ) = Oper;
++          ((ablexpr *)( Expr->DATA ))->DATA = Oper;
+ 
+           ScanExpr = createabloper( ABL_NOT );
+           addablhexpr( ScanExpr, Expr );
+@@ -93,7 +93,7 @@
+ 
+     while ( ( ScanExpr = ABL_CDR( ScanExpr ) ) != (ablexpr *)0 )
+     {
+-      ABL_CAR( ScanExpr ) = unflatablexpr( ABL_CAR( ScanExpr ) );
++      ( ScanExpr->DATA ) = unflatablexpr( ABL_CAR( ScanExpr ) );
+     }
+   }
+ 
+diff -Naur sources/syf/abl/ablunflat.c.rej ../../alliance-4.0-patchd/sources/syf/abl/ablunflat.c.rej
+--- sources/syf/abl/ablunflat.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abl/ablunflat.c.rej	2017-03-06 18:52:29.933119900 +0900
+@@ -0,0 +1,20 @@
++--- sources/syf/abl/ablunflat.c	1998-10-03 00:25:58.000000000 +0900
+++++ sources-patched/syf/abl/ablunflat.c	2016-06-02 15:32:18.840480132 +0900
++@@ -73,7 +73,7 @@ ablexpr *unflatablexpr( Expr )
++         if ( Polar != ABL_POLAR_POSITIVE )
++         {
++           Oper = getablopernot( Oper );
++-          ABL_OPER( Expr ) = Oper;
+++          ((ablexpr *)( Expr->DATA ))->DATA = Oper;
++ 
++           ScanExpr = createabloper( ABL_NOT );
++           addablhexpr( ScanExpr, Expr );
++@@ -93,7 +93,7 @@ ablexpr *unflatablexpr( Expr )
++ 
++     while ( ( ScanExpr = ABL_CDR( ScanExpr ) ) != (ablexpr *)0 )
++     {
++-      ABL_CAR( ScanExpr ) = unflatablexpr( ABL_CAR( ScanExpr ) );
+++      ( ScanExpr->DATA ) = unflatablexpr( ABL_CAR( ScanExpr ) );
++     }
++   }
++ 
+diff -Naur sources/syf/abt/bhl_delaux.c ../../alliance-4.0-patchd/sources/syf/abt/bhl_delaux.c
+--- sources/syf/abt/bhl_delaux.c	2017-03-06 18:55:31.352398400 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abt/bhl_delaux.c	2017-03-06 18:52:28.370604700 +0900
+@@ -141,7 +141,7 @@
+       bhlerror( BHL_OPERATOR_ERROR, Oper );
+     }
+ 
+-    ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++    lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+ 
+     return( FirstExpr );
+   }
+@@ -183,11 +183,11 @@
+     bhlerror( BHL_OPERATOR_ERROR, Oper );
+   }
+ 
+-  ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++  lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+ 
+   while ( ( Expr = ABL_CDR( Expr ) ) != (chain_list *)0 )
+   {
+-    ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++    lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+   }
+ 
+   return( FirstExpr );
+diff -Naur sources/syf/abt/bhl_delaux.c.rej ../../alliance-4.0-patchd/sources/syf/abt/bhl_delaux.c.rej
+--- sources/syf/abt/bhl_delaux.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/abt/bhl_delaux.c.rej	2017-03-06 18:52:28.354977000 +0900
+@@ -0,0 +1,25 @@
++--- sources/syf/abt/bhl_delaux.c	1999-06-01 23:56:15.000000000 +0900
+++++ sources-patched/syf/abt/bhl_delaux.c	2016-06-02 17:10:04.652427022 +0900
++@@ -141,7 +141,7 @@ static chain_list *bhl_delauxexpr( Expr
++       bhlerror( BHL_OPERATOR_ERROR, Oper );
++     }
++ 
++-    ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+++    lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++ 
++     return( FirstExpr );
++   }
++@@ -183,11 +183,11 @@ static chain_list *bhl_delauxexpr( Expr
++     bhlerror( BHL_OPERATOR_ERROR, Oper );
++   }
++ 
++-  ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+++  lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++ 
++   while ( ( Expr = ABL_CDR( Expr ) ) != (chain_list *)0 )
++   {
++-    ABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
+++    lABL_CAR( Expr ) = bhl_delauxexpr( ABL_CAR( Expr ) );
++   }
++ 
++   return( FirstExpr );
+diff -Naur sources/syf/bdd/bddcircuit.c ../../alliance-4.0-patchd/sources/syf/bdd/bddcircuit.c
+--- sources/syf/bdd/bddcircuit.c	2017-03-06 18:55:31.743011900 +0900
++++ ../../alliance-4.0-patchd/sources/syf/bdd/bddcircuit.c	2017-03-06 18:52:29.542490700 +0900
+@@ -785,7 +785,7 @@
+ 
+     if ( Name != (char *)0 )
+     {
+-      ABL_CAR( Expr ) = addchain( (chain_list *)0, (void *)ABL_STABLE );
++      lABL_CAR( Expr ) = addchain( (chain_list *)0, (void *)ABL_STABLE );
+       addablhexpr( Expr, createablatom( Name ) );
+     }
+   }
+diff -Naur sources/syf/bdd/bddcircuit.c.rej ../../alliance-4.0-patchd/sources/syf/bdd/bddcircuit.c.rej
+--- sources/syf/bdd/bddcircuit.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/bdd/bddcircuit.c.rej	2017-03-06 18:52:29.620617900 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/bdd/bddcircuit.c	1999-09-23 23:17:46.000000000 +0900
+++++ sources-patched/syf/bdd/bddcircuit.c	2016-06-02 17:08:48.483615509 +0900
++@@ -785,7 +785,7 @@ void loc_stablebddcircuitabl( Expr )
++ 
++     if ( Name != (char *)0 )
++     {
++-      ABL_CAR( Expr ) = addchain( (chain_list *)0, (void *)ABL_STABLE );
+++      lABL_CAR( Expr ) = addchain( (chain_list *)0, (void *)ABL_STABLE );
++       addablhexpr( Expr, createablatom( Name ) );
++     }
++   }
+diff -Naur sources/syf/bdd/bddconvert.c ../../alliance-4.0-patchd/sources/syf/bdd/bddconvert.c
+--- sources/syf/bdd/bddconvert.c	2017-03-06 18:55:31.774280500 +0900
++++ ../../alliance-4.0-patchd/sources/syf/bdd/bddconvert.c	2017-03-06 18:52:29.417488800 +0900
+@@ -525,7 +525,7 @@
+   if ( ABL_CDDR( BddConvertSumProd ) == (chain_list *)0 )
+   {
+     SumProd = ABL_CADR( BddConvertSumProd );
+-    ABL_CADR( BddConvertSumProd ) = (chain_list *)0;
++    lABL_CADR( BddConvertSumProd ) = (chain_list *)0;
+ 
+     freeablexpr( BddConvertSumProd );
+     BddConvertSumProd = SumProd;
+diff -Naur sources/syf/bdd/bddconvert.c.rej ../../alliance-4.0-patchd/sources/syf/bdd/bddconvert.c.rej
+--- sources/syf/bdd/bddconvert.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/bdd/bddconvert.c.rej	2017-03-06 18:52:29.229987300 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/bdd/bddconvert.c	1998-10-03 00:25:59.000000000 +0900
+++++ sources-patched/syf/bdd/bddconvert.c	2016-06-02 17:08:30.321422007 +0900
++@@ -525,7 +525,7 @@ chain_list *convertbddnodesumabl( BddSys
++   if ( ABL_CDDR( BddConvertSumProd ) == (chain_list *)0 )
++   {
++     SumProd = ABL_CADR( BddConvertSumProd );
++-    ABL_CADR( BddConvertSumProd ) = (chain_list *)0;
+++    lABL_CADR( BddConvertSumProd ) = (chain_list *)0;
++ 
++     freeablexpr( BddConvertSumProd );
++     BddConvertSumProd = SumProd;
+diff -Naur sources/syf/fvh/fvhfbh2fsm.c ../../alliance-4.0-patchd/sources/syf/fvh/fvhfbh2fsm.c
+--- sources/syf/fvh/fvhfbh2fsm.c	2017-03-06 18:55:32.743024600 +0900
++++ ../../alliance-4.0-patchd/sources/syf/fvh/fvhfbh2fsm.c	2017-03-06 18:52:30.276877200 +0900
+@@ -1473,7 +1473,7 @@
+     if ( ABL_CDDR( Equation ) == (ablexpr    *)0 )
+     {
+       StarChain = ABL_CADR( Equation );
+-      ABL_CADR( Equation ) = (ablexpr    *)0;
++      lABL_CADR( Equation ) = (ablexpr    *)0;
+       freeablexpr( Equation );
+       Equation = StarChain;
+     }
+diff -Naur sources/syf/fvh/fvhfbh2fsm.c.rej ../../alliance-4.0-patchd/sources/syf/fvh/fvhfbh2fsm.c.rej
+--- sources/syf/fvh/fvhfbh2fsm.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/fvh/fvhfbh2fsm.c.rej	2017-03-06 18:52:30.292500500 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/fvh/fvhfbh2fsm.c	1999-11-16 02:19:05.000000000 +0900
+++++ sources-patched/syf/fvh/fvhfbh2fsm.c	2016-06-02 17:09:18.188931994 +0900
++@@ -1473,7 +1473,7 @@ void FvhFbhPostTreat( FsmFigure )
++     if ( ABL_CDDR( Equation ) == (ablexpr    *)0 )
++     {
++       StarChain = ABL_CADR( Equation );
++-      ABL_CADR( Equation ) = (ablexpr    *)0;
+++      lABL_CADR( Equation ) = (ablexpr    *)0;
++       freeablexpr( Equation );
++       Equation = StarChain;
++     }
+diff -Naur sources/syf/gcp/c_ccomp.yac ../../alliance-4.0-patchd/sources/syf/gcp/c_ccomp.yac
+--- sources/syf/gcp/c_ccomp.yac	2017-03-06 18:55:32.789900800 +0900
++++ ../../alliance-4.0-patchd/sources/syf/gcp/c_ccomp.yac	2017-03-06 18:52:32.323775400 +0900
+@@ -1782,7 +1782,7 @@
+ structsp:
+     tok_STRUCT identifier '{'
+     {
+-      $$ = c_start_struct(C_RECORD_TYPE, $2);
++      $<ttype>$ = c_start_struct(C_RECORD_TYPE, $2);
+       /* Start scope of tag before parsing components.  */
+     }
+     component_decl_list '}' maybe_attribute 
+@@ -1799,7 +1799,7 @@
+     }
+   | tok_UNION identifier '{'
+     {
+-      $$ = c_start_struct(C_UNION_TYPE, $2); 
++      $<ttype>$ = c_start_struct(C_UNION_TYPE, $2); 
+     }
+     component_decl_list '}' maybe_attribute
+     {
+@@ -1818,7 +1818,7 @@
+ # ifdef LUDO_NO_SKIP
+       $<itype>3 = suspend_momentary();
+ # endif
+-      $$ = c_start_enum($2); 
++      $<ttype>$ = c_start_enum($2); 
+     }
+     enumlist maybecomma_warn '}' maybe_attribute
+     {
+@@ -1830,7 +1830,7 @@
+ # ifdef LUDO_NO_SKIP
+       $<itype>2 = suspend_momentary();
+ # endif
+-      $$ = c_start_enum((c_tree_node *)0); 
++      $<ttype>$ = c_start_enum((c_tree_node *)0); 
+     }
+     enumlist maybecomma_warn '}' maybe_attribute
+     {
+diff -Naur sources/syf/gcp/c_ccomp.yac.rej ../../alliance-4.0-patchd/sources/syf/gcp/c_ccomp.yac.rej
+--- sources/syf/gcp/c_ccomp.yac.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/gcp/c_ccomp.yac.rej	2017-03-06 18:52:32.323775400 +0900
+@@ -0,0 +1,38 @@
++--- sources/syf/gcp/c_ccomp.yac	1999-11-11 02:52:13.000000000 +0900
+++++ sources-patched/syf/gcp/c_ccomp.yac	2016-06-02 17:58:17.358246291 +0900
++@@ -1782,7 +1782,7 @@ notype_declarator:
++ structsp:
++     tok_STRUCT identifier '{'
++     {
++-      $$ = c_start_struct(C_RECORD_TYPE, $2);
+++      $<ttype>$ = c_start_struct(C_RECORD_TYPE, $2);
++       /* Start scope of tag before parsing components.  */
++     }
++     component_decl_list '}' maybe_attribute 
++@@ -1799,7 +1799,7 @@ structsp:
++     }
++   | tok_UNION identifier '{'
++     {
++-      $$ = c_start_struct(C_UNION_TYPE, $2); 
+++      $<ttype>$ = c_start_struct(C_UNION_TYPE, $2); 
++     }
++     component_decl_list '}' maybe_attribute
++     {
++@@ -1818,7 +1818,7 @@ structsp:
++ # ifdef LUDO_NO_SKIP
++       $<itype>3 = suspend_momentary();
++ # endif
++-      $$ = c_start_enum($2); 
+++      $<ttype>$ = c_start_enum($2); 
++     }
++     enumlist maybecomma_warn '}' maybe_attribute
++     {
++@@ -1830,7 +1830,7 @@ structsp:
++ # ifdef LUDO_NO_SKIP
++       $<itype>2 = suspend_momentary();
++ # endif
++-      $$ = c_start_enum((c_tree_node *)0); 
+++      $<ttype>$ = c_start_enum((c_tree_node *)0); 
++     }
++     enumlist maybecomma_warn '}' maybe_attribute
++     {
+diff -Naur sources/syf/gcp/c_debug.c ../../alliance-4.0-patchd/sources/syf/gcp/c_debug.c
+--- sources/syf/gcp/c_debug.c	2017-03-06 18:55:32.868027100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/gcp/c_debug.c	2017-03-06 18:52:32.198772500 +0900
+@@ -16,7 +16,7 @@
+ \------------------------------------------------------------*/
+ 
+ # include <stdio.h>
+-# include <varargs.h>
++# include <stdarg.h>
+ # include <stdarg.h>
+ # include <ctype.h>
+ 
+diff -Naur sources/syf/gcp/c_debug.c.rej ../../alliance-4.0-patchd/sources/syf/gcp/c_debug.c.rej
+--- sources/syf/gcp/c_debug.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/gcp/c_debug.c.rej	2017-03-06 18:52:32.230023500 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/gcp/c_debug.c	1999-11-11 02:52:17.000000000 +0900
+++++ sources-patched/syf/gcp/c_debug.c	2016-06-02 17:59:48.435204006 +0900
++@@ -16,7 +16,7 @@
++ \------------------------------------------------------------*/
++ 
++ # include <stdio.h>
++-# include <varargs.h>
+++# include <stdarg.h>
++ # include <stdarg.h>
++ # include <ctype.h>
++ 
+diff -Naur sources/syf/syf/syf_comp.c ../../alliance-4.0-patchd/sources/syf/syf/syf_comp.c
+--- sources/syf/syf/syf_comp.c	2017-03-06 18:55:33.368048100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/syf/syf_comp.c	2017-03-06 18:52:25.808071500 +0900
+@@ -73,7 +73,7 @@
+       freechain( ABL_CAR( Expr ) );
+ 
+       ABL_CDR( Expr ) = (ablexpr *)0;
+-      ABL_ATOM_VALUE( Expr ) = getablatomzero();
++      lABL_ATOM_VALUE( Expr ) = getablatomzero();
+ 
+       return;
+     }
+diff -Naur sources/syf/syf/syf_comp.c.rej ../../alliance-4.0-patchd/sources/syf/syf/syf_comp.c.rej
+--- sources/syf/syf/syf_comp.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/syf/syf_comp.c.rej	2017-03-06 18:52:25.729947200 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/syf/syf_comp.c	1999-11-05 18:48:40.000000000 +0900
+++++ sources-patched/syf/syf/syf_comp.c	2016-06-02 18:03:40.439643637 +0900
++@@ -73,7 +73,7 @@ static void SyfRemoveStable( Expr )
++       freechain( ABL_CAR( Expr ) );
++ 
++       ABL_CDR( Expr ) = (ablexpr *)0;
++-      ABL_ATOM_VALUE( Expr ) = getablatomzero();
+++      lABL_ATOM_VALUE( Expr ) = getablatomzero();
++ 
++       return;
++     }
+diff -Naur sources/syf/syf/syf_synth.c ../../alliance-4.0-patchd/sources/syf/syf/syf_synth.c
+--- sources/syf/syf/syf_synth.c	2017-03-06 18:55:33.539954100 +0900
++++ ../../alliance-4.0-patchd/sources/syf/syf/syf_synth.c	2017-03-06 18:52:25.714321500 +0900
+@@ -115,7 +115,7 @@
+            ( ABL_CDDR( Equation ) == (ablexpr *)0 ) )
+       {
+         Atom = ABL_CADR( Equation );
+-        ABL_CADR( Equation ) = (ablexpr *)0;
++        lABL_CADR( Equation ) = (ablexpr *)0;
+         freeablexpr( Equation );
+         ReturnSyfState->ABL_RETURN = Atom;
+       }
+@@ -273,7 +273,7 @@
+       if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
+       {
+         Atom = ABL_CADR( Equation );
+-        ABL_CADR( Equation ) = (ablexpr *)0;
++        lABL_CADR( Equation ) = (ablexpr *)0;
+         freeablexpr( Equation );
+         StackArray[ ScanBit ].ABL = Atom;
+       }
+@@ -568,7 +568,7 @@
+       if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
+       {
+         Atom = ABL_CADR( Equation );
+-        ABL_CADR( Equation ) = (ablexpr *)0;
++        lABL_CADR( Equation ) = (ablexpr *)0;
+         freeablexpr( Equation );
+         CtrlArray[ Index ].ABL = Atom;
+       }
+@@ -778,7 +778,7 @@
+ **  Out(i) = OR Locout(j) -> Out(i) = Locout(j)
+ */
+       Atom = ABL_CADR( Equation );
+-      ABL_CADR( Equation ) = (ablexpr *)0;
++      lABL_CADR( Equation ) = (ablexpr *)0;
+       freeablexpr( Equation );
+       ScanSyfOut->ABL = Atom;
+     }
+@@ -981,7 +981,7 @@
+ **  Reg(i) = OR E(j) -> Reg(i) = E(j)
+ */
+       Atom = ABL_CADR( Equation );
+-      ABL_CADR( Equation ) = (ablexpr *)0;
++      lABL_CADR( Equation ) = (ablexpr *)0;
+       freeablexpr( Equation );
+       RegArray[ Index ].ABL = Atom;
+     }
+@@ -1067,7 +1067,7 @@
+     if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
+     {
+       Atom = ABL_CADR( Equation );
+-      ABL_CADR( Equation ) = (ablexpr *)0;
++      lABL_CADR( Equation ) = (ablexpr *)0;
+       freeablexpr( Equation );
+       RegArray[ Index ].ABL_SET = Atom;
+     }
+@@ -1083,7 +1083,7 @@
+     if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
+     {
+       Atom = ABL_CADR( Equation );
+-      ABL_CADR( Equation ) = (ablexpr *)0;
++      lABL_CADR( Equation ) = (ablexpr *)0;
+       freeablexpr( Equation );
+       RegArray[ Index ].ABL_RESET = Atom;
+     }
+diff -Naur sources/syf/syf/syf_synth.c.rej ../../alliance-4.0-patchd/sources/syf/syf/syf_synth.c.rej
+--- sources/syf/syf/syf_synth.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/syf/syf_synth.c.rej	2017-03-06 18:52:25.886199200 +0900
+@@ -0,0 +1,65 @@
++--- sources/syf/syf/syf_synth.c	1999-11-05 18:48:43.000000000 +0900
+++++ sources-patched/syf/syf/syf_synth.c	2016-06-02 18:05:02.165503021 +0900
++@@ -115,7 +115,7 @@ void SyfSynthReturn2Abl( FsmFigure )
++            ( ABL_CDDR( Equation ) == (ablexpr *)0 ) )
++       {
++         Atom = ABL_CADR( Equation );
++-        ABL_CADR( Equation ) = (ablexpr *)0;
+++        lABL_CADR( Equation ) = (ablexpr *)0;
++         freeablexpr( Equation );
++         ReturnSyfState->ABL_RETURN = Atom;
++       }
++@@ -273,7 +273,7 @@ void SyfSynthStack2Abl( FsmFigure )
++       if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
++       {
++         Atom = ABL_CADR( Equation );
++-        ABL_CADR( Equation ) = (ablexpr *)0;
+++        lABL_CADR( Equation ) = (ablexpr *)0;
++         freeablexpr( Equation );
++         StackArray[ ScanBit ].ABL = Atom;
++       }
++@@ -568,7 +568,7 @@ void SyfSynthCtrl2Abl( FsmFigure )
++       if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
++       {
++         Atom = ABL_CADR( Equation );
++-        ABL_CADR( Equation ) = (ablexpr *)0;
+++        lABL_CADR( Equation ) = (ablexpr *)0;
++         freeablexpr( Equation );
++         CtrlArray[ Index ].ABL = Atom;
++       }
++@@ -778,7 +778,7 @@ void SyfSynthOut2Abl( FsmFigure )
++ **  Out(i) = OR Locout(j) -> Out(i) = Locout(j)
++ */
++       Atom = ABL_CADR( Equation );
++-      ABL_CADR( Equation ) = (ablexpr *)0;
+++      lABL_CADR( Equation ) = (ablexpr *)0;
++       freeablexpr( Equation );
++       ScanSyfOut->ABL = Atom;
++     }
++@@ -981,7 +981,7 @@ void SyfSynthReg2Abl( FsmFigure )
++ **  Reg(i) = OR E(j) -> Reg(i) = E(j)
++ */
++       Atom = ABL_CADR( Equation );
++-      ABL_CADR( Equation ) = (ablexpr *)0;
+++      lABL_CADR( Equation ) = (ablexpr *)0;
++       freeablexpr( Equation );
++       RegArray[ Index ].ABL = Atom;
++     }
++@@ -1067,7 +1067,7 @@ void SyfSynthReg2Abl( FsmFigure )
++     if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
++     {
++       Atom = ABL_CADR( Equation );
++-      ABL_CADR( Equation ) = (ablexpr *)0;
+++      lABL_CADR( Equation ) = (ablexpr *)0;
++       freeablexpr( Equation );
++       RegArray[ Index ].ABL_SET = Atom;
++     }
++@@ -1083,7 +1083,7 @@ void SyfSynthReg2Abl( FsmFigure )
++     if ( ABL_CDDR( Equation ) == (ablexpr *)0 )
++     {
++       Atom = ABL_CADR( Equation );
++-      ABL_CADR( Equation ) = (ablexpr *)0;
+++      lABL_CADR( Equation ) = (ablexpr *)0;
++       freeablexpr( Equation );
++       RegArray[ Index ].ABL_RESET = Atom;
++     }
+diff -Naur sources/syf/vex/vex103.h ../../alliance-4.0-patchd/sources/syf/vex/vex103.h
+--- sources/syf/vex/vex103.h	2017-03-06 18:55:34.102416000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/vex/vex103.h	2017-03-06 18:52:27.261213800 +0900
+@@ -401,6 +401,7 @@
+ # define SetVexAtomValue( N, A )  ( (N)->VALUE = (void *)(A) )
+ 
+ # define GetVexOperand( C )       ( (vexexpr *)(C)->DATA     )
++# define lGetVexOperand( C )       ( (C)->DATA     )
+ # define SetVexOperand( C, O )    ( (C)->DATA = (void *)(O)  )
+ 
+ /*------------------------------------------------------\
+diff -Naur sources/syf/vex/vex103.h.rej ../../alliance-4.0-patchd/sources/syf/vex/vex103.h.rej
+--- sources/syf/vex/vex103.h.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/vex/vex103.h.rej	2017-03-06 18:52:27.198715800 +0900
+@@ -0,0 +1,10 @@
++--- sources/syf/vex/vex103.h	1999-12-16 03:33:21.000000000 +0900
+++++ sources-patched/syf/vex/vex103.h	2016-06-02 18:01:18.914155433 +0900
++@@ -401,6 +401,7 @@
++ # define SetVexAtomValue( N, A )  ( (N)->VALUE = (void *)(A) )
++ 
++ # define GetVexOperand( C )       ( (vexexpr *)(C)->DATA     )
+++# define lGetVexOperand( C )       ( (C)->DATA     )
++ # define SetVexOperand( C, O )    ( (C)->DATA = (void *)(O)  )
++ 
++ /*------------------------------------------------------\
+diff -Naur sources/syf/vvh/vvh_vbh2vpn.c ../../alliance-4.0-patchd/sources/syf/vvh/vvh_vbh2vpn.c
+--- sources/syf/vvh/vvh_vbh2vpn.c	2017-03-06 18:55:34.555561800 +0900
++++ ../../alliance-4.0-patchd/sources/syf/vvh/vvh_vbh2vpn.c	2017-03-06 18:52:31.995645300 +0900
+@@ -1009,7 +1009,7 @@
+         if ( VexGuard->OPERAND->NEXT == (chain_list *)0 )
+         {
+           VexAtom = GetVexOperand( VexGuard->OPERAND );
+-          GetVexOperand( VexGuard->OPERAND ) = (vexexpr *)0;
++          ( VexGuard->OPERAND )->DATA = (vexexpr *)0;
+           freevexexpr( VexGuard );
+           VexGuard = VexAtom;
+         }
+diff -Naur sources/syf/vvh/vvh_vbh2vpn.c.rej ../../alliance-4.0-patchd/sources/syf/vvh/vvh_vbh2vpn.c.rej
+--- sources/syf/vvh/vvh_vbh2vpn.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/vvh/vvh_vbh2vpn.c.rej	2017-03-06 18:52:32.042522000 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/vvh/vvh_vbh2vpn.c	1999-12-17 19:47:37.000000000 +0900
+++++ sources-patched/syf/vvh/vvh_vbh2vpn.c	2016-06-02 18:03:11.506339390 +0900
++@@ -1009,7 +1009,7 @@ static void VvhVbhTreatCase( ScanCase )
++         if ( VexGuard->OPERAND->NEXT == (chain_list *)0 )
++         {
++           VexAtom = GetVexOperand( VexGuard->OPERAND );
++-          GetVexOperand( VexGuard->OPERAND ) = (vexexpr *)0;
+++          ( VexGuard->OPERAND )->DATA = (vexexpr *)0;
++           freevexexpr( VexGuard );
++           VexGuard = VexAtom;
++         }
+diff -Naur sources/syf/xfs/XTB_panel.c ../../alliance-4.0-patchd/sources/syf/xfs/XTB_panel.c
+--- sources/syf/xfs/XTB_panel.c	2017-03-06 18:55:35.243053900 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xfs/XTB_panel.c	2017-03-06 18:52:26.792458900 +0900
+@@ -52,7 +52,7 @@
+ |                                                             |
+ \------------------------------------------------------------*/
+ 
+-  static char *XfsmPanelButtonDisable = "xxxx";
++  char *XfsmPanelButtonDisable = "xxxx";
+ 
+ /*------------------------------------------------------------\
+ |                                                             |
+diff -Naur sources/syf/xfs/XTB_panel.c.rej ../../alliance-4.0-patchd/sources/syf/xfs/XTB_panel.c.rej
+--- sources/syf/xfs/XTB_panel.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xfs/XTB_panel.c.rej	2017-03-06 18:52:26.854962900 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/xfs/XTB_panel.c	1999-09-11 00:17:33.000000000 +0900
+++++ sources-patched/syf/xfs/XTB_panel.c	2016-06-02 18:05:57.695086940 +0900
++@@ -52,7 +52,7 @@
++ |                                                             |
++ \------------------------------------------------------------*/
++ 
++-  static char *XfsmPanelButtonDisable = "xxxx";
+++  char *XfsmPanelButtonDisable = "xxxx";
++ 
++ /*------------------------------------------------------------\
++ |                                                             |
+diff -Naur sources/syf/xpt/XTB_panel.c ../../alliance-4.0-patchd/sources/syf/xpt/XTB_panel.c
+--- sources/syf/xpt/XTB_panel.c	2017-03-06 18:55:35.903154300 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xpt/XTB_panel.c	2017-03-06 18:52:28.933110100 +0900
+@@ -50,7 +50,7 @@
+ |                                                             |
+ \------------------------------------------------------------*/
+ 
+-  static char *XpatPanelButtonDisable = "xxxx";
++  char *XpatPanelButtonDisable = "xxxx";
+ 
+ /*------------------------------------------------------------\
+ |                                                             |
+diff -Naur sources/syf/xpt/XTB_panel.c.rej ../../alliance-4.0-patchd/sources/syf/xpt/XTB_panel.c.rej
+--- sources/syf/xpt/XTB_panel.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xpt/XTB_panel.c.rej	2017-03-06 18:52:29.011235800 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/xpt/XTB_panel.c	1999-09-11 00:17:55.000000000 +0900
+++++ sources-patched/syf/xpt/XTB_panel.c	2016-06-02 18:06:23.675360134 +0900
++@@ -50,7 +50,7 @@
++ |                                                             |
++ \------------------------------------------------------------*/
++ 
++-  static char *XpatPanelButtonDisable = "xxxx";
+++  char *XpatPanelButtonDisable = "xxxx";
++ 
++ /*------------------------------------------------------------\
++ |                                                             |
+diff -Naur sources/syf/xsc/XTB_panel.c ../../alliance-4.0-patchd/sources/syf/xsc/XTB_panel.c
+--- sources/syf/xsc/XTB_panel.c	2017-03-06 18:55:36.606273700 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xsc/XTB_panel.c	2017-03-06 18:52:30.917507300 +0900
+@@ -50,7 +50,7 @@
+ |                                                             |
+ \------------------------------------------------------------*/
+ 
+-  static char *XschPanelButtonDisable = "xxxx";
++  char *XschPanelButtonDisable = "xxxx";
+ 
+ /*------------------------------------------------------------\
+ |                                                             |
+diff -Naur sources/syf/xsc/XTB_panel.c.rej ../../alliance-4.0-patchd/sources/syf/xsc/XTB_panel.c.rej
+--- sources/syf/xsc/XTB_panel.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xsc/XTB_panel.c.rej	2017-03-06 18:52:30.980007800 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/xsc/XTB_panel.c	1999-09-11 00:19:55.000000000 +0900
+++++ sources-patched/syf/xsc/XTB_panel.c	2016-06-02 18:06:32.308450915 +0900
++@@ -50,7 +50,7 @@
++ |                                                             |
++ \------------------------------------------------------------*/
++ 
++-  static char *XschPanelButtonDisable = "xxxx";
+++  char *XschPanelButtonDisable = "xxxx";
++ 
++ /*------------------------------------------------------------\
++ |                                                             |
+diff -Naur sources/syf/xvp/XTB_panel.c ../../alliance-4.0-patchd/sources/syf/xvp/XTB_panel.c
+--- sources/syf/xvp/XTB_panel.c	2017-03-06 18:55:37.231294700 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xvp/XTB_panel.c	2017-03-06 18:52:27.823720700 +0900
+@@ -49,7 +49,7 @@
+ |                                                             |
+ \------------------------------------------------------------*/
+ 
+-  static char *XvpnPanelButtonDisable = "xxxx";
++  char *XvpnPanelButtonDisable = "xxxx";
+ 
+ /*------------------------------------------------------------\
+ |                                                             |
+diff -Naur sources/syf/xvp/XTB_panel.c.rej ../../alliance-4.0-patchd/sources/syf/xvp/XTB_panel.c.rej
+--- sources/syf/xvp/XTB_panel.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/syf/xvp/XTB_panel.c.rej	2017-03-06 18:52:27.901848400 +0900
+@@ -0,0 +1,11 @@
++--- sources/syf/xvp/XTB_panel.c	1999-11-11 02:53:18.000000000 +0900
+++++ sources-patched/syf/xvp/XTB_panel.c	2016-06-02 18:06:39.691528552 +0900
++@@ -49,7 +49,7 @@
++ |                                                             |
++ \------------------------------------------------------------*/
++ 
++-  static char *XvpnPanelButtonDisable = "xxxx";
+++  char *XvpnPanelButtonDisable = "xxxx";
++ 
++ /*------------------------------------------------------------\
++ |                                                             |
+diff -Naur sources/testools/scan_path.c ../../alliance-4.0-patchd/sources/testools/scan_path.c
+--- sources/testools/scan_path.c	2017-03-06 18:55:37.387533900 +0900
++++ ../../alliance-4.0-patchd/sources/testools/scan_path.c	2017-03-06 18:52:37.343161100 +0900
+@@ -475,7 +475,7 @@
+ 	}
+ 	else
+ 	{
+-	((losig_list *)((locon_list *)AuxInsCon->DATA)->SIG) = scan_signal; 
++	(((locon_list *)AuxInsCon->DATA)->SIG) = scan_signal; 
+ 		
+ 	}
+ 
+diff -Naur sources/testools/scan_path.c.rej ../../alliance-4.0-patchd/sources/testools/scan_path.c.rej
+--- sources/testools/scan_path.c.rej	1970-01-01 09:00:00.000000000 +0900
++++ ../../alliance-4.0-patchd/sources/testools/scan_path.c.rej	2017-03-06 18:52:37.280643500 +0900
+@@ -0,0 +1,11 @@
++--- sources/testools/scan_path.c	1999-05-10 22:14:52.000000000 +0900
+++++ sources-patched/testools/scan_path.c	2016-06-02 20:24:57.476587197 +0900
++@@ -475,7 +475,7 @@ int Fixed_Scout;
++ 	}
++ 	else
++ 	{
++-	((losig_list *)((locon_list *)AuxInsCon->DATA)->SIG) = scan_signal; 
+++	(((locon_list *)AuxInsCon->DATA)->SIG) = scan_signal; 
++ 		
++ 	}
++ 

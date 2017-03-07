@@ -1,0 +1,90 @@
+diff -upr src_org/ring/src/lireplace.c src/ring/src/lireplace.c
+--- src_org/ring/src/lireplace.c	2017-03-06 18:03:34.740358742 +0900
++++ src/ring/src/lireplace.c	2017-03-06 18:01:24.686001678 +0900
+@@ -201,7 +201,7 @@ void lecture_fic(char *nomfic, lofig_lis
+ 		if (!existe_signal_circuit(liste, circuit_lo, lecoeur))
+ 			ringerreur(ERR_NONCONWIDTHPARAM, nom_con, NULL);
+ 
+-		if (larg_con < SCALE_X) 
++		if (larg_con < WVIA_ALU2) 
+ 			ringerreur(ERR_WIDTHPARAM, (void * )nom_con, (void * ) & larg_con);
+ 
+ 		liste = liste->NEXT;
+diff -upr src_org/ring/src/placement.c src/ring/src/placement.c
+--- src_org/ring/src/placement.c	2017-03-06 18:03:34.740358742 +0900
++++ src/ring/src/placement.c	2017-03-06 18:01:24.646000954 +0900
+@@ -654,6 +654,10 @@ void place_et_cout_barreplot(LST_PSEUDO_
+               //if (diff >= 0)
+ 					barrexmilieu = tab_plots[face].coord.xabs =  ((lecoeur.coord.xabs - diff / 2) / SCALE_X) *
+ 					    SCALE_X;
++
++				//*****test******//
++				break;
++				//***************//
+ 						
+ 					/* --------------------------------------- */
+ 					/* Largeur barre de plots >= largeur coeur */
+@@ -767,6 +771,10 @@ void place_et_cout_barreplot(LST_PSEUDO_
+ 					barreymilieu = tab_plots[face].coord.yabs =  ((lecoeur.coord.yabs - diff / 2) / SCALE_X) *
+ 					    SCALE_X;
+ 
++				//*****test******//
++				break;
++				//***************//
++
+ 					/*---------------------------------------- */
+ 					/* Hauteur barre de plots >= Hauteur coeur */
+ 					/*---------------------------------------- */
+@@ -902,7 +910,7 @@ void place_vertical_barreplot(BARRE_PLOT
+ 	int	face;
+ 	long	largvdd, largvss, diff1, diff2, diff;
+ 
+-	long	cptcon = 0, maxcoeur = 0, maxplot = 0, largalim, dist;
++	long	cptcon = 0, maxcoeur = 0, maxplot = 0, largalim, dist,disty,distx;
+ 
+ 	recherche_equipo_alim(&equipo_vdd, &equipo_vss, lst_equipo);
+ 
+@@ -941,9 +949,25 @@ void place_vertical_barreplot(BARRE_PLOT
+ 
+ 	dist = (maxcoeur * pitch + maxplot * pitch + 2 * largalim) * 2;
+ 
++	if(tab_plots[NORD].width > tab_plots[SUD].width)
++		distx=(tab_plots[NORD].width-lecoeur.width)/2;
++	else
++		distx=(tab_plots[SUD].width-lecoeur.width)/2;
++
++	if(tab_plots[OUEST].width > tab_plots[EST].width)
++		disty=(tab_plots[OUEST].width-lecoeur.height)/2;
++	else
++		disty=(tab_plots[EST].width-lecoeur.height)/2;
++	
++/*
+ 	for (face = 0; face < NB_FACES; face++)
+ 		(tab_plots[face].coord).piste = dist / pitch;
+-
++*/
++	(tab_plots[NORD].coord).piste = disty / pitch;
++	(tab_plots[SUD].coord).piste = disty / pitch;
++	(tab_plots[OUEST].coord).piste = distx / pitch;
++	(tab_plots[EST].coord).piste = distx / pitch;
++/*
+ 	if (tab_plots[NORD].width != 0)
+ 		(tab_plots[NORD].coord).yabs = (lecoeur.coord).yabs + lecoeur.height + dist;
+ 	if (tab_plots[SUD].width != 0)
+@@ -952,6 +976,16 @@ void place_vertical_barreplot(BARRE_PLOT
+ 		(tab_plots[OUEST].coord).xabs = (lecoeur.coord).xabs - dist;
+ 	if (tab_plots[EST].width != 0)
+ 		(tab_plots[EST].coord).xabs = (lecoeur.coord).xabs + lecoeur.width + dist;
++*/
++
++	if (tab_plots[NORD].width != 0)
++		(tab_plots[NORD].coord).yabs = (lecoeur.coord).yabs + lecoeur.height + disty;
++	if (tab_plots[SUD].width != 0)
++		(tab_plots[SUD].coord).yabs = (lecoeur.coord).yabs - disty;
++	if (tab_plots[OUEST].width != 0)
++		(tab_plots[OUEST].coord).xabs = (lecoeur.coord).xabs - distx;
++	if (tab_plots[EST].width != 0)
++		(tab_plots[EST].coord).xabs = (lecoeur.coord).xabs + lecoeur.width + distx;
+ 
+ 	if (mode_debug) 
+ 		printf("**** nord x%ld y%ld sud x%ld y%ld ouest x%ld y%ld est x%ld y%ld\n", (tab_plots[NORD].coord).xabs,
