@@ -1,0 +1,24 @@
+* Spice description of pvddck2_sp
+* Spice driver version 4608959
+* Date ( dd/mm/yyyy hh:mm:ss ):  6/08/2016 at 12:38:01
+
+* INTERF ck cko vdd vss 
+
+
+.subckt pvddck2_sp 3 5 4 1 
+* NET 1 = vss
+* NET 3 = ck
+* NET 4 = vdd
+* NET 5 = cko
+Mtr_00010 5 2 4 4 tp L=2U W=114.8U AS=803.6P AD=803.6P PS=243.6U PD=243.6U 
+Mtr_00009 4 2 5 4 tp L=2U W=114.8U AS=803.6P AD=803.6P PS=243.6U PD=243.6U 
+Mtr_00008 5 2 4 4 tp L=2U W=114.8U AS=803.6P AD=803.6P PS=243.6U PD=243.6U 
+Mtr_00007 4 2 5 4 tp L=2U W=114.8U AS=803.6P AD=803.6P PS=243.6U PD=243.6U 
+Mtr_00006 4 3 2 4 tp L=2U W=114.8U AS=803.6P AD=803.6P PS=243.6U PD=243.6U 
+Mtr_00005 5 2 1 1 tn L=2U W=42.8U AS=299.6P AD=299.6P PS=99.6U PD=99.6U 
+Mtr_00004 1 2 5 1 tn L=2U W=42.8U AS=299.6P AD=299.6P PS=99.6U PD=99.6U 
+Mtr_00003 5 2 1 1 tn L=2U W=42.8U AS=299.6P AD=299.6P PS=99.6U PD=99.6U 
+Mtr_00002 1 2 5 1 tn L=2U W=42.8U AS=299.6P AD=299.6P PS=99.6U PD=99.6U 
+Mtr_00001 1 3 2 1 tn L=2U W=42.8U AS=299.6P AD=299.6P PS=99.6U PD=99.6U 
+.ends pvddck2_sp
+
